@@ -1,14 +1,15 @@
 import { Routes, Route } from 'react-router-dom';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
+import { useDispatch, /*useSelector*/ } from 'react-redux';
 // import logo from "./logo.svg";
 import './App.css';
 // import DailyCaloriesForm from './components/DailyCaloriesForm';
 import MainPage from './components/mainPage';
 
 // import Layout  from './components/Layout';
-
+import { authOperations, /*authSelectors*/ } from './redux/auth';
 // import PrivateRoute from './components/PrivateRoute';
-// import PublicRoute from './components/PublicRoute';
+import PublicRoute from './components/publicRoute';
 
 const HomePage = lazy(() => import('./pages/homePage'));
 // const RegistrationPage = lazy(() => import('./pages/registrationPage'));
@@ -17,6 +18,13 @@ const LoginPage = lazy(() => import('./pages/loginPage'));
 // const DiaryPage = lazy(() => import('./pages/diaryPage/diaryPage'));
 
 function App() {
+  //--Eugen
+  const dispatch = useDispatch();
+  // const isFetchingCurrentUser = useSelector(loginSelectors.getIsFetchingCurrent);
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
+  //--Eugen
   return (
     <>
       <Suspense fallback={<div>Loading...</div>}>
@@ -36,10 +44,9 @@ function App() {
             element={<PublicRoute restricted redirectTo="/" />}
           > */}
 
-          {/* <Route path="/login" element={<LoginPage />} /> */}
-          {/* </Route> */}
-          {/* <Route
+          <Route path="login" element={<PublicRoute component={<LoginPage />} redirectTo="/" restricted />} />
 
+          {/* <Route
             path="/calculator"
             element={<PrivateRoute redirectTo="/login" />}
           > */}
