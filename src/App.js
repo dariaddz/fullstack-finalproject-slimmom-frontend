@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { authSelectors } from './redux/auth';
 // import logo from "./logo.svg";
 import './App.css';
-// import DailyCaloriesForm from './components/DailyCaloriesForm';
+// import DailyCaloriesForm from './components/dailyCaloriesForm';
 import MainPage from './components/mainPage';
 import { Spiner } from './components/spiner';
 
@@ -35,9 +35,9 @@ function App() {
         <Suspense fallback={<Spiner />}>
 
           <Routes>
-            {/* <Route path="/" element={<MainPage />}> */}
+            <Route path="/" element={<MainPage />}>
             {/* <Route path="/" element={<PublicRoute />}> */}
-            {/* <Route index element={<HomePage />} /> */}
+            <Route index element={<HomePage />} />
 
             {/* <Route
             path="/register"
@@ -65,11 +65,12 @@ function App() {
           >
             <Route path="*" element={<NotFoundPage />} />
           </Route> */}
-            {/* </Route> */}
+            
             {/* </Route>
           </Route> */}
 
             {/* <Route path="/diary" element={<DiaryPage />} /> */}
+            </Route> 
           </Routes>
 
         </Suspense>
