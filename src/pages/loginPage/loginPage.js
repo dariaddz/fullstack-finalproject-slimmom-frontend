@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 
 import { Box } from '@mui/material';
 import { LoginForm } from '../../components/loginForm';
+import { Spiner } from '../../components/spiner';
 
 export function LoginPage() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ export function LoginPage() {
       }}
     >
       <LoginForm onLogin={onLogin} />
+      {/* <Spiner /> */}
     </Box>
   );
 };
