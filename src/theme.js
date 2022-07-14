@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material';
-import { Button, styled } from '@mui/material';
+import { Box, Container, styled } from '@mui/material';
 
 export const theme = createTheme({
   palette: {
@@ -81,10 +81,16 @@ const buttonLR = {
   height: '44px',
   width: '182px',
   borderRadius: '30px',
-  height: '43px',
-  color: theme.palette.background.main,
-  backgroundColor: theme.palette.secondary.main,
-  '&:hover': { backgroundColor: theme.palette.secondary.hover },
+};
+
+const FormLabel = styled('label')(({ theme }) => ({
+  display: 'block',
+  marginBottom: '32px',
+  width: '240px',
+  [theme.breakpoints.up('md')]: {
+    marginBottom: '0px',
+    marginRight: '32px',
+  },
 }));
 
 export { FormLabel, buttonLR, FormBox, labelFontStyle, MainContainer };

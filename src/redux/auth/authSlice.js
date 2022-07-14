@@ -28,7 +28,6 @@ const authSlice = createSlice({
     refreshToken: (state, { payload }) => {
       state.token = payload;
     },
-    
   },
 
   extraReducers: {
@@ -72,7 +71,6 @@ const authSlice = createSlice({
       state.isFetchingCurrentUser = false;
       resetToInitialState(state);
     },
-
   },
 });
 
