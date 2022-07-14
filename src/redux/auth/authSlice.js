@@ -12,12 +12,16 @@ const resetToInitialState = state => {
   state.user = { name: null, email: null };
   state.token = null;
   state.isLoggedIn = false;
+  state.isPending = false;
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: {
+    [authOperations.login.pending](state) {
+      state.isPending = true;
+    },
     [authOperations.login.fulfilled](state, action) {
       state.user = action.payload.user;
       state.token = action.payload.token;

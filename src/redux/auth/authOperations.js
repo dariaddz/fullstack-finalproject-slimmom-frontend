@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
 import { toast } from 'react-hot-toast';
 
 axios.defaults.baseURL = 'http://localhost:3001/api/users';
