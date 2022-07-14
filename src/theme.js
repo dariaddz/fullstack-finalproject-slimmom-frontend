@@ -11,6 +11,10 @@ export const theme = createTheme({
       main: '#FC842D',
       hover: '#FF0707',
     },
+    element: {
+      main: '#E0E0E0',
+    },
+
     buttonLogin: {
       main: '#FC842D',
       dark: '#e77828',
@@ -44,7 +48,6 @@ export const theme = createTheme({
 const MainContainer = styled(Container)(({ theme }) => ({
   padding: '32px 20px',
   [theme.breakpoints.up('md')]: {
-   
     padding: '100px 32px 0px',
   },
   [theme.breakpoints.up('lg')]: {
@@ -61,13 +64,13 @@ const labelFontStyle = {
 };
 
 const FormBox = styled(Box)(({ theme }) => ({
-  position:"relative",
-  marginBottom:'40px',
+  position: 'relative',
+  marginBottom: '40px',
   display: 'block',
 
   [theme.breakpoints.up('md')]: {
     display: 'flex',
-    marginBottom:'0px',
+    marginBottom: '0px',
     flexWrap: 'wrap',
     width: '545px',
     height: '343px',
@@ -90,9 +93,4 @@ const FormLabel = styled('label')(({ theme }) => ({
   },
 }));
 
-export  {
-  FormLabel, buttonLR, FormBox, labelFontStyle,MainContainer
-}
-
-
-
+export { FormLabel, buttonLR, FormBox, labelFontStyle, MainContainer };

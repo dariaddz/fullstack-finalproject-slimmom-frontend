@@ -19,3 +19,9 @@ body {
   line-height: 1.215;
   letter-spacing: 0.04em;
   margin: 0;}
+
+        img {
+          display: block;
+          max-width: 100%;
+          height: auto;
+        }
