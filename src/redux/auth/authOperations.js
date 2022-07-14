@@ -14,6 +14,26 @@ const token = {
   },
 };
 
+const register = createAsyncThunk(
+  'auth/register',
+  async (credentials, thunkAPI) => {
+    try {
+      const { data } = await axios.post('/register', credentials);
+      token.set(data.token);
+      toast.success('Ви успішно зареєструвались');
+      return data.data;
+    } catch (error) {
+      if (error.response.status === 400) {
+        toast.error('Помилка реєстрації.\nПеревірте введені дані.');
+      }
+      if (error.response.status === 500) {
+        toast.error('Немає відповіді від сервера.');
+      }
+      return thunkAPI.rejectWithValue();
+    }
+  }
+);
+
 const login = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
   try {
     const { data } = await axios.post('/login', credentials);
@@ -48,7 +68,8 @@ const fetchCurrentUser = createAsyncThunk(
     } catch (error) {
       if (error.response.status === 401) {
         toast.error(
-          'Ви не залогінелись, або час сессії вичерпано.\nБудь-ласка залогінтесь.');
+          'Ви не залогінелись, або час сессії вичерпано.\nБудь-ласка залогінтесь.'
+        );
       }
       if (error.response.status === 500) {
         toast.error('Немає відповіді від сервера.');
@@ -59,6 +80,7 @@ const fetchCurrentUser = createAsyncThunk(
 );
 
 const authOperations = {
+  register,
   login,
   fetchCurrentUser,
 };
