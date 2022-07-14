@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { Box, TextField, Typography, Button } from '@mui/material';
+import { buttonLR, labelFontStyle } from '../../theme';
 
 const validateRegister = values => {
   const errors = {};
@@ -34,21 +35,6 @@ export const LoginForm = ({ onLogin }) => {
       onLogin({ email, password });
     },
   });
-
-  const labelFontStyle = {
-    fontFamily: 'Verdana',
-    fontStyle: 'normal',
-    fontWeight: '700',
-    fontSize: '14px',
-    lineHeight: '17px',
-    letterSpacing: '0.04em',
-  };
-
-  const buttonLR = {
-    height: '44px',
-    width: '182px',
-    borderRadius: '30px',
-  };
 
   return (
     <form color="black" onSubmit={formik.handleSubmit}>
