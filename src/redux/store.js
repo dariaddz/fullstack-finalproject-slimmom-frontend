@@ -14,12 +14,12 @@ import { userSlice } from './userSlice';
 
 // імпортувати authReducer хто займається аутентифікацією та реєстрацією на фронтенді і розкоментувати все тут і в index.js
 
-// const authPersistConfig = {
-//   key: 'auth',
-//   storage,
-//   whitelist: ['token'],
-//   // додати до whitelist ще якусь property якщо її також потрібно зберігати в локал сторедж саме з auth
-// };
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token', 'isNewUser'],
+  // додати до whitelist ще якусь property якщо її також потрібно зберігати в локал сторедж саме з auth
+};
 
 export const store = configureStore({
   reducer: {

@@ -15,16 +15,17 @@ import './fonts/fonts.css';
 
 ReactDOM.createRoot(document.querySelector('#root')).render(
   <Provider store={store}>
-    {/* <PersistGate loading={null} persistor={persistor}> */}
-    <React.StrictMode>
-      <BrowserRouter>
-        <ThemeProvider theme={theme}>
-          <App />
-          <div>проверка микрофона</div>
-        </ThemeProvider>
-      </BrowserRouter>
-    </React.StrictMode>
-    {/* </PersistGate> */}
+    <PersistGate loading={null} persistor={persistor}>
+      <React.StrictMode>
+        <BrowserRouter>
+          <ThemeProvider theme={theme}>
+            <App />
+
+            <Toaster position="top-right" toastOptions={{ duration: 3000 }} />
+          </ThemeProvider>
+        </BrowserRouter>
+      </React.StrictMode>
+    </PersistGate>
   </Provider>
 );
 

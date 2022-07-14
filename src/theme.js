@@ -11,6 +11,10 @@ export const theme = createTheme({
       main: '#FC842D',
       hover: '#FF0707',
     },
+    element: {
+      main: '#E0E0E0',
+    },
+
     buttonLogin: {
       main: '#FC842D',
       dark: '#e77828',
@@ -41,10 +45,41 @@ export const theme = createTheme({
   },
 });
 
-const OrangeButton = styled(Button)(({ theme }) => ({
-  padding: '13px 25px',
-  margin: '40px ',
-  alignItems: 'center',
+const MainContainer = styled(Container)(({ theme }) => ({
+  padding: '32px 20px',
+  [theme.breakpoints.up('md')]: {
+    padding: '100px 32px 0px',
+  },
+  [theme.breakpoints.up('lg')]: {
+    padding: '147px 0px 0px 25px',
+  },
+}));
+const labelFontStyle = {
+  fontFamily: 'Verdana',
+  fontStyle: 'normal',
+  fontWeight: '700',
+  fontSize: '14px',
+  lineHeight: '17px',
+  letterSpacing: '0.04em',
+};
+
+const FormBox = styled(Box)(({ theme }) => ({
+  position: 'relative',
+  marginBottom: '40px',
+  display: 'block',
+
+  [theme.breakpoints.up('md')]: {
+    display: 'flex',
+    marginBottom: '0px',
+    flexWrap: 'wrap',
+    width: '545px',
+    height: '343px',
+  },
+}));
+
+const buttonLR = {
+  height: '44px',
+  width: '182px',
   borderRadius: '30px',
   height: '43px',
   color: theme.palette.background.main,
@@ -52,4 +87,4 @@ const OrangeButton = styled(Button)(({ theme }) => ({
   '&:hover': { backgroundColor: theme.palette.secondary.hover },
 }));
 
-export default OrangeButton;
+export { FormLabel, buttonLR, FormBox, labelFontStyle, MainContainer };
