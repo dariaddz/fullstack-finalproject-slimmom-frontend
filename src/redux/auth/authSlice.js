@@ -6,7 +6,6 @@ const initialState = {
   token: null,
   isNewUser: false,
   avatarUrl: null,
-  isOnTraining: false,
   isLoggedIn: false,
   isFetchingCurrentUser: false,
   isPending: false,
@@ -29,9 +28,7 @@ const authSlice = createSlice({
     refreshToken: (state, { payload }) => {
       state.token = payload;
     },
-    setTrainingStatus: (state, { payload }) => {
-      state.isOnTraining = payload;
-    },
+    
   },
 
   extraReducers: {
@@ -76,18 +73,6 @@ const authSlice = createSlice({
       resetToInitialState(state);
     },
 
-    [authOperations.refresh.pending]: state => {
-      state.isPending = true;
-    },
-    [authOperations.refresh.fulfilled]: (state, { payload }) => {
-      state.name = payload.name;
-      state.avatarURL = payload.avatarURL;
-      state.isOnTraining = payload.isOnTraining;
-      state.isPending = false;
-    },
-    [authOperations.refresh.rejected]: state => {
-      state.isPending = false;
-    },
   },
 });
 
