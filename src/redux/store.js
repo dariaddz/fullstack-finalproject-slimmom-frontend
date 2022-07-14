@@ -18,7 +18,7 @@ import { authReducer } from './auth';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'isNewUser'],
   // додати до whitelist ще якусь property якщо її також потрібно зберігати в локал сторедж саме з auth
 };
 
@@ -39,4 +39,3 @@ export const store = configureStore({
 
 export const persistor = persistStore(store);
 export default store;
-

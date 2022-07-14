@@ -14,7 +14,7 @@ import { authOperations /*authSelectors*/ } from './redux/auth';
 import PublicRoute from './components/publicRoute';
 
 const HomePage = lazy(() => import('./pages/homePage'));
-// const RegistrationPage = lazy(() => import('./pages/registrationPage'));
+const RegistrationPage = lazy(() => import('./pages/registrationPage'));
 const LoginPage = lazy(() => import('./pages/loginPage'));
 // const CalculatorPage = lazy(() => import('./pages/calculatorPage'));
 const DiaryPage = lazy(() => import('./pages/diaryPage'));
@@ -42,7 +42,7 @@ function App() {
             path="/register"
             element={<PublicRoute restricted redirectTo="/" />}
           > */}
-              {/* <Route path="register" element={<RegistrationPage />} /> */}
+              { <Route path="register" element={<RegistrationPage />} />}
               {/* </Route> */}
               {/* <Route
             path="/login"
