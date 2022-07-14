@@ -22,11 +22,8 @@ ReactDOM.createRoot(document.querySelector('#root')).render(
         <BrowserRouter>
           <ThemeProvider theme={theme}>
             <App />
-            <div>проверка микрофона</div>
-            <Toaster
-              position="top-right"
-              toastOptions={{ duration: 3000 }}
-            />
+
+            <Toaster position="top-right" toastOptions={{ duration: 3000 }} />
           </ThemeProvider>
         </BrowserRouter>
       </React.StrictMode>
