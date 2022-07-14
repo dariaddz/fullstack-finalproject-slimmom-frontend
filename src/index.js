@@ -6,9 +6,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from '@mui/material';
 import { theme } from './theme';
+import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './redux/store';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { Toaster } from 'react-hot-toast';
 // import { PersistGate } from 'redux-persist/integration/react';
 
 import './fonts/fonts.css';
