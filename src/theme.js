@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material';
-import { Button, styled } from '@mui/material';
+import { Box, Container, styled } from '@mui/material';
 
 export const theme = createTheme({
   palette: {
@@ -41,15 +41,58 @@ export const theme = createTheme({
   },
 });
 
-const OrangeButton = styled(Button)(({ theme }) => ({
-  padding: '13px 25px',
-  margin: '40px ',
-  alignItems: 'center',
-  borderRadius: '30px',
-  height: '43px',
-  color: theme.palette.background.main,
-  backgroundColor: theme.palette.secondary.main,
-  '&:hover': { backgroundColor: theme.palette.secondary.hover },
+const MainContainer = styled(Container)(({ theme }) => ({
+  padding: '32px 20px',
+  [theme.breakpoints.up('md')]: {
+   
+    padding: '100px 32px 0px',
+  },
+  [theme.breakpoints.up('lg')]: {
+    padding: '147px 0px 0px 25px',
+  },
+}));
+const labelFontStyle = {
+  fontFamily: 'Verdana',
+  fontStyle: 'normal',
+  fontWeight: '700',
+  fontSize: '14px',
+  lineHeight: '17px',
+  letterSpacing: '0.04em',
+};
+
+const FormBox = styled(Box)(({ theme }) => ({
+  position:"relative",
+  marginBottom:'40px',
+  display: 'block',
+
+  [theme.breakpoints.up('md')]: {
+    display: 'flex',
+    marginBottom:'0px',
+    flexWrap: 'wrap',
+    width: '545px',
+    height: '343px',
+  },
 }));
 
-export default OrangeButton;
+const buttonLR = {
+  height: '44px',
+  width: '182px',
+  borderRadius: '30px',
+};
+
+const FormLabel = styled('label')(({ theme }) => ({
+  display: 'block',
+  marginBottom: '32px',
+  width: '240px',
+  [theme.breakpoints.up('md')]: {
+    marginBottom: '0px',
+    marginRight: '32px',
+  },
+}));
+
+export  {
+  FormLabel, buttonLR, FormBox, labelFontStyle,MainContainer
+}
+
+
+
