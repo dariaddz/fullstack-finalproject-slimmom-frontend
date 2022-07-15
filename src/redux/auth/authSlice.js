@@ -71,6 +71,9 @@ const authSlice = createSlice({
       state.isFetchingCurrentUser = false;
       resetToInitialState(state);
     },
+    [authOperations.logout.fulfilled](state) {
+      resetToInitialState(state);
+    },
   },
 });
 
