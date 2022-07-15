@@ -4,6 +4,7 @@ import DiaryAddProductForm from '../../components/diaryAddProductForm';
 import Button from '../../components/button';
 import AddIcon from '@mui/icons-material/Add';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import RightSideBar from '../../components/rightSideBar';
 
 import styles from './diaryPage.module.css';
 
@@ -46,6 +47,7 @@ const DiaryPage = () => {
           </>
         )}
       </div>
+      <RightSideBar />
     </>
   );
 };

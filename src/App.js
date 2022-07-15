@@ -7,7 +7,6 @@ import './App.css';
 import MainPage from './components/mainPage';
 import { Spiner } from './components/spiner';
 
-
 import { authOperations /*authSelectors*/ } from './redux/auth';
 // import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/publicRoute';
@@ -42,7 +41,7 @@ function App() {
                 element={
                   <PublicRoute
                     component={<HomePage />}
-                    redirectTo={!isCalculated ? "/" : "/diary"}
+                    redirectTo={!isCalculated ? '/' : '/diary'}
                     restricted
                   />
                 }
@@ -64,7 +63,7 @@ function App() {
                 element={
                   <PublicRoute
                     component={<LoginPage />}
-                    redirectTo={isCalculated ? "/diary" : "/"}
+                    redirectTo={isCalculated ? '/diary' : '/'}
                     restricted
                   />
                 }
@@ -91,8 +90,7 @@ function App() {
             <Route path="diary" element={<DiaryPage />} />
           </Routes>
         </Suspense>
-      )
-      }
+      )}
     </>
   );
 }
