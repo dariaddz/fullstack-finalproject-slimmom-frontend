@@ -78,9 +78,26 @@ const fetchCurrentUser = createAsyncThunk(
   }
 );
 
+const logout = createAsyncThunk('auth/logout', async () => {
+  try {
+    await axios.get('/logout');
+    token.unset();
+    toast.success('Ви успішно вийшли');
+  } catch (error) {
+    if (error.response.status === 400) {
+      toast.error('Помилка аутентифікації');
+    }
+    if (error.response.status === 500) {
+      toast.error('Немає відповіді від сервера.');
+    }
+    return;
+  }
+});
+
 const authOperations = {
   register,
   login,
   fetchCurrentUser,
+  logout,
 };
 export default authOperations;

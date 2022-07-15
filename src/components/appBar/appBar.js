@@ -9,8 +9,8 @@ import UserInfo from '../userInfo';
 import s from './appBar.module.css';
 
 function AppBar() {
-  //   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  const isLoggedIn = true;
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  // const isLoggedIn = true;
 
   return (
     <>
