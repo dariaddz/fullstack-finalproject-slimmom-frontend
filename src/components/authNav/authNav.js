@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button, Typography } from '@mui/material';
 import { Box } from '@mui/system';
+import { useAuth } from '../../helpers/authContext/authContext';
 
 const typografyStyle = {
   fontFamily: 'Gotham Pro',
@@ -14,14 +15,8 @@ const typografyStyle = {
 };
 
 const AuthNav = () => {
-  const [active, setActiv] = useState('signIn');
-  const onClickSignIn = () => {
-    setActiv('signIn');
-  };
+  const { active, onClickSignIn, onClickRegister } = useAuth();
 
-  const onClickRegister = () => {
-    setActiv('register');
-  };
   return (
     <Box>
       <Button
