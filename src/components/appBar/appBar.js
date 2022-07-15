@@ -10,7 +10,6 @@ import s from './appBar.module.css';
 
 function AppBar() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  // const isLoggedIn = true;
 
   return (
     <>
@@ -48,7 +47,7 @@ function AppBar() {
           }}
         />
 
-        {/* {isLoggedIn && <Navigation />} */}
+        {isLoggedIn && <Navigation />}
         <div className={s.container}>{isLoggedIn && <UserInfo />}</div>
         {!isLoggedIn && <AuthNav />}
       </Box>

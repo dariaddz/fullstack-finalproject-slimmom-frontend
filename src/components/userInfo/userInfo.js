@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button, Typography } from '@mui/material';
-import { Box } from '@mui/system';
+// import { Box } from '@mui/system';
 import { useSelector, useDispatch } from 'react-redux';
 import { authSelectors, authOperations } from '../../redux/auth';
+import { Spiner } from '../../components/spiner';
 
-import s from './userInfo.module.css';
+// import s from './userInfo.module.css';
 
 const typografyStyle = {
   fontFamily: 'Gotham Pro',
@@ -17,6 +18,7 @@ const typografyStyle = {
 };
 export default function UserInfo() {
   const userName = useSelector(authSelectors.getUsername);
+  const isPending = useSelector(authSelectors.getIsPending);
 
   const dispatch = useDispatch();
 
@@ -36,7 +38,6 @@ export default function UserInfo() {
           color={active === 'nick' ? '#212121' : '#9B9FAA'}
           onClick={onClickNick}
         >
-          Nick
           {userName}
         </Typography>
       </Button>
@@ -55,6 +56,7 @@ export default function UserInfo() {
           Вихід
         </Typography>
       </Button>
+      {isPending && <Spiner />}
     </>
   );
 }
