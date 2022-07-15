@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button, Typography } from '@mui/material';
-import { Box } from '@mui/system';
-import { useSelector } from 'react-redux';
-// import { authSelectors } from '../../redux/auth';
-import s from './userInfo.module.css';
+// import { Box } from '@mui/system';
+import { useSelector, useDispatch } from 'react-redux';
+import { authSelectors, authOperations } from '../../redux/auth';
+import { Spiner } from '../../components/spiner';
+
+// import s from './userInfo.module.css';
 
 const typografyStyle = {
   fontFamily: 'Gotham Pro',
@@ -15,7 +17,10 @@ const typografyStyle = {
   letterSpacing: '0.04em',
 };
 export default function UserInfo() {
-  //   const userName = useSelector(authSelectors.getUserName);
+  const userName = useSelector(authSelectors.getUsername);
+  const isPending = useSelector(authSelectors.getIsPending);
+
+  const dispatch = useDispatch();
 
   const [active, setActiv] = useState('nick');
   const onClickNick = () => {
@@ -27,23 +32,21 @@ export default function UserInfo() {
   };
   return (
     <>
-      <Button
-        //   component={NavLink} to=""
-        sx={{ padding: '0' }}
-      >
+      <Button sx={{ padding: '0' }}>
         <Typography
           sx={{ ...typografyStyle, textTransform: 'Capitalize' }}
           color={active === 'nick' ? '#212121' : '#9B9FAA'}
           onClick={onClickNick}
         >
-          Nick
-          {/* {userName} */}
+          {userName}
         </Typography>
       </Button>
 
       <Button
-        //   onClick={() => dispatch(authOperations.logOut())}
+        onClick={() => dispatch(authOperations.logout())}
         sx={{ padding: '0', marginLeft: '16px' }}
+        component={NavLink}
+        to="/login"
       >
         <Typography
           sx={{ ...typografyStyle, textTransform: 'Capitalize' }}
@@ -53,6 +56,7 @@ export default function UserInfo() {
           Вихід
         </Typography>
       </Button>
+      {isPending && <Spiner />}
     </>
   );
 }

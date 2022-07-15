@@ -1,4 +1,5 @@
 import { Box } from '@mui/material';
+import { NavLink } from 'react-router-dom';
 import logo from '../../images/logo/logo-2x.png';
 import logoSlim from '../../images/logo/logo-slim-2x.png';
 import logoMom from '../../images/logo/logo-mom-2x.png';
@@ -11,6 +12,8 @@ const Logo = () => {
         display: 'flex',
         alignItems: 'flex-end',
       }}
+      component={NavLink}
+      to="/diary"
     >
       <Box
       // sx={{
