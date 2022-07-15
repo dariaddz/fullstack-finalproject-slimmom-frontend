@@ -18,7 +18,7 @@ import { authReducer } from './auth';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token', 'isNewUser'],
+  whitelist: ['token', 'isCalculated', 'isNewUser'],
   // додати до whitelist ще якусь property якщо її також потрібно зберігати в локал сторедж саме з auth
 };
 
