@@ -42,14 +42,11 @@ const DailyCalorieIntake = () => {
           lineHeight: { xs: '26x', md: '32px' },
           fontWeight: '700',
           textAlign: { md: 'center' },
-          mb: { xs: '40x', md: '20px' },
+          mb: { xs: '40px', md: '20px' },
         }}
       >
         Ваша рекомендована добова норма калорій становить
       </Typography>
-      {/* <p className={s.title}>
-        Ваша рекомендована добова норма калорій становить
-      </p> */}
 
       {userData && (
         <div className={s.dataResult}>
