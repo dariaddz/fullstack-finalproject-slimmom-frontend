@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import DiaryProductsList from '../../components/diaryProductsList';
 import DiaryAddProductForm from '../../components/diaryAddProductForm';
 import Button from '../../components/button';
 import AddIcon from '@mui/icons-material/Add';
@@ -22,7 +22,7 @@ const DiaryPage = () => {
               <div className={styles.isHidddenMobile}>
                 <DiaryAddProductForm />
               </div>
-
+              <DiaryProductsList />
               <div className={styles.isHidddenTablet}>
                 <Button
                   customType="primary"
