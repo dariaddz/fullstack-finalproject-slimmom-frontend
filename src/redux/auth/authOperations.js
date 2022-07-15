@@ -63,7 +63,7 @@ const fetchCurrentUser = createAsyncThunk(
     try {
       const { data } = await axios.get('/current');
       toast.success('Ваша сессія відновлена');
-      return data;
+      return data.data;
     } catch (error) {
       if (error.response.status === 401) {
         toast.error(

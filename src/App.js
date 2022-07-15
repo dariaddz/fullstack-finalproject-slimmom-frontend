@@ -37,10 +37,16 @@ function App() {
             <Route path="/" element={<MainPage />}>
               {/* <Route path="/" element={<PublicRoute />}> */}
               {/* <Route index element={<HomePage />} /> */}
-              {isCalculated
-                ? <Route path="diary" element={<DiaryPage />} />
-                : <Route path="/" element={<HomePage />} />}
-
+              <Route
+                index
+                element={
+                  <PublicRoute
+                    component={<HomePage />}
+                    redirectTo={!isCalculated ? "/" : "/diary"}
+                    restricted
+                  />
+                }
+              />
 
               {/* <Route
             path="/register"

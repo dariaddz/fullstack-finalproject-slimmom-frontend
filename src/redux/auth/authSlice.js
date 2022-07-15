@@ -17,6 +17,7 @@ const resetToInitialState = state => {
   state.token = null;
   state.isLoggedIn = false;
   state.isPending = false;
+  state.isCalculated = false;
 };
 
 const authSlice = createSlice({
