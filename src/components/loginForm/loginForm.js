@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { Box, TextField, Typography, Button } from '@mui/material';
 import { buttonLR, labelFontStyle } from '../../theme';
-import { useAuth } from '../../helpers/authContext/authContext';
 
 const validateRegister = values => {
   const errors = {};
@@ -20,7 +19,6 @@ const validateRegister = values => {
 };
 
 export const LoginForm = ({ onLogin }) => {
-  const { onClickRegister } = useAuth();
   const navigate = useNavigate();
 
   const initialValues = {
@@ -98,7 +96,6 @@ export const LoginForm = ({ onLogin }) => {
               variant="standard"
               id="password"
               name="password"
-              type="password"
               label="Пароль *"
               value={formik.values.password}
               onChange={formik.handleChange}
@@ -134,7 +131,6 @@ export const LoginForm = ({ onLogin }) => {
             type="button"
             onClick={() => {
               navigate('/register');
-              onClickRegister();
             }}
           >
             <Typography sx={{ ...labelFontStyle, color: '#FC842D' }}>

@@ -14,7 +14,7 @@ import PublicRoute from './components/publicRoute';
 const HomePage = lazy(() => import('./pages/homePage'));
 const RegistrationPage = lazy(() => import('./pages/registrationPage'));
 const LoginPage = lazy(() => import('./pages/loginPage'));
-// const CalculatorPage = lazy(() => import('./pages/calculatorPage'));
+const CalculatorPage = lazy(() => import('./pages/calculatorPage'));
 const DiaryPage = lazy(() => import('./pages/diaryPage'));
 
 function App() {
@@ -85,8 +85,8 @@ function App() {
           </Route> */}
 
             {/* </Route>
-          </Route> */}
-
+            </Route> */}
+            <Route path="calculator" element={<CalculatorPage />} />
             <Route path="diary" element={<DiaryPage />} />
           </Routes>
         </Suspense>

@@ -31,3 +31,14 @@ export const addProduct =
       })
       .catch(error => dispatch(productActions.addProductError(error)));
   };
+
+export const dateEatenProduct = date => dispatch => {
+  dispatch(productActions.dateEatenProductsRequest());
+
+  axiosInstance
+    .get(`/products/${date}`)
+    .then(responce => {
+      dispatch(productActions.dateEatenProductsSuccess(responce.data));
+    })
+    .catch(error => dispatch(productActions.dateEatenProductsError(error)));
+};
