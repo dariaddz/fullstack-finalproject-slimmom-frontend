@@ -15,6 +15,9 @@ import {
   MainContainer,
 } from '../../theme';
 import validationSchema from '../../middlewares';
+import { authSelectors } from '../../redux/auth';
+
+import { Spiner } from '../../components/spiner';
 
 const DailyCaloriesForm = () => {
   const userData = useSelector(state => {
@@ -22,6 +25,10 @@ const DailyCaloriesForm = () => {
   });
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
+
+  const isPending = useSelector(authSelectors.getIsPending);
+
+  console.log('isPending:', isPending);
 
   const initialValues = {
     height: '',
@@ -48,7 +55,6 @@ const DailyCaloriesForm = () => {
           <Typography
             conponent="h2"
             display={'block'}
-            mb={'40px'}
             sx={{
               fontFamily: 'Gotham Pro',
               fontSize: { sm: '18px', md: '34px' },
@@ -61,141 +67,148 @@ const DailyCaloriesForm = () => {
           </Typography>
 
           <FormBox color="#9B9FAA">
-            <FormLabel htmlFor="height">
-              <TextField
-                InputLabelProps={{ style: { ...labelFontStyle } }}
-                inputProps={{
-                  style: { color: '#111111', paddingBottom: '15px' },
-                }}
-                sx={{ width: { xs: '280px', md: '240px' } }}
-                variant="standard"
-                id="height"
-                name="height"
-                label="Зріст*"
-                type="number"
-                value={formik.values.height}
-                onChange={formik.handleChange}
-                error={formik.touched.height && Boolean(formik.errors.height)}
-                helperText={formik.touched.height && formik.errors.height}
-              />
-            </FormLabel>
-
-            <FormLabel htmlFor="age">
-              <TextField
-                InputLabelProps={{ style: { ...labelFontStyle } }}
-                inputProps={{
-                  style: { color: '#111111', paddingBottom: '15px' },
-                }}
-                sx={{ width: { xs: '280px', md: '240px' } }}
-                variant="standard"
-                id="age"
-                name="age"
-                label="Вік*"
-                type="number"
-                value={formik.values.age}
-                onChange={formik.handleChange}
-                error={formik.touched.age && Boolean(formik.errors.age)}
-                helperText={formik.touched.age && formik.errors.age}
-              />
-            </FormLabel>
-
-            <FormLabel htmlFor="currentWeight">
-              <TextField
-                InputLabelProps={{ style: { ...labelFontStyle } }}
-                inputProps={{
-                  style: { color: '#111111', paddingBottom: '15px' },
-                }}
-                sx={{ width: { xs: '280px', md: '240px' } }}
-                variant="standard"
-                id="currentWeight"
-                name="currentWeight"
-                label="Поточна вага*"
-                type="number"
-                value={formik.values.currentWeight}
-                onChange={formik.handleChange}
-                error={
-                  formik.touched.currentWeight &&
-                  Boolean(formik.errors.currentWeight)
-                }
-                helperText={
-                  formik.touched.currentWeight && formik.errors.currentWeight
-                }
-              />
-            </FormLabel>
-
-            <FormLabel htmlFor="desiredWeight">
-              <TextField
-                InputLabelProps={{ style: { ...labelFontStyle } }}
-                inputProps={{
-                  style: { color: '#111111', paddingBottom: '15px' },
-                }}
-                sx={{ width: { xs: '280px', md: '240px' } }}
-                variant="standard"
-                id="desiredWeight"
-                name="desiredWeight"
-                type="number"
-                label="Бажана вага*"
-                value={formik.values.desiredWeight}
-                onChange={formik.handleChange}
-                error={
-                  formik.touched.desiredWeight &&
-                  Boolean(formik.errors.desiredWeight)
-                }
-                helperText={
-                  formik.touched.desiredWeight && formik.errors.desiredWeight
-                }
-              />
-            </FormLabel>
-
-            <div
-              role="group"
-              aria-labelledby="my-radio-group"
-              className={s.radioGroup}
-            >
-              <Typography mb={'20px'} fontWeight={'700'}>
-                Група крові*
-              </Typography>
-
-              <label htmlFor="bloodType">
-                <input
-                  type="radio"
-                  name="bloodType"
-                  value="1"
+            <div>
+              <FormLabel htmlFor="height">
+                <TextField
+                  InputLabelProps={{ style: { ...labelFontStyle } }}
+                  inputProps={{
+                    style: { color: '#111111', paddingBottom: '15px' },
+                  }}
+                  sx={{ width: { xs: '280px', md: '240px' } }}
+                  variant="standard"
+                  id="height"
+                  name="height"
+                  label="Зріст*"
+                  type="number"
+                  value={formik.values.height}
                   onChange={formik.handleChange}
-                  checked={formik.values.bloodType === '1'}
+                  error={formik.touched.height && Boolean(formik.errors.height)}
+                  helperText={formik.touched.height && formik.errors.height}
                 />
-                <span className={s.radioButton}>1</span>
-              </label>
-              <label htmlFor="bloodType">
-                <input
-                  type="radio"
-                  name="bloodType"
-                  value="2"
+              </FormLabel>
+
+              <FormLabel htmlFor="age">
+                <TextField
+                  InputLabelProps={{ style: { ...labelFontStyle } }}
+                  inputProps={{
+                    style: { color: '#111111', paddingBottom: '15px' },
+                  }}
+                  sx={{ width: { xs: '280px', md: '240px' } }}
+                  variant="standard"
+                  id="age"
+                  name="age"
+                  label="Вік*"
+                  type="number"
+                  value={formik.values.age}
                   onChange={formik.handleChange}
-                  checked={formik.values.bloodType === '2'}
+                  error={formik.touched.age && Boolean(formik.errors.age)}
+                  helperText={formik.touched.age && formik.errors.age}
                 />
-                <span className={s.radioButton}>2</span>
-              </label>
-              <label htmlFor="bloodType">
-                <input
-                  type="radio"
-                  name="bloodType"
-                  value="3"
+              </FormLabel>
+
+              <FormLabel htmlFor="currentWeight">
+                <TextField
+                  InputLabelProps={{ style: { ...labelFontStyle } }}
+                  inputProps={{
+                    style: { color: '#111111', paddingBottom: '15px' },
+                  }}
+                  sx={{ width: { xs: '280px', md: '240px' } }}
+                  variant="standard"
+                  id="currentWeight"
+                  name="currentWeight"
+                  label="Поточна вага*"
+                  type="number"
+                  value={formik.values.currentWeight}
                   onChange={formik.handleChange}
-                  checked={formik.values.bloodType === '3'}
+                  error={
+                    formik.touched.currentWeight &&
+                    Boolean(formik.errors.currentWeight)
+                  }
+                  helperText={
+                    formik.touched.currentWeight && formik.errors.currentWeight
+                  }
                 />
-                <span className={s.radioButton}>3</span>
-              </label>
-              <label htmlFor="bloodType">
-                <input
-                  type="radio"
-                  name="bloodType"
-                  value="4"
+              </FormLabel>
+            </div>
+            <div>
+              <FormLabel htmlFor="desiredWeight">
+                <TextField
+                  InputLabelProps={{ style: { ...labelFontStyle } }}
+                  inputProps={{
+                    style: { color: '#111111', paddingBottom: '15px' },
+                  }}
+                  sx={{ width: { xs: '280px', md: '240px' } }}
+                  variant="standard"
+                  id="desiredWeight"
+                  name="desiredWeight"
+                  type="number"
+                  label="Бажана вага*"
+                  value={formik.values.desiredWeight}
                   onChange={formik.handleChange}
-                  checked={formik.values.bloodType === '4'}
+                  error={
+                    formik.touched.desiredWeight &&
+                    Boolean(formik.errors.desiredWeight)
+                  }
+                  helperText={
+                    formik.touched.desiredWeight && formik.errors.desiredWeight
+                  }
                 />
-                <span className={s.radioButton}>4</span>
-              </label>
+              </FormLabel>
+
+              <FormLabel htmlFor="bloodType">
+                <div
+                  role="group"
+                  aria-labelledby="my-radio-group"
+                  className={s.radioGroup}
+                >
+                  <Typography
+                    mb={'20px'}
+                    fontWeight={'700'}
+                    fontFamily={'Verdana'}
+                    fontSize={'14px'}
+                    color={'rgb(118, 118, 118)'}
+                  >
+                    Група крові*
+                  </Typography>
+                  <hr className={s.hr} />
+
+                  <input
+                    type="radio"
+                    name="bloodType"
+                    value="1"
+                    onChange={formik.handleChange}
+                    checked={formik.values.bloodType === '1'}
+                  />
+                  <span className={s.radioButton}>1</span>
+
+                  <input
+                    type="radio"
+                    name="bloodType"
+                    value="2"
+                    onChange={formik.handleChange}
+                    checked={formik.values.bloodType === '2'}
+                  />
+                  <span className={s.radioButton}>2</span>
+
+                  <input
+                    type="radio"
+                    name="bloodType"
+                    value="3"
+                    onChange={formik.handleChange}
+                    checked={formik.values.bloodType === '3'}
+                  />
+                  <span className={s.radioButton}>3</span>
+
+                  <input
+                    type="radio"
+                    name="bloodType"
+                    value="4"
+                    onChange={formik.handleChange}
+                    checked={formik.values.bloodType === '4'}
+                  />
+                  <span className={s.radioButton}>4</span>
+                </div>
+              </FormLabel>
             </div>
           </FormBox>
 
@@ -204,7 +217,11 @@ const DailyCaloriesForm = () => {
             sx={{
               ...buttonLR,
 
-              margin: { xs: '0 auto ', md: '0 32px 0 0px', lg: '0 0 0 330px' },
+              margin: {
+                xs: '0 auto ',
+                md: '40px 32px 0 0px',
+                lg: '40px 0 0 330px',
+              },
               textAlign: 'center',
               display: 'block',
             }}
@@ -221,11 +238,22 @@ const DailyCaloriesForm = () => {
         </form>
       </MainContainer>
 
-      {showModal && userData && (
+      {isPending ? (
+        <Spiner />
+      ) : (
+        showModal &&
+        userData && (
+          <Modal onClose={() => setShowModal(false)}>
+            {<DailyCalorieIntake />}
+          </Modal>
+        )
+      )}
+
+      {/* {showModal && userData && (
         <Modal onClose={() => setShowModal(false)}>
           {<DailyCalorieIntake />}
         </Modal>
-      )}
+      )} */}
     </>
   );
 };

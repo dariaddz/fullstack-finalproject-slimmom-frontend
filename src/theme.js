@@ -70,10 +70,10 @@ const FormBox = styled(Box)(({ theme }) => ({
 
   [theme.breakpoints.up('md')]: {
     display: 'flex',
+    // flexDirection: 'column',
     marginBottom: '0px',
     flexWrap: 'wrap',
-    width: '545px',
-    height: '343px',
+    width: '608px',
   },
 }));
 
@@ -85,8 +85,8 @@ const buttonLR = {
 
 const FormLabel = styled('label')(({ theme }) => ({
   display: 'block',
-  marginBottom: '32px',
   width: '240px',
+  height:"77px",
   [theme.breakpoints.up('md')]: {
     marginBottom: '0px',
     marginRight: '32px',

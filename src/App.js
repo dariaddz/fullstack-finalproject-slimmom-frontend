@@ -4,11 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { authSelectors } from './redux/auth';
 
 import './App.css';
-// import DailyCaloriesForm from './components/dailyCaloriesForm';
 import MainPage from './components/mainPage';
 import { Spiner } from './components/spiner';
 
-// import Layout  from './components/Layout';
+
 import { authOperations /*authSelectors*/ } from './redux/auth';
 // import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/publicRoute';
@@ -59,14 +58,15 @@ function App() {
                   />
                 }
               />
+            </Route>
 
-              {/* <Route
+            {/* <Route
             path="/calculator"
             element={<PrivateRoute redirectTo="/login" />}
           > */}
-              {/* <Route path="/diary" element={<DiaryPage />} /> */}
-              {/* </Route> */}
-              {/* <Route
+            {/* <Route path="/diary" element={<DiaryPage />} /> */}
+            {/* </Route> */}
+            {/* <Route
 
             path="*"
             element={<PublicRoute restricted redirectTo="/diary" />}
@@ -74,11 +74,10 @@ function App() {
             <Route path="*" element={<NotFoundPage />} />
           </Route> */}
 
-              {/* </Route>
+            {/* </Route>
           </Route> */}
 
-              <Route path="diary" element={<DiaryPage />} />
-            </Route>
+            <Route path="diary" element={<DiaryPage />} />
           </Routes>
         </Suspense>
       )}
