@@ -1,7 +1,10 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
+//import Visibility from '@mui/icons-material/Visibility';
+//import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { Box, TextField, Typography, Button } from '@mui/material';
+import { buttonLR, labelFontStyle } from '../../theme';
 
 const validateRegister = values => {
   const errors = {};
@@ -12,7 +15,7 @@ const validateRegister = values => {
   }
   if (!values.name) {
     errors.name = "Обов'зкове поле";
-  } else if (values.name.length > 2) {
+  } else if (values.name.length < 2) {
     errors.name = 'Не вірний формат імені ';
   }
   if (!values.password) {
@@ -41,21 +44,6 @@ export const RegistrationForm = ({ onRegister }) => {
       onRegister({ name, email, password });
     },
   });
-
-  const labelFontStyle = {
-    fontFamily: 'Verdana',
-    fontStyle: 'normal',
-    fontWeight: '700',
-    fontSize: '14px',
-    lineHeight: '17px',
-    letterSpacing: '0.04em',
-  };
-
-  const buttonLR = {
-    height: '44px',
-    width: '182px',
-    borderRadius: '30px',
-  };
 
   return (
     <form color="black" onSubmit={formik.handleSubmit}>
@@ -152,12 +140,12 @@ export const RegistrationForm = ({ onRegister }) => {
             variant="contained"
             sx={{ ...buttonLR, margin: { xs: '0 0 20px 0', md: '0 32px 0 0' } }}
             color="buttonLogin"
-            type="submit"
+            type="button"
             onClick={() => {
-              navigate('/login');
+              navigate('/calculatorPage');
             }}
           >
-            <Typography sx={{ ...labelFontStyle, color: '#FFFFFF' }}>
+            <Typography sx={{ ...labelFontStyle, color: '#ffffff' }}>
               Вхід
             </Typography>
           </Button>
@@ -169,12 +157,9 @@ export const RegistrationForm = ({ onRegister }) => {
               border: '2px solid #FC842D',
             }}
             color="buttonRegister"
-            type="button"
-            onClick={() => {
-              navigate('/homepage');
-            }}
+            type="submit"
           >
-            <Typography sx={{ ...labelFontStyle, color: '#FC842D' }}>
+            <Typography sx={{ ...labelFontStyle, color: '#fc842d' }}>
               Реєстрація
             </Typography>
           </Button>
