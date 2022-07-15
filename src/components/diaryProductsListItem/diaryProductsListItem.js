@@ -12,7 +12,12 @@ const typografyStyle = {
     md: '20px',
     lg: '20px',
   },
-  mr: '10px',
+  mr: {
+    xs: '8px',
+    sm: '8px',
+    md: '20px',
+    lg: '20px',
+  },
   borderBottom: '1px solid #e0e0e0',
   fontSize: '14px',
   lineHeight: '17px',
@@ -55,7 +60,7 @@ function DiaryProductsListItem({ product: { _id, title, weight, kcal } }) {
         <Typography
           sx={{
             ...typografyStyle,
-            width: '43%',
+            width: '40%',
           }}
         >
           {title}
@@ -67,20 +72,20 @@ function DiaryProductsListItem({ product: { _id, title, weight, kcal } }) {
             width: {
               xs: '18%',
               sm: '18%',
-              md: '24%',
-              lg: '24%',
+              md: '20%',
+              lg: '20%',
             },
           }}
         >
-          {weight} <Box component="span">г</Box>
-          <Box />
+          {weight}
+          <Box component="span">г</Box>
         </Typography>
         <Typography
           sx={{
             ...typografyStyle,
 
             textAlign: 'right',
-            width: '24%',
+            width: '25%',
           }}
         >
           {kcal}
@@ -119,7 +124,7 @@ function DiaryProductsListItem({ product: { _id, title, weight, kcal } }) {
               md: '22px',
               lg: '22xp',
             },
-            ml: '17px',
+            mr: '8px',
             color: 'primary.main',
             cursor: 'pointer',
             transition: 'all 250ms linear',

@@ -1,5 +1,5 @@
 import React from 'react';
-import DiaryProductsListItem from '../DiaryProductsListItem';
+import DiaryProductsListItem from '../diaryProductsListItem';
 import { List, Box } from '@mui/material';
 
 function DiaryProductsList() {
@@ -35,50 +35,44 @@ export default DiaryProductsList;
 
 const products = [
   {
-    _id: 123123,
-    title: 'Borchhhhhhhhhhhhhhhhhhhhhhhh',
-    weight: '9000',
-    kcal: '2334',
-  },
-  {
     _id: 123124,
-    title: 'Borchhhhhhhhhhhhhhhhhhhhhhhh',
+    title: 'Борщ',
     weight: '100',
     kcal: '234',
   },
   {
     _id: 123125,
-    title: 'Borchhhhhhhhhhhhhhhhhhhhhhhh',
+    title: 'Борщ',
     weight: '100',
     kcal: '234',
   },
   {
     _id: 123126,
-    title: 'Borchhhhhhhhhhhhhhhhhhhhhhhh',
+    title: 'Борщ',
     weight: '100',
     kcal: '234',
   },
   {
     _id: 123127,
-    title: 'Borchhhhhhhhhhhhhhhhhhhhhhhh',
+    title: 'Борщ',
     weight: '100',
     kcal: '234',
   },
   {
     _id: 123128,
-    title: 'Borchhhhhhhhhhhhhhhhhhhhhhhh',
+    title: 'Борщ',
     weight: '100',
     kcal: '234',
   },
   {
     _id: 123129,
-    title: 'Borchhhhhhhhhhhhhhhhhhhhhhhh',
+    title: 'Борщ',
     weight: '100',
     kcal: '234',
   },
   {
     _id: 123120,
-    title: 'Borchhhhhhhhhhhhhhhhhhhhhhhh',
+    title: 'Борщ',
     weight: '100',
     kcal: '234',
   },
