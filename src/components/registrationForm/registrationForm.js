@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 //import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { Box, TextField, Typography, Button } from '@mui/material';
 import { buttonLR, labelFontStyle } from '../../theme';
+import { useAuth } from '../../helpers/authContext/authContext';
 
 const validateRegister = values => {
   const errors = {};
@@ -27,6 +28,7 @@ const validateRegister = values => {
 };
 
 export const RegistrationForm = ({ onRegister }) => {
+  const { onClickSignIn, onClickRegister } = useAuth();
   const navigate = useNavigate();
 
   const initialValues = {
@@ -122,6 +124,7 @@ export const RegistrationForm = ({ onRegister }) => {
               variant="standard"
               id="password"
               name="password"
+              type="password"
               label="Пароль *"
               value={formik.values.password}
               onChange={formik.handleChange}
@@ -142,7 +145,8 @@ export const RegistrationForm = ({ onRegister }) => {
             color="buttonLogin"
             type="button"
             onClick={() => {
-              navigate('/calculatorPage');
+              navigate('/login');
+              onClickSignIn();
             }}
           >
             <Typography sx={{ ...labelFontStyle, color: '#ffffff' }}>
@@ -158,6 +162,9 @@ export const RegistrationForm = ({ onRegister }) => {
             }}
             color="buttonRegister"
             type="submit"
+            onClick={() => {
+              onClickRegister();
+            }}
           >
             <Typography sx={{ ...labelFontStyle, color: '#fc842d' }}>
               Реєстрація
