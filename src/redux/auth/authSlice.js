@@ -9,7 +9,7 @@ const initialState = {
   isLoggedIn: false,
   isFetchingCurrentUser: false,
   isPending: false,
-  isCalculate: false,
+  isCalculated: false,
 };
 
 const resetToInitialState = state => {
@@ -17,7 +17,6 @@ const resetToInitialState = state => {
   state.token = null;
   state.isLoggedIn = false;
   state.isPending = false;
-  state.isCalculate = false;
 };
 
 const authSlice = createSlice({
@@ -30,6 +29,9 @@ const authSlice = createSlice({
     refreshToken: (state, { payload }) => {
       state.token = payload;
     },
+    // refreshIsCalculated: (state, { payload }) => {
+    //   state.isCalculated = payload;
+    // }
   },
 
   extraReducers: {
@@ -53,7 +55,7 @@ const authSlice = createSlice({
     [authOperations.login.fulfilled](state, action) {
       state.user = action.payload.user;
       state.token = action.payload.token;
-      state.isCalculate = action.payload.isCalculate;
+      state.isCalculated = action.payload.isCalculated;
       state.isLoggedIn = true;
       state.isPending = false;
     },
@@ -66,7 +68,7 @@ const authSlice = createSlice({
     },
     [authOperations.fetchCurrentUser.fulfilled](state, action) {
       state.user = action.payload;
-      state.isCalculate = action.payload.isCalculate;
+      state.isCalculated = action.payload.isCalculated;
       state.isLoggedIn = true;
       state.isFetchingCurrentUser = false;
       state.isPending = false;

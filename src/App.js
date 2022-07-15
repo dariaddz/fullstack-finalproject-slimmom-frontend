@@ -22,8 +22,7 @@ function App() {
   //--Eugen
   const dispatch = useDispatch();
   const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);
-  const isCalculate = useSelector(authSelectors.getIsCalculate);
-
+  const isCalculated = useSelector(authSelectors.getIsCalculated);
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
@@ -37,7 +36,11 @@ function App() {
           <Routes>
             <Route path="/" element={<MainPage />}>
               {/* <Route path="/" element={<PublicRoute />}> */}
-              <Route index element={<HomePage />} />
+              {/* <Route index element={<HomePage />} /> */}
+              {isCalculated
+                ? <Route path="diary" element={<DiaryPage />} />
+                : <Route path="/" element={<HomePage />} />}
+
 
               {/* <Route
             path="/register"
@@ -55,7 +58,7 @@ function App() {
                 element={
                   <PublicRoute
                     component={<LoginPage />}
-                    redirectTo={isCalculate ? "/register" : "/"}
+                    redirectTo={isCalculated ? "/diary" : "/"}
                     restricted
                   />
                 }
@@ -82,7 +85,8 @@ function App() {
             <Route path="diary" element={<DiaryPage />} />
           </Routes>
         </Suspense>
-      )}
+      )
+      }
     </>
   );
 }

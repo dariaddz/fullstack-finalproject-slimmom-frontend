@@ -6,7 +6,7 @@ const getUserAvatar = state => state.auth.avatarURL;
 const getIsNewUser = state => state.auth.isNewUser;
 const getToken = state => state.auth.token;
 const getEmail = state => state.auth.user.email;
-const getIsCalculate = state => state.auth.isCalculate;
+const getIsCalculated = state => state.auth.isCalculated;
 
 const authSelectors = {
   getIsLoggedIn,
@@ -17,6 +17,6 @@ const authSelectors = {
   getToken,
   getIsNewUser,
   getEmail,
-  getIsCalculate
+  getIsCalculated
 };
 export default authSelectors;
