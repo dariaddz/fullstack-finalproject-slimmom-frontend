@@ -22,6 +22,8 @@ function App() {
   //--Eugen
   const dispatch = useDispatch();
   const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);
+  const isCalculate = useSelector(authSelectors.getIsCalculate);
+
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
@@ -53,7 +55,7 @@ function App() {
                 element={
                   <PublicRoute
                     component={<LoginPage />}
-                    redirectTo="/"
+                    redirectTo={isCalculate ? "/register" : "/"}
                     restricted
                   />
                 }

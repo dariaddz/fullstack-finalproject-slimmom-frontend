@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-hot-toast';
 
-axios.defaults.baseURL = 'http://localhost:3001/api/users';
+axios.defaults.baseURL = 'https://slim-mom-project.herokuapp.com/api/users';
 
 const token = {
   set(currentToken) {
@@ -20,6 +20,7 @@ const register = createAsyncThunk(
       const { data } = await axios.post('/register', credentials);
       token.set(data.token);
       toast.success('Ви успішно зареєструвались');
+
       return data.data;
     } catch (error) {
       if (error.response.status === 400) {
@@ -38,6 +39,7 @@ const login = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
     const { data } = await axios.post('/login', credentials);
     token.set(data.token);
     toast.success('Ви успішно увійшли');
+    console.log(data.data);
     return data.data;
   } catch (error) {
     if (error.response.status === 400) {
