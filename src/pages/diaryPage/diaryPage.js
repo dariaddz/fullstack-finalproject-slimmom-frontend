@@ -13,14 +13,13 @@ import styles from './diaryPage.module.css';
 
 const DiaryPage = () => {
   const [mobileFormIsVisible, setMobileFormIsVisible] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(true);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const mobileMenuRef = useRef(null);
   const { pathname } = useLocation();
 
   const handleClick = () => {
     setMobileFormIsVisible(prev => !prev);
   };
-  console.log(pathname);
 
   return (
     <Box sx={{ position: 'relative' }}>
