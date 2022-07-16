@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button, Typography } from '@mui/material';
 import { Box } from '@mui/system';
+import { BsList } from 'react-icons/bs';
+import { VscChromeClose } from 'react-icons/vsc';
+import { useMobileMenu } from '../../helpers/mobileMenuContext/mobileMenuContext';
 
 const typografyStyle = {
   fontFamily: 'Gotham Pro',
@@ -17,6 +20,7 @@ const typografyStyle = {
 };
 export default function Navigation() {
   const [active, setActiv] = useState('diary');
+  const { isMobileMenuOpen, toggleMobileMenu } = useMobileMenu();
   const onClickDiary = () => {
     setActiv('diary');
   };
@@ -25,34 +29,53 @@ export default function Navigation() {
     setActiv('calculator');
   };
   return (
-    <>
-      {/* <Button component={NavLink} to="/diary" sx={{ padding: '0' }}> */}
-      <Typography
-        component={NavLink}
-        to="/diary"
-        sx={{
-          ...typografyStyle,
-          padding: '0',
-        }}
-        color={active === 'diary' ? '#212121' : '#9B9FAA'}
-        onClick={onClickDiary}
-      >
-        щоденник
-      </Typography>
-      {/* </Button> */}
-      {/* <Button */}
-      {/* component={NavLink}
-      to="/calculator" sx={{ padding: '0', marginLeft: '16px' }}> */}
-      <Typography
+
+    <Box>
+      <Button component={NavLink} to="/diary" sx={{ padding: '0' }}>
+        <Typography
+          sx={{
+            ...typografyStyle,
+            display: { sm: 'none', md: 'none', lg: 'flex' },
+          }}
+          color={active === 'diary' ? '#212121' : '#9B9FAA'}
+          onClick={onClickDiary}
+        >
+          щоденник
+        </Typography>
+      </Button>
+      <Button
         component={NavLink}
         to="/calculator"
-        sx={{ ...typografyStyle, padding: '0', marginLeft: '15px' }}
-        onClick={onClickCalculator}
-        color={active === 'calculator' ? '#212121' : '#9B9FAA'}
+        sx={{
+          padding: '0',
+          marginLeft: '16px',
+          display: { sm: 'none', md: 'none', lg: 'flex' },
+        }}
       >
-        калькулятор
-      </Typography>
-      {/* </Button> */}
-    </>
+        <Typography
+          sx={{ ...typografyStyle }}
+          onClick={onClickCalculator}
+          color={active === 'calculator' ? '#212121' : '#9B9FAA'}
+        >
+          калькулятор
+        </Typography>
+      </Button>
+      <Button
+        onClick={() => {
+          toggleMobileMenu();
+        }}
+        sx={{
+          display: { xs: 'block', sm: 'block', md: 'block', lg: 'none' },
+          color: '#212121',
+        }}
+      >
+        {isMobileMenuOpen ? (
+          <VscChromeClose size="24px" />
+        ) : (
+          <BsList size="24px" />
+        )}
+      </Button>
+    </Box>
+
   );
 }

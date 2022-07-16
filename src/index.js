@@ -12,6 +12,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './helpers/authContext/authContext';
+import { MobileMenuProvider } from './helpers/mobileMenuContext/mobileMenuContext';
 
 import './fonts/fonts.css';
 
@@ -22,7 +23,9 @@ ReactDOM.createRoot(document.querySelector('#root')).render(
         <BrowserRouter>
           <ThemeProvider theme={theme}>
             <AuthProvider>
-              <App />
+              <MobileMenuProvider>
+                <App />
+              </MobileMenuProvider>
             </AuthProvider>
             <Toaster position="top-right" toastOptions={{ duration: 3000 }} />
           </ThemeProvider>
