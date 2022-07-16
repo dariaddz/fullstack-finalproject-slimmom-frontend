@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import { BsList, BsXLg } from 'react-icons/bs';
+import { BsList } from 'react-icons/bs';
+import { VscChromeClose } from 'react-icons/vsc';
 import { useMobileMenu } from '../../helpers/mobileMenuContext/mobileMenuContext';
 
 const typografyStyle = {
@@ -16,7 +17,7 @@ const typografyStyle = {
 };
 export default function Navigation() {
   const [active, setActiv] = useState('diary');
-  const { isMobileMenuOpen, openMobileMenu, closeMobileMenu } = useMobileMenu();
+  const { isMobileMenuOpen, toggleMobileMenu } = useMobileMenu();
   const onClickDiary = () => {
     setActiv('diary');
   };
@@ -57,14 +58,18 @@ export default function Navigation() {
       </Button>
       <Button
         onClick={() => {
-          openMobileMenu();
+          toggleMobileMenu();
         }}
         sx={{
           display: { xs: 'block', sm: 'block', md: 'block', lg: 'none' },
           color: '#212121',
         }}
       >
-        <BsList size="24px" />
+        {isMobileMenuOpen ? (
+          <VscChromeClose size="24px" />
+        ) : (
+          <BsList size="24px" />
+        )}
       </Button>
     </Box>
   );

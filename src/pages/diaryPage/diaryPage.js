@@ -14,7 +14,7 @@ import styles from './diaryPage.module.css';
 
 const DiaryPage = () => {
   const [mobileFormIsVisible, setMobileFormIsVisible] = useState(false);
-  const { isMobileMenuOpen } = useMobileMenu();
+  const { isMobileMenuOpen, toggleMobileMenu } = useMobileMenu();
   const { pathname } = useLocation();
 
   const handleClick = () => {
@@ -28,6 +28,7 @@ const DiaryPage = () => {
           <MobileMenuPage
             pathname={pathname}
             isMobileMenuOpen={isMobileMenuOpen}
+            toggleMobileMenu={toggleMobileMenu}
           />
         )}
         {!mobileFormIsVisible ? (

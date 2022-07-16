@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import {
   Paper,
   Backdrop,
@@ -9,14 +8,15 @@ import {
 } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 
-const MobileMenuPage = ({ isMobileMenuOpen, pathname }) => {
-  const mobileMenuRef = useRef();
-
+const MobileMenuPage = ({ isMobileMenuOpen, pathname, toggleMobileMenu }) => {
   return (
     <Backdrop
-      ref={mobileMenuRef}
       sx={{
         position: 'absolute',
+        top: '0',
+        left: '0',
+        display: { sm: 'block', md: 'block', lg: 'none' },
+        pointerEvents: { lg: 'none' },
         color: '#D3D3D3',
         zIndex: theme => theme.zIndex.drawer + 1,
       }}
@@ -28,6 +28,12 @@ const MobileMenuPage = ({ isMobileMenuOpen, pathname }) => {
           backgroundColor: '#264061',
           width: '100%',
           height: '100%',
+          position: 'absolute',
+          top: '0',
+          right: '0',
+          transform: `${({ isMobileMenuOpen }) =>
+            isMobileMenuOpen ? `translateX(0)` : `translateX(100%)`}`,
+          transition: 'transform 1000ms linear 500ms',
         }}
       >
         <List style={{ paddingTop: '60px' }}>
@@ -39,7 +45,12 @@ const MobileMenuPage = ({ isMobileMenuOpen, pathname }) => {
               justifyContent: 'center',
             }}
           >
-            <NavLink to="/diary">
+            <NavLink
+              to="/diary"
+              onClick={() => {
+                toggleMobileMenu();
+              }}
+            >
               <ListItemText
                 disableTypography
                 primary={
@@ -63,7 +74,12 @@ const MobileMenuPage = ({ isMobileMenuOpen, pathname }) => {
             disablePadding
             style={{ display: 'flex', justifyContent: 'center' }}
           >
-            <NavLink to="/calculator">
+            <NavLink
+              to="/calculator"
+              onClick={() => {
+                toggleMobileMenu();
+              }}
+            >
               <ListItemText
                 disableTypography
                 primary={

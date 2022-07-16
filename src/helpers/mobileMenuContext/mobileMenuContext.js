@@ -6,18 +6,12 @@ export const useMobileMenu = () => useContext(MobileMenuContext);
 export const MobileMenuProvider = ({ children }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   console.log(isMobileMenuOpen);
-  const openMobileMenu = () => {
-    setIsMobileMenuOpen(true);
-  };
-
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
-    <MobileMenuContext.Provider
-      value={{ isMobileMenuOpen, openMobileMenu, closeMobileMenu }}
-    >
+    <MobileMenuContext.Provider value={{ isMobileMenuOpen, toggleMobileMenu }}>
       {children}
     </MobileMenuContext.Provider>
   );
