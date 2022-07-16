@@ -1,38 +1,23 @@
-import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
-import {
-  calculatorRequest,
-  calculatorError,
-  calculatorSuccess,
-} from './calculator_action';
+import { combineReducers } from 'redux';
+import { calcRequest, calcSuccess, calcError } from './calculator_action';
+// import { onLogoutSuccess, onLogoutRequest } from '../registration/UserSlice';
 
-const calculatorState = {
-  kcal: null,
-  calculatorNotRecommended: null,
-};
+const initialState = { kcal: null, productsNotRecommended: null };
 
-const calculatorData = createReducer(calculatorState, {
-  [calculatorSuccess]: (state, { payload }) => {
-    return {
-      ...state,
-      calculators: [payload, ...state.calculators],
-    };
-  },
-  [calculatorSuccess]: (_, { payload }) => payload,
-});
-
-const loading = createReducer(false, {
-  [calculatorRequest]: () => true,
-  [calculatorSuccess]: () => false,
-  [calculatorError]: () => false,
+const calcData = createReducer(initialState, {
+  [calcSuccess]: (_, { payload }) => payload,
+  // [onLogoutSuccess]: () => initialState,
 });
 
 const error = createReducer(null, {
-  [calculatorError]: (_, { payload }) => payload,
+  [calcError]: (_, { payload }) => payload,
+  // [onLogoutRequest]: () => null,
 });
 
-export default combineReducers({
-  calculatorData,
-  error,
-  loading,
+const loading = createReducer(false, {
+  [calcRequest]: () => true,
+  [calcSuccess]: () => false,
+  [calcError]: () => false,
 });
+export default combineReducers({ calcData, error, loading });

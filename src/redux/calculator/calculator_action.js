@@ -1,4 +1,5 @@
 import { createAction } from '@reduxjs/toolkit';
-export const calculatorRequest = createAction('calculator/calculatorRequest');
-export const calculatorSuccess = createAction('calculator/calculatorSuccess');
-export const calculatorError = createAction('calculator/calculatorError');
+
+export const calcRequest = createAction('contact/AddContactRequest');
+export const calcSuccess = createAction('contact/addContactSuccess');
+export const calcError = createAction('contact/addContactError');
