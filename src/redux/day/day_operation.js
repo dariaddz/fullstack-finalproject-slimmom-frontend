@@ -48,3 +48,14 @@ export const dateEatenProduct = date => dispatch => {
     })
     .catch(error => dispatch(productActions.dateEatenProductsError(error)));
 };
+
+export const deleteProduct = id => dispatch => {
+  dispatch(productActions.deleteProductIdRequest());
+
+  axiosInstance
+    .delete(`/products/${id}`)
+    .then(() => dispatch(productActions.deleteProductIdSuccess(id)))
+    .catch(error =>
+      dispatch(productActions.deleteProductIdError(error.messages))
+    );
+};
