@@ -4,6 +4,12 @@ import productActions from './day_action';
 const axiosInstance = axios.create({
   baseURL: 'https://slim-mom-project.herokuapp.com',
 });
+axiosInstance.interceptors.request.use(config => {
+  const LS = localStorage.getItem('persist:auth');
+  const token = JSON.parse(LS).token.slice(1, -1);
+  config.headers.Authorization = token ? `Bearer ${token}` : '';
+  return config;
+});
 
 export const getProducts = query => {
   return axiosInstance
@@ -41,4 +47,15 @@ export const dateEatenProduct = date => dispatch => {
       dispatch(productActions.dateEatenProductsSuccess(responce.data));
     })
     .catch(error => dispatch(productActions.dateEatenProductsError(error)));
+};
+
+export const deleteProduct = id => dispatch => {
+  dispatch(productActions.deleteProductIdRequest());
+
+  axiosInstance
+    .delete(`/products/${id}`)
+    .then(() => dispatch(productActions.deleteProductIdSuccess(id)))
+    .catch(error =>
+      dispatch(productActions.deleteProductIdError(error.messages))
+    );
 };

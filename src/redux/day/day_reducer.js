@@ -21,6 +21,15 @@ const diaryInfo = createReducer(diaryInfoState, {
     };
   },
   [productActions.dateEatenProductsSuccess]: (_, { payload }) => payload,
+  [productActions.deleteProductIdSuccess]: (state, { payload }) => {
+    const oldProducts = state.products;
+    const newProducts = oldProducts.filter(product => product.id !== payload);
+    const newState = {
+      ...state,
+      products: newProducts,
+    };
+    return newState;
+  },
 });
 
 const loading = createReducer(false, {
@@ -32,6 +41,7 @@ const loading = createReducer(false, {
 const error = createReducer(null, {
   [productActions.addProductRequest]: () => null,
   [productActions.dateEatenProductsRequest]: () => null,
+  [productActions.deleteProductIdError]: (_, { payload }) => payload,
 });
 
 export default combineReducers({

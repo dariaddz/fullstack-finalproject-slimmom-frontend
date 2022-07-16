@@ -1,8 +1,20 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { allProducts } from '../../redux/day/day_selector';
 import DiaryProductsListItem from '../diaryProductsListItem';
 import { List, Box } from '@mui/material';
 
 function DiaryProductsList() {
+  const dayProducts = useSelector(allProducts);
+  console.log('dayProducts:', dayProducts);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    if (dayProducts) {
+      setProducts(dayProducts);
+    }
+  }, [dayProducts]);
+
   return (
     <Box
       sx={{
@@ -33,47 +45,47 @@ function DiaryProductsList() {
 
 export default DiaryProductsList;
 
-const products = [
-  {
-    _id: 123124,
-    title: 'Борщ',
-    weight: '100',
-    kcal: '234',
-  },
-  {
-    _id: 123125,
-    title: 'Борщ',
-    weight: '100',
-    kcal: '234',
-  },
-  {
-    _id: 123126,
-    title: 'Борщ',
-    weight: '100',
-    kcal: '234',
-  },
-  {
-    _id: 123127,
-    title: 'Борщ',
-    weight: '100',
-    kcal: '234',
-  },
-  {
-    _id: 123128,
-    title: 'Борщ',
-    weight: '100',
-    kcal: '234',
-  },
-  {
-    _id: 123129,
-    title: 'Борщ',
-    weight: '100',
-    kcal: '234',
-  },
-  {
-    _id: 123120,
-    title: 'Борщ',
-    weight: '100',
-    kcal: '234',
-  },
-];
+// const productss = [
+//   {
+//     _id: 123124,
+//     title: 'Борщ',
+//     weight: '100',
+//     kcal: '234',
+//   },
+//   {
+//     _id: 123125,
+//     title: 'Борщ',
+//     weight: '100',
+//     kcal: '234',
+//   },
+//   {
+//     _id: 123126,
+//     title: 'Борщ',
+//     weight: '100',
+//     kcal: '234',
+//   },
+//   {
+//     _id: 123127,
+//     title: 'Борщ',
+//     weight: '100',
+//     kcal: '234',
+//   },
+//   {
+//     _id: 123128,
+//     title: 'Борщ',
+//     weight: '100',
+//     kcal: '234',
+//   },
+//   {
+//     _id: 123129,
+//     title: 'Борщ',
+//     weight: '100',
+//     kcal: '234',
+//   },
+//   {
+//     _id: 123120,
+//     title: 'Борщ',
+//     weight: '100',
+//     kcal: '234',
+//   },
+// ];

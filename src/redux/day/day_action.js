@@ -11,6 +11,10 @@ const dateEatenProductsSuccess = createAction(
 );
 const dateEatenProductsError = createAction('products/dateEatenProductsError');
 
+const deleteProductIdRequest = createAction('products/deleteProductIdRequest');
+const deleteProductIdSuccess = createAction('products/deleteProductIdSuccess');
+const deleteProductIdError = createAction('products/deleteProductIdError');
+
 const productActions = {
   addProductRequest,
   addProductSuccess,
@@ -18,5 +22,8 @@ const productActions = {
   dateEatenProductsRequest,
   dateEatenProductsSuccess,
   dateEatenProductsError,
+  deleteProductIdRequest,
+  deleteProductIdSuccess,
+  deleteProductIdError,
 };
 export default productActions;

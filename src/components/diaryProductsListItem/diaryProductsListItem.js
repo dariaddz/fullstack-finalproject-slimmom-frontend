@@ -1,9 +1,9 @@
 import React from 'react';
 import { Close } from '@mui/icons-material';
-import { ListItem, Typography, Box } from '@mui/material';
-// import { useDispatch, useSelector } from "react-redux";
-// import { date, dateId } from "../../redux/day/day_selector";
-// import { deleteProduct } from "../../redux/day/day_operation";
+import { ListItem, Typography, Box, IconButton } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { dateEatenProducts } from '../../redux/day/day_selector';
+import { deleteProduct, dateEatenProduct } from '../../redux/day/day_operation';
 
 const typografyStyle = {
   paddingBottom: {
@@ -30,21 +30,20 @@ const typografyStyle = {
 };
 
 function DiaryProductsListItem({ product: { _id, title, weight, kcal } }) {
-  // const dispatch = useDispatch();
-  // const dayId = useSelector(dateId);
-  // const currentDate = useSelector(date); // Текущий день из базы
+  const dispatch = useDispatch();
+  const currentDate = useSelector(dateEatenProducts); // Текущий день из базы
 
-  // const today = new Date(
-  //   new Date().getTime() - new Date().getTimezoneOffset() * 60000
-  // )
-  //   .toISOString()
-  //   .split("T")[0]; // Текущий день локально с учётом временных зон
+  const today = new Date(
+    new Date().getTime() - new Date().getTimezoneOffset() * 60000
+  )
+    .toISOString()
+    .split('T')[0]; // Текущий день локально
+  const disadled = currentDate === today ? false : true;
 
-  // const handleClick = async () => {
-  //   if (currentDate === today) {
-  //     dispatch(deleteProduct(dayId, _id));
-  //   }
-  // };
+  const handleClick = async () => {
+    dispatch(deleteProduct(_id));
+    dispatch(dateEatenProduct(currentDate));
+  };
 
   return (
     <>
@@ -110,23 +109,25 @@ function DiaryProductsListItem({ product: { _id, title, weight, kcal } }) {
             ккал
           </Box>
         </Typography>
-        <Close
+        <IconButton
+          disabled={!disadled}
+          onClick={handleClick}
           sx={{
             width: {
-              xs: '17px',
-              sm: '17px',
+              xs: '10px',
+              sm: '10px',
               md: '22px',
               lg: '22px',
             },
             height: {
-              xs: '17px',
-              sm: '17px',
+              xs: '10px',
+              sm: '10px',
               md: '22px',
               lg: '22xp',
             },
             mr: '8px',
             color: 'primary.main',
-            cursor: 'pointer',
+            cursor: 'no-drop',
             transition: 'all 250ms linear',
             '&:hover': {
               color: 'background.dark',
@@ -134,8 +135,9 @@ function DiaryProductsListItem({ product: { _id, title, weight, kcal } }) {
               transition: ' all 250ms linear',
             },
           }}
-          // onClick={handleClick}
-        />
+        >
+          <Close />
+        </IconButton>
       </ListItem>
     </>
   );
