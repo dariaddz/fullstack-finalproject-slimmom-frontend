@@ -1,3 +1,2 @@
-export const getCalories = state => state.kcal.calculatorData.kcal;
-export const getNotRecommended = state =>
-  state.kcal.calculatorData.calculatorNotRecommended;
+export const getKcalAmount = state => state.kcal.calcData.kcal;
+export const getProducts = state => state.kcal.calcData.productsNotRecommended;
