@@ -1,3 +1,8 @@
+.appbar{
+    z-index: 1000;
+    background-color: transparent;
+}
+
 .container {
     width: 120px;
 

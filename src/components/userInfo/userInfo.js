@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button, Typography } from '@mui/material';
-// import { Box } from '@mui/system';
+import { Box } from '@mui/system';
 import { useSelector, useDispatch } from 'react-redux';
 import { authSelectors, authOperations } from '../../redux/auth';
 import { Spiner } from '../../components/spiner';
@@ -15,6 +15,10 @@ const typografyStyle = {
   fontSize: '14px',
   lineHeight: '13px',
   letterSpacing: '0.04em',
+  margin: 0,
+  '&:hover': {
+    color: '#212121',
+  },
 };
 export default function UserInfo() {
   const userName = useSelector(authSelectors.getUsername);
@@ -27,35 +31,42 @@ export default function UserInfo() {
     setActiv('nick');
   };
 
-  const onClickExit = () => {
-    setActiv('exit');
-  };
   return (
     <>
-      <Button sx={{ padding: '0' }}>
-        <Typography
-          sx={{ ...typografyStyle, textTransform: 'Capitalize' }}
-          color={active === 'nick' ? '#212121' : '#9B9FAA'}
-          onClick={onClickNick}
-        >
-          {userName}
-        </Typography>
-      </Button>
+      {/* <Box
+        sx={{
+          display: 'flex',
+          marginTop: '15px',
+        }}
+      > */}
+      <Box
+        sx={{
+          ...typografyStyle,
+          textTransform: 'Capitalize',
+          padding: '0',
+        }}
+        color={active === 'nick' ? '#212121' : '#9B9FAA'}
+        onClick={onClickNick}
+      >
+        {userName}
+      </Box>
 
-      <Button
-        onClick={() => dispatch(authOperations.logout())}
-        sx={{ padding: '0', marginLeft: '16px' }}
+      <Box
         component={NavLink}
         to="/login"
+        sx={{
+          ...typografyStyle,
+          textTransform: 'Capitalize',
+          padding: '0',
+          marginLeft: '16px',
+        }}
+        onClick={() => dispatch(authOperations.logout())}
+        color={active === 'exit' ? '#212121' : '#9B9FAA'}
       >
-        <Typography
-          sx={{ ...typografyStyle, textTransform: 'Capitalize' }}
-          onClick={onClickExit}
-          color={active === 'exit' ? '#212121' : '#9B9FAA'}
-        >
-          Вихід
-        </Typography>
-      </Button>
+        Вихід
+      </Box>
+      {/* </Box> */}
+
       {isPending && <Spiner />}
     </>
   );
