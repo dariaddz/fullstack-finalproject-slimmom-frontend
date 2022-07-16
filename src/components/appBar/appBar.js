@@ -45,7 +45,7 @@ function AppBar() {
             width: { lg: '85vw' },
           }}
         >
-          {isLoggedIn && (
+          {/* {isLoggedIn && (
             <Box
               sx={{
                 display: { md: 'none', lg: 'flex' },
@@ -55,9 +55,9 @@ function AppBar() {
             >
               <Navigation />
             </Box>
-          )}
+          )} */}
 
-          {isLoggedIn && (
+          {/* {isLoggedIn && (
             <Box
               sx={{
                 display: { xs: 'none', md: 'flex' },
@@ -65,7 +65,7 @@ function AppBar() {
             >
               <UserInfo />
             </Box>
-          )}
+          )} */}
         </Box>
 
         <div className={s.container}>{isLoggedIn && <UserInfo />}</div>
