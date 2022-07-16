@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import DiaryProductsList from '../../components/diaryProductsList';
 import DiaryAddProductForm from '../../components/diaryAddProductForm';
@@ -8,13 +8,13 @@ import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import RightSideBar from '../../components/rightSideBar';
 import Box from '@mui/material/Box';
 import MobileMenuPage from '../mobileMenuPage';
+import { useMobileMenu } from '../../helpers/mobileMenuContext/mobileMenuContext';
 
 import styles from './diaryPage.module.css';
 
 const DiaryPage = () => {
   const [mobileFormIsVisible, setMobileFormIsVisible] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const mobileMenuRef = useRef(null);
+  const { isMobileMenuOpen } = useMobileMenu();
   const { pathname } = useLocation();
 
   const handleClick = () => {
@@ -26,7 +26,6 @@ const DiaryPage = () => {
       <div className={styles.flexBox}>
         {isMobileMenuOpen && (
           <MobileMenuPage
-            ref={mobileMenuRef}
             pathname={pathname}
             isMobileMenuOpen={isMobileMenuOpen}
           />

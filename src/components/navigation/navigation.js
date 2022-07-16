@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Button, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import { BsList, BsXLg } from 'react-icons/bs';
+import { useMobileMenu } from '../../helpers/mobileMenuContext/mobileMenuContext';
 
 const typografyStyle = {
   fontFamily: 'Gotham Pro',
@@ -15,6 +16,7 @@ const typografyStyle = {
 };
 export default function Navigation() {
   const [active, setActiv] = useState('diary');
+  const { isMobileMenuOpen, openMobileMenu, closeMobileMenu } = useMobileMenu();
   const onClickDiary = () => {
     setActiv('diary');
   };
@@ -54,6 +56,9 @@ export default function Navigation() {
         </Typography>
       </Button>
       <Button
+        onClick={() => {
+          openMobileMenu();
+        }}
         sx={{
           display: { xs: 'block', sm: 'block', md: 'block', lg: 'none' },
           color: '#212121',

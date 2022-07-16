@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import {
   Paper,
   Backdrop,
@@ -9,8 +10,11 @@ import {
 import { NavLink } from 'react-router-dom';
 
 const MobileMenuPage = ({ isMobileMenuOpen, pathname }) => {
+  const mobileMenuRef = useRef();
+
   return (
     <Backdrop
+      ref={mobileMenuRef}
       sx={{
         position: 'absolute',
         color: '#D3D3D3',
