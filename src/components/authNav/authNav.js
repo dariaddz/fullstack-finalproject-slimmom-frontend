@@ -11,13 +11,16 @@ const typografyStyle = {
   lineHeight: '13px',
   letterSpacing: '0.04em',
   textTransform: 'uppercase',
+  '&:hover': {
+    color: '#212121',
+  },
 };
 
 const AuthNav = () => {
   const { active, onClickSignIn, onClickRegister } = useAuth();
 
   return (
-    <Box>
+    <Box sx={{ display: 'flex' }}>
       <Button
         component={NavLink}
         to="/login"

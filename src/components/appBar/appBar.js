@@ -12,7 +12,7 @@ function AppBar() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   return (
-    <>
+    <div className={s.appbar}>
       <Box
         sx={{
           display: 'flex',
@@ -37,39 +37,70 @@ function AppBar() {
         fixed={true}
       >
         <Logo />
+
         <Box
           sx={{
-            display: { xs: 'none', lg: 'flex' },
-            width: '2px',
-            height: '30px',
-            backgroundColor: '#E0E0E0',
-            margin: '0 20px 0 20px',
+            display: 'flex',
+            justifyContent: 'space-between',
+            width: { lg: '85vw' },
           }}
-        />
+        >
+          {isLoggedIn && (
+            <Box
+              sx={{
+                display: { md: 'none', lg: 'flex' },
+                justifyContent: 'space-between',
+                paddingLeft: '15px',
+              }}
+            >
+              <Navigation />
+            </Box>
+          )}
+
+          {isLoggedIn && (
+            <Box
+              sx={{
+                display: { xs: 'none', md: 'flex' },
+              }}
+            >
+              <UserInfo />
+            </Box>
+          )}
+        </Box>
 
         <div className={s.container}>{isLoggedIn && <UserInfo />}</div>
         {isLoggedIn && <Navigation />}
+
         {!isLoggedIn && <AuthNav />}
       </Box>
-      <Box
+
+      {/* <Box //горизонтальная палка
         sx={{
           display: { xs: 'flex', lg: 'none' },
           height: '2px',
           width: '100%',
           backgroundColor: '#E0E0E0',
         }}
-      />
-      <Box
-        sx={{
-          display: { xs: 'flex', md: 'none' },
-          height: '40px',
-          width: '100%',
-          backgroundColor: '#EFF1F3',
-        }}
-      >
-        {isLoggedIn && <UserInfo />}
-      </Box>
-    </>
+      /> */}
+      {/* серый контейнер */}
+      {/* ----------------------- */}
+      {isLoggedIn && (
+        <Box
+          sx={{
+            display: { xs: 'flex', md: 'none' },
+            height: '40px',
+            width: '100vw',
+            backgroundColor: '#EFF1F3',
+            justifyContent: 'flex-end',
+            alignItems: 'center',
+          }}
+        >
+          <UserInfo />
+        </Box>
+      )}
+
+      {/* ----------------------- */}
+    </div>
   );
 }
 

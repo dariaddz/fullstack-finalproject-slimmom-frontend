@@ -14,6 +14,9 @@ const typografyStyle = {
   lineHeight: '13px',
   letterSpacing: '0.04em',
   textTransform: 'uppercase',
+  '&:hover': {
+    color: '#212121',
+  },
 };
 export default function Navigation() {
   const [active, setActiv] = useState('diary');
@@ -26,6 +29,7 @@ export default function Navigation() {
     setActiv('calculator');
   };
   return (
+
     <Box>
       <Button component={NavLink} to="/diary" sx={{ padding: '0' }}>
         <Typography
@@ -72,5 +76,6 @@ export default function Navigation() {
         )}
       </Button>
     </Box>
+
   );
 }
