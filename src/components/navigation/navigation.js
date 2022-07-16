@@ -11,6 +11,9 @@ const typografyStyle = {
   lineHeight: '13px',
   letterSpacing: '0.04em',
   textTransform: 'uppercase',
+  '&:hover': {
+    color: '#212121',
+  },
 };
 export default function Navigation() {
   const [active, setActiv] = useState('diary');
@@ -22,29 +25,34 @@ export default function Navigation() {
     setActiv('calculator');
   };
   return (
-    <Box>
-      <Button component={NavLink} to="/diary" sx={{ padding: '0' }}>
-        <Typography
-          sx={{ ...typografyStyle }}
-          color={active === 'diary' ? '#212121' : '#9B9FAA'}
-          onClick={onClickDiary}
-        >
-          щоденник
-        </Typography>
-      </Button>
-      <Button
+    <>
+      {/* <Button component={NavLink} to="/diary" sx={{ padding: '0' }}> */}
+      <Typography
+        component={NavLink}
+        to="/diary"
+        sx={{
+          ...typografyStyle,
+          padding: '0',
+        }}
+        color={active === 'diary' ? '#212121' : '#9B9FAA'}
+        onClick={onClickDiary}
+      >
+        щоденник
+      </Typography>
+      {/* </Button> */}
+      {/* <Button */}
+      {/* component={NavLink}
+      to="/calculator" sx={{ padding: '0', marginLeft: '16px' }}> */}
+      <Typography
         component={NavLink}
         to="/calculator"
-        sx={{ padding: '0', marginLeft: '16px' }}
+        sx={{ ...typografyStyle, padding: '0', marginLeft: '15px' }}
+        onClick={onClickCalculator}
+        color={active === 'calculator' ? '#212121' : '#9B9FAA'}
       >
-        <Typography
-          sx={{ ...typografyStyle }}
-          onClick={onClickCalculator}
-          color={active === 'calculator' ? '#212121' : '#9B9FAA'}
-        >
-          калькулятор
-        </Typography>
-      </Button>
-    </Box>
+        калькулятор
+      </Typography>
+      {/* </Button> */}
+    </>
   );
 }
