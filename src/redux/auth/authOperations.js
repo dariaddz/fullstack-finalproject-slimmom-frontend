@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-hot-toast';
 
-axios.defaults.baseURL = 'http://localhost:3001/api/users';
+axios.defaults.baseURL = 'https://slim-mom-project.herokuapp.com/api/users';
 
 const token = {
   set(currentToken) {

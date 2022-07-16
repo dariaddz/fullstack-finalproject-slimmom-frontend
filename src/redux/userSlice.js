@@ -36,6 +36,7 @@ export const userSlice = createSlice({
     user: null,
     status: null,
     error: null,
+    isPending:false,
   },
   reducers: {
     add(state, action) {
@@ -45,10 +46,12 @@ export const userSlice = createSlice({
   extraReducers: {
     [postProduct.pending]: state => {
       state.status = 'loading';
+      state.isPending = true;
     },
     [postProduct.fulfilled]: (state, action) => {
       state.status = 'resolved';
       state.items = action.payload;
+      state.isPending = false;
     },
     [postProduct.rejected]: setError,
   },

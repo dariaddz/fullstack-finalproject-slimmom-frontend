@@ -15,8 +15,6 @@ import {
   MainContainer,
 } from '../../theme';
 import validationSchema from '../../middlewares';
-import { authSelectors } from '../../redux/auth';
-
 import { Spiner } from '../../components/spiner';
 
 const DailyCaloriesForm = () => {
@@ -26,10 +24,9 @@ const DailyCaloriesForm = () => {
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
 
-  const isPending = useSelector(authSelectors.getIsPending);
-
-  console.log('isPending:', isPending);
-
+const isPending = useSelector(state => {
+  return state.userData.isPending});
+  
   const initialValues = {
     height: '',
     age: '',
@@ -206,7 +203,7 @@ const DailyCaloriesForm = () => {
                     onChange={formik.handleChange}
                     checked={formik.values.bloodType === '4'}
                   />
-                  <span className={s.radioButton}>4</span>
+                  <span className={s.radioButtonLast}>4</span>
                 </div>
               </FormLabel>
             </div>
@@ -249,11 +246,6 @@ const DailyCaloriesForm = () => {
         )
       )}
 
-      {/* {showModal && userData && (
-        <Modal onClose={() => setShowModal(false)}>
-          {<DailyCalorieIntake />}
-        </Modal>
-      )} */}
     </>
   );
 };
