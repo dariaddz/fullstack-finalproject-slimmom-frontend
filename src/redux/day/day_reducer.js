@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
-import productActions from './product_actions';
+import productActions from './day_action';
 
 const diaryInfoState = {
   email: '',
@@ -23,6 +23,12 @@ const diaryInfo = createReducer(diaryInfoState, {
   [productActions.dateEatenProductsSuccess]: (_, { payload }) => payload,
 });
 
+const loading = createReducer(false, {
+  [productActions.addProductRequest]: (state, action) => true,
+  [productActions.addProductSuccess]: (state, action) => false,
+  [productActions.addProductError]: (state, action) => false,
+});
+
 const error = createReducer(null, {
   [productActions.addProductRequest]: () => null,
   [productActions.dateEatenProductsRequest]: () => null,
@@ -30,5 +36,6 @@ const error = createReducer(null, {
 
 export default combineReducers({
   diaryInfo,
+  loading,
   error,
 });
