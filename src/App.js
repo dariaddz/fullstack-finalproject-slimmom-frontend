@@ -41,8 +41,8 @@ function App() {
                 element={
                   <PublicRoute
                     component={<HomePage />}
-                    redirectTo={!isCalculated ? '/' : '/diary'}
-                    restricted
+                    // redirectTo={!isCalculated ? '/' : '/diary'}
+                    // restricted
                   />
                 }
               />
@@ -68,6 +68,7 @@ function App() {
                   />
                 }
               />
+              <Route path="diary" element={<DiaryPage />} />
             </Route>
 
             {/* <Route
@@ -86,8 +87,6 @@ function App() {
 
             {/* </Route>
           </Route> */}
-
-            <Route path="diary" element={<DiaryPage />} />
           </Routes>
         </Suspense>
       )}

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button, Typography } from '@mui/material';
 import { Box } from '@mui/system';
+import { BsList, BsXLg } from 'react-icons/bs';
 
 const typografyStyle = {
   fontFamily: 'Gotham Pro',
@@ -25,7 +26,10 @@ export default function Navigation() {
     <Box>
       <Button component={NavLink} to="/diary" sx={{ padding: '0' }}>
         <Typography
-          sx={{ ...typografyStyle }}
+          sx={{
+            ...typografyStyle,
+            display: { sm: 'none', md: 'none', lg: 'flex' },
+          }}
           color={active === 'diary' ? '#212121' : '#9B9FAA'}
           onClick={onClickDiary}
         >
@@ -35,7 +39,11 @@ export default function Navigation() {
       <Button
         component={NavLink}
         to="/calculator"
-        sx={{ padding: '0', marginLeft: '16px' }}
+        sx={{
+          padding: '0',
+          marginLeft: '16px',
+          display: { sm: 'none', md: 'none', lg: 'flex' },
+        }}
       >
         <Typography
           sx={{ ...typografyStyle }}
@@ -44,6 +52,14 @@ export default function Navigation() {
         >
           калькулятор
         </Typography>
+      </Button>
+      <Button
+        sx={{
+          display: { xs: 'block', sm: 'block', md: 'block', lg: 'none' },
+          color: '#212121',
+        }}
+      >
+        <BsList size="24px" />
       </Button>
     </Box>
   );

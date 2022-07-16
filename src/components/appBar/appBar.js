@@ -47,8 +47,8 @@ function AppBar() {
           }}
         />
 
-        {isLoggedIn && <Navigation />}
         <div className={s.container}>{isLoggedIn && <UserInfo />}</div>
+        {isLoggedIn && <Navigation />}
         {!isLoggedIn && <AuthNav />}
       </Box>
       <Box

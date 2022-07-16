@@ -17,6 +17,6 @@ const authSelectors = {
   getToken,
   getIsNewUser,
   getEmail,
-  getIsCalculated
+  getIsCalculated,
 };
 export default authSelectors;
