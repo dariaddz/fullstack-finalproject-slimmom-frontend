@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Button, Typography } from '@mui/material';
-import { Box } from '@mui/system';
+import { Button, Typography, Box } from '@mui/material';
+import { Paper } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 import { authSelectors, authOperations } from '../../redux/auth';
 import { Spiner } from '../../components/spiner';
@@ -44,6 +44,7 @@ export default function UserInfo() {
           ...typografyStyle,
           textTransform: 'Capitalize',
           padding: '0',
+          display: 'inline-flex',
         }}
         color={active === 'nick' ? '#212121' : '#9B9FAA'}
         onClick={onClickNick}
@@ -60,6 +61,7 @@ export default function UserInfo() {
           textTransform: 'Capitalize',
           padding: '0',
           marginLeft: '16px',
+          display: 'inline-flex',
         }}
         onClick={() => dispatch(authOperations.logout())}
         color={active === 'exit' ? '#212121' : '#9B9FAA'}

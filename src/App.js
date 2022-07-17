@@ -42,8 +42,8 @@ function App() {
                   <PublicRoute
                     component={<HomePage />}
                     restricted
-                    redirectTo={'/diary'}
-                    // redirectTo={!isCalculated ? '/' : '/diary'}
+                    // redirectTo={'/diary'}
+                    redirectTo={!isCalculated ? '/calculator' : '/diary'}
                     // restricted
                   />
                 }
@@ -94,7 +94,7 @@ function App() {
                 element={
                   <PrivateRoute
                     component={<CalculatorPage />}
-                    redirectTo={'login'}
+                    redirectTo={'/login'}
                   />
                 }
               />

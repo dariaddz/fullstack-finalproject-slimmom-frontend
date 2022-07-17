@@ -2,9 +2,6 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import { BsList } from 'react-icons/bs';
-import { VscChromeClose } from 'react-icons/vsc';
-import { useMobileMenu } from '../../helpers/mobileMenuContext/mobileMenuContext';
 
 const typografyStyle = {
   fontFamily: 'Gotham Pro',
@@ -20,17 +17,14 @@ const typografyStyle = {
 };
 export default function Navigation() {
   const [active, setActiv] = useState('diary');
-  const { isMobileMenuOpen, toggleMobileMenu } = useMobileMenu();
   const onClickDiary = () => {
     setActiv('diary');
   };
-
   const onClickCalculator = () => {
     setActiv('calculator');
   };
   return (
-
-    <Box>
+    <Box sx={{ display: 'flex' }}>
       <Button component={NavLink} to="/diary" sx={{ padding: '0' }}>
         <Typography
           sx={{
@@ -60,22 +54,6 @@ export default function Navigation() {
           калькулятор
         </Typography>
       </Button>
-      <Button
-        onClick={() => {
-          toggleMobileMenu();
-        }}
-        sx={{
-          display: { xs: 'block', sm: 'block', md: 'block', lg: 'none' },
-          color: '#212121',
-        }}
-      >
-        {isMobileMenuOpen ? (
-          <VscChromeClose size="24px" />
-        ) : (
-          <BsList size="24px" />
-        )}
-      </Button>
     </Box>
-
   );
 }
