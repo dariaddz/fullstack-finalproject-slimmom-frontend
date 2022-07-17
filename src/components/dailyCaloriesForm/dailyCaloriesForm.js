@@ -65,6 +65,7 @@ const DailyCaloriesForm = () => {
 
   const  onClose=()=>{
     setShowModal(false)
+   
     }
   return (
     <>

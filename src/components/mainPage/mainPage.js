@@ -8,13 +8,13 @@ function MainPage() {
 
   // let location = window.location.pathname
 
-  // location ='/'||'login' ||'registerrr' 
+  // location ='/'||'.login' ||'.register' 
 
-  // console.log("location:",window.location.pathname)
+  // console.log("location:",location)
   return (
     <>
-   
-     <div className={s.container}>
+   <div className={s.container}>
+     
        
      <Container disableGutters={true}>
        <Appbar />

@@ -44,10 +44,7 @@ export const userSlice = createSlice({
     add(state, action) {
       state.user = action.payload;
     },
-    // remove(state, action) {
-    //   state.user = null
-    //   return state
-    // },
+    
   },
   extraReducers: {
     [postProduct.pending]: state => {
@@ -63,4 +60,4 @@ export const userSlice = createSlice({
   },
 });
 
-export const { add,remove } = userSlice.actions;
+export const { add} = userSlice.actions;
