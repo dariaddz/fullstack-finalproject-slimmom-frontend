@@ -29,7 +29,7 @@ export default function Navigation() {
         <Typography
           sx={{
             ...typografyStyle,
-            display: { sm: 'none', md: 'none', lg: 'flex' },
+            display: { xs: 'none', sm: 'none', md: 'none', lg: 'flex' },
           }}
           color={active === 'diary' ? '#212121' : '#9B9FAA'}
           onClick={onClickDiary}
@@ -43,7 +43,7 @@ export default function Navigation() {
         sx={{
           padding: '0',
           marginLeft: '16px',
-          display: { sm: 'none', md: 'none', lg: 'flex' },
+          display: { xs: 'none', sm: 'none', md: 'none', lg: 'flex' },
         }}
       >
         <Typography
