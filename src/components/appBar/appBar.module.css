@@ -4,9 +4,10 @@
 }
 
 .container {
-    width: 120px;
+    width: 320px;
 
     display: flex;
+    align-items: center;
 
     margin: 0;
     padding: 0

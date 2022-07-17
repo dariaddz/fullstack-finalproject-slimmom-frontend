@@ -51,7 +51,15 @@ export default function UserInfo() {
       >
         {userName}
       </Box>
-
+      <Box //горизонтальная палка
+        sx={{
+          display: { xs: 'flex', sm: 'flex', md: 'flex', lg: 'flex' },
+          height: '32px',
+          width: '2px',
+          backgroundColor: '#A9A9A9',
+          marginLeft: '13px',
+        }}
+      />
       <Box
         component={NavLink}
         to="/"

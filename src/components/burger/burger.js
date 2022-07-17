@@ -14,6 +14,7 @@ const Burger = () => {
       sx={{
         display: { xs: 'block', sm: 'block', md: 'block', lg: 'none' },
         color: '#212121',
+        padding: '0',
       }}
     >
       {isMobileMenuOpen ? (
