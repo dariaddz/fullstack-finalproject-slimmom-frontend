@@ -14,7 +14,7 @@ const Logo = () => {
       <Box
         sx={{
           display: 'flex',
-          alignItems: 'flex-end',
+          alignItems: 'center',
           width: { lg: '15vw' },
         }}
         component={NavLink}
@@ -33,6 +33,7 @@ const Logo = () => {
           <Box
             sx={{
               display: { xs: 'flex', sm: 'flex', md: 'flex' },
+
               height: '16px',
             }}
           >

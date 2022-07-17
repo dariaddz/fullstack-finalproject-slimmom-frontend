@@ -25,7 +25,7 @@ function AppBar() {
             md: '0 32px 0 32px',
             lg: '0 16px 0 16px',
           },
-          alignItems: { xs: 'center', lg: 'flex-end' },
+          alignItems: { xs: 'center', lg: 'center' },
           justifyContent: {
             xs: 'space-between',
             sm: 'space-between',
@@ -76,10 +76,11 @@ function AppBar() {
           )} */}
         {/* </Box> */}
 
-        <Box sx={{ display: 'flex' }}>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <Box
             sx={{
-              display: { xs: 'none', sm: 'none', md: 'block', lg: 'block' },
+              display: { xs: 'none', sm: 'none', md: 'flex', lg: 'flex' },
+              alignItems: 'center',
             }}
           >
             {isLoggedIn && <UserInfo />}
@@ -112,11 +113,12 @@ function AppBar() {
         <Box
           sx={{
             display: { xs: 'flex', sm: 'flex', md: 'none', lg: 'none' },
-            height: '40px',
-            width: '100%',
+            height: '14px',
+            width: 'inherit',
             backgroundColor: '#EFF1F3',
             justifyContent: 'flex-end',
             alignItems: 'center',
+            padding: '14px 20px',
           }}
         >
           <UserInfo />

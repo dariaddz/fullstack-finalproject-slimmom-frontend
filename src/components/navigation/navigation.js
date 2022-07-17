@@ -42,7 +42,7 @@ export default function Navigation() {
         to="/calculator"
         sx={{
           padding: '0',
-          marginLeft: '16px',
+          marginLeft: { xs: 'none', sm: 'none', md: 'none', lg: '16px' },
           display: { xs: 'none', sm: 'none', md: 'none', lg: 'flex' },
         }}
       >
