@@ -1,20 +1,20 @@
 import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { authSelectors, authOperations } from './redux/auth';
+import { authSelectors } from './redux/auth';
 
-import { Spiner } from './components/spiner';
 import './App.css';
-
 import MainPage from './components/mainPage';
+import { Spiner } from './components/spiner';
 
+import { authOperations /*authSelectors*/ } from './redux/auth';
 import PrivateRoute from './components/privateRoute';
 import PublicRoute from './components/publicRoute';
 
 const HomePage = lazy(() => import('./pages/homePage'));
 const RegistrationPage = lazy(() => import('./pages/registrationPage'));
 const LoginPage = lazy(() => import('./pages/loginPage'));
-const CalculatorPage = lazy(() => import('./pages/calculatorPage'));
+// const CalculatorPage = lazy(() => import('./pages/calculatorPage'));
 const DiaryPage = lazy(() => import('./pages/diaryPage'));
 
 function App() {
@@ -25,7 +25,6 @@ function App() {
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
-
   //--Eugen
   return (
     <>
@@ -34,7 +33,7 @@ function App() {
       ) : (
         <Suspense fallback={<Spiner />}>
           <Routes>
-            <Route path="/" element={<PublicRoute component={<MainPage />} />}>
+            <Route path="/" element={<MainPage />}>
               {/* <Route path="/" element={<PublicRoute />}> */}
               {/* <Route index element={<HomePage />} /> */}
               <Route
@@ -42,6 +41,8 @@ function App() {
                 element={
                   <PublicRoute
                     component={<HomePage />}
+                    restricted
+                    redirectTo={'/diary'}
                     // redirectTo={!isCalculated ? '/' : '/diary'}
                     // restricted
                   />
@@ -57,11 +58,16 @@ function App() {
                 element={
                   <PublicRoute
                     component={<RegistrationPage />}
-                    redirectTo={isCalculated ? '/diary' : '/'}
+                    redirectTo={'/diary'}
                     restricted
                   />
                 }
               />
+              {/* </Route> */}
+              {/* <Route
+            path="/login"
+            element={<PublicRoute restricted redirectTo="/" />}
+          > */}
 
               <Route
                 path="login"
@@ -79,26 +85,27 @@ function App() {
                   <PrivateRoute
                     component={<DiaryPage />}
                     redirectTo={'/login'}
-                  />
-                }
-              />
-              <Route
-                path="calculator"
-                element={
-                  <PrivateRoute
-                    component={<CalculatorPage />}
-                    redirectTo={'/login'}
+                    restricted
                   />
                 }
               />
             </Route>
 
             {/* <Route
+            path="/calculator"
+            element={<PrivateRoute redirectTo="/login" />}
+          > */}
+            {/* <Route path="/diary" element={<DiaryPage />} /> */}
+            {/* </Route> */}
+            {/* <Route
 
             path="*"
             element={<PublicRoute restricted redirectTo="/diary" />}
           >
             <Route path="*" element={<NotFoundPage />} />
+          </Route> */}
+
+            {/* </Route>
           </Route> */}
           </Routes>
         </Suspense>
