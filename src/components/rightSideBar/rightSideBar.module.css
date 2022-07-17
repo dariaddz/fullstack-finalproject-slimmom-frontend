@@ -37,7 +37,9 @@
 }
 
 .sideBarProductList {
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
+  /* max-height: 200px; */
+  width: 300px;
 }
 
 .sideBarProductItem {
@@ -49,6 +51,11 @@
 .sideBarList {
   width: 270px;
   margin-bottom: 60px;
+}
+
+.sideBarItemText {
+  margin-bottom: 5px;
+  color: #9b9faa;
 }
 
 @media (min-width: 768px) {
@@ -87,8 +94,9 @@
   @media screen and (min-width: 1280px) {
     .sideBar {
       position: absolute;
+      z-index: 1;
       height: 100%;
-      width: 350px;
+      width: 400px;
       top: 0px;
       right: 0px;
       padding: 290px 80px 0 100px;
