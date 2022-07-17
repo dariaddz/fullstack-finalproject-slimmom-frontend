@@ -37,21 +37,19 @@ const authSlice = createSlice({
 
   extraReducers: {
     [authOperations.register.pending]: state => {
-      // state.isFetching = true;
+      state.isFetching = true;
       state.isPending = true;
     },
     [authOperations.register.fulfilled]: (state, { payload }) => {
-      // state.token = payload.token;
-      // state.name = payload.name;
-      state.user = payload;
+      state.token = payload.token;
+      state.name = payload.name;
       state.avatarURL = null;
-      // state.isFetching = false;
+      state.isFetching = false;
       state.isLoggedIn = true;
       state.isPending = false;
     },
     [authOperations.register.rejected]: state => {
-      // state.isFetching = false;
-      resetToInitialState(state);
+      state.isFetching = false;
     },
 
     [authOperations.login.pending](state) {
@@ -72,7 +70,7 @@ const authSlice = createSlice({
       state.isPending = true;
     },
     [authOperations.fetchCurrentUser.fulfilled](state, action) {
-      state.user = action.payload;
+      state.user = action.payload.user;
       state.isCalculated = action.payload.isCalculated;
       state.isLoggedIn = true;
       state.isFetchingCurrentUser = false;
