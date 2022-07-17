@@ -25,6 +25,8 @@ export const postProduct = createAsyncThunk(
   }
 );
 
+
+
 const setError = (state, action) => {
   state.status = 'rejected';
   state.error = action.payload;
@@ -42,6 +44,7 @@ export const userSlice = createSlice({
     add(state, action) {
       state.user = action.payload;
     },
+    
   },
   extraReducers: {
     [postProduct.pending]: state => {
@@ -57,4 +60,4 @@ export const userSlice = createSlice({
   },
 });
 
-export const { add } = userSlice.actions;
+export const { add} = userSlice.actions;
