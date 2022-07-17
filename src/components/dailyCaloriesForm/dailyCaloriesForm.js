@@ -19,17 +19,20 @@ import { Spiner } from "../../components/spiner";
 import authSelectors from "../../redux/auth/authSelectors";
 import { calcDataPrivate } from "../../redux/calculator/calculator_operation";
 
+
 console.log(calcDataPrivate);
 
 const DailyCaloriesForm = () => {
   const isLogin = useSelector(authSelectors.getIsLoggedIn);
   const token = useSelector((state) => state.auth.token);
 
-  console.log(token);
+
 
   const userData = useSelector((state) => {
     return state.userData.user;
   });
+
+  console.log("userData:",userData)
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
 
@@ -59,6 +62,10 @@ const DailyCaloriesForm = () => {
     },
     validationSchema: validationSchema,
   });
+
+  const  onClose=()=>{
+    setShowModal(false)
+    }
   return (
     <>
       <MainContainer>
@@ -250,7 +257,7 @@ const DailyCaloriesForm = () => {
       </MainContainer>
       {isPending && <Spiner />}
       {!isLogin && showModal && userData && (
-        <Modal onClose={() => setShowModal(false)}>
+        <Modal onClose={onClose}>
           {<DailyCalorieIntake />}
         </Modal>
       )}

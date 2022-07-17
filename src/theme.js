@@ -46,9 +46,12 @@ export const theme = createTheme({
 });
 
 const MainContainer = styled(Container)(({ theme }) => ({
+  display:'flex',
+  justifyContent:'center',
   padding: '32px 20px',
   [theme.breakpoints.up('md')]: {
     padding: '100px 32px 0px',
+    justifyContent:'start',
   },
   [theme.breakpoints.up('lg')]: {
     padding: '147px 0px 0px 25px',
