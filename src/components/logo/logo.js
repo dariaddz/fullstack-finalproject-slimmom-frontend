@@ -1,3 +1,5 @@
+import { useSelector } from 'react-redux';
+import { authSelectors } from '../../redux/auth';
 import { Box } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import logo from '../../images/logo/logo-2x.png';
@@ -6,6 +8,7 @@ import logoMom from '../../images/logo/logo-mom-2x.png';
 import s from './logo.module.css';
 
 const Logo = () => {
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
     <>
       <Box
@@ -15,7 +18,7 @@ const Logo = () => {
           width: { lg: '15vw' },
         }}
         component={NavLink}
-        to="/diary"
+        to={isLoggedIn ? '/diary' : '/'}
       >
         <Box
         // sx={{
