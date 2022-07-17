@@ -18,12 +18,15 @@ const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post('/register', credentials);
-      token.set(data.token);
+      // token.set(data.token);
       toast.success('Ви успішно зареєструвались');
-      return data.data;
+      return data.user;
     } catch (error) {
       if (error.response.status === 400) {
         toast.error('Помилка реєстрації.\nПеревірте введені дані.');
+      }
+      if (error.response.status === 409) {
+        toast.error('Помилка реєстрації.\nМожливо користувач вже існує');
       }
       if (error.response.status === 500) {
         toast.error('Немає відповіді від сервера.');

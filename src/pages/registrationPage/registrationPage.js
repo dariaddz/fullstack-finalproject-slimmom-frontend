@@ -11,8 +11,8 @@ export function RegistrationPage() {
   const dispatch = useDispatch();
   const isPending = useSelector(authSelectors.getIsPending);
 
-  const onRegister = async ({ name, email, password }) => {
-    dispatch(authOperations.register({ name, email, password }));
+  const onRegister = async (data) => {
+    dispatch(authOperations.register(data));
   };
 
   return (
