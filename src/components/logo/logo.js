@@ -29,21 +29,39 @@ const Logo = () => {
         >
           <img className={s.logo} src={logo} alt="Logo" />
         </Box>
-        <Box
-          sx={{
-            display: { sm: 'none', md: 'flex' },
-            height: '16px',
-          }}
-        >
-          <img
-            className={s.logoSlim}
-            src={logoSlim}
-            alt="Logo name"
-            width={47}
-            height={16}
-          />
-          <img src={logoMom} alt="Logo name" width={47} height={16} />
-        </Box>
+        {isLoggedIn ? (
+          <Box
+            sx={{
+              display: { xs: 'flex', sm: 'flex', md: 'flex' },
+              height: '16px',
+            }}
+          >
+            <img
+              className={s.logoSlim}
+              src={logoSlim}
+              alt="Logo name"
+              width={47}
+              height={16}
+            />
+            <img src={logoMom} alt="Logo name" width={47} height={16} />
+          </Box>
+        ) : (
+          <Box
+            sx={{
+              display: { sm: 'none', md: 'flex' },
+              height: '16px',
+            }}
+          >
+            <img
+              className={s.logoSlim}
+              src={logoSlim}
+              alt="Logo name"
+              width={47}
+              height={16}
+            />
+            <img src={logoMom} alt="Logo name" width={47} height={16} />
+          </Box>
+        )}
       </Box>
       {/* <Box //вертикальная палка
         sx={{
