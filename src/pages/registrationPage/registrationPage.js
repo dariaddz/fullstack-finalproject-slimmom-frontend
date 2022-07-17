@@ -6,13 +6,15 @@ import { useSelector } from 'react-redux';
 import { Box } from '@mui/material';
 import { RegistrationForm } from '../../components/registrationForm';
 import { Spiner } from '../../components/spiner';
+import { useNavigate } from 'react-router-dom';
 
 export function RegistrationPage() {
   const dispatch = useDispatch();
   const isPending = useSelector(authSelectors.getIsPending);
+  const navigate = useNavigate();
 
   const onRegister = async (data) => {
-    dispatch(authOperations.register(data));
+    dispatch(authOperations.register(data)).then(data => { if (data.meta.requestStatus === 'fulfilled') navigate('/') });
   };
 
   return (
