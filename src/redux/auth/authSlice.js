@@ -10,6 +10,7 @@ const initialState = {
   isFetchingCurrentUser: false,
   isPending: false,
   isCalculated: false,
+  isRegisterSuccess: false,
 };
 
 const resetToInitialState = state => {
