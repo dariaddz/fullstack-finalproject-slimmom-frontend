@@ -18,7 +18,6 @@ const typografyStyle = {
 export default function Navigation() {
   // const [active, setActiv] = useState('diary');
   const { pathname } = useLocation();
-  console.log(pathname);
 
   // const onClickDiary = () => {
   //   setActiv('diary');

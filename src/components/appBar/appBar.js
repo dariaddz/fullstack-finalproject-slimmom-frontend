@@ -7,6 +7,7 @@ import AuthNav from '../authNav';
 import Navigation from '../navigation';
 import UserInfo from '../userInfo';
 import Burger from '../burger';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import s from './appBar.module.css';
 
 function AppBar() {
@@ -116,11 +117,16 @@ function AppBar() {
             height: '14px',
             width: 'inherit',
             backgroundColor: '#EFF1F3',
-            justifyContent: 'flex-end',
+            justifyContent: 'space-between',
             alignItems: 'center',
             padding: '14px 20px',
           }}
         >
+          <KeyboardBackspaceIcon
+            sx={{ display: { sx: 'block', sm: 'block', md: 'none' } }}
+            // className={styles.backButton}
+            // onClick={handleClick}
+          />
           <UserInfo />
         </Box>
       )}

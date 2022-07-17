@@ -20,7 +20,8 @@ const register = createAsyncThunk(
       const { data } = await axios.post('/register', credentials);
       // token.set(data.token);
       toast.success('Ви успішно зареєструвались');
-      return data.user;
+
+      return data;
     } catch (error) {
       if (error.response.status === 400) {
         toast.error('Помилка реєстрації.\nПеревірте введені дані.');
