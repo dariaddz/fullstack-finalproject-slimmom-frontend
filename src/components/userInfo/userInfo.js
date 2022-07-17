@@ -33,50 +33,51 @@ export default function UserInfo() {
 
   return (
     <>
-      {/* <Box
+      <Box
         sx={{
           display: 'flex',
-          marginTop: '15px',
+          justifyItems: 'flex-end',
+          alignItems: 'center',
         }}
-      > */}
-      <Box
-        sx={{
-          ...typografyStyle,
-          textTransform: 'Capitalize',
-          padding: '0',
-          display: 'inline-flex',
-        }}
-        color={active === 'nick' ? '#212121' : '#9B9FAA'}
-        onClick={onClickNick}
       >
-        {userName}
+        <Box
+          sx={{
+            ...typografyStyle,
+            textTransform: 'Capitalize',
+            padding: '0',
+            display: 'inline-flex',
+          }}
+          color={active === 'nick' ? '#212121' : '#9B9FAA'}
+          onClick={onClickNick}
+        >
+          {userName}
+        </Box>
+        <Box //горизонтальная палка
+          sx={{
+            display: { xs: 'flex', sm: 'flex', md: 'flex', lg: 'flex' },
+            height: '32px',
+            width: '2px',
+            backgroundColor: '#A9A9A9',
+            marginLeft: '13px',
+          }}
+        />
+        <Box
+          component={NavLink}
+          to="/"
+          // to="/login"
+          sx={{
+            ...typografyStyle,
+            textTransform: 'Capitalize',
+            padding: '0',
+            marginLeft: '16px',
+            display: 'inline-flex',
+          }}
+          onClick={() => dispatch(authOperations.logout())}
+          color={active === 'exit' ? '#212121' : '#9B9FAA'}
+        >
+          Вихід
+        </Box>
       </Box>
-      <Box //горизонтальная палка
-        sx={{
-          display: { xs: 'flex', sm: 'flex', md: 'flex', lg: 'flex' },
-          height: '32px',
-          width: '2px',
-          backgroundColor: '#A9A9A9',
-          marginLeft: '13px',
-        }}
-      />
-      <Box
-        component={NavLink}
-        to="/"
-        // to="/login"
-        sx={{
-          ...typografyStyle,
-          textTransform: 'Capitalize',
-          padding: '0',
-          marginLeft: '16px',
-          display: 'inline-flex',
-        }}
-        onClick={() => dispatch(authOperations.logout())}
-        color={active === 'exit' ? '#212121' : '#9B9FAA'}
-      >
-        Вихід
-      </Box>
-      {/* </Box> */}
 
       {isPending && <Spiner />}
     </>

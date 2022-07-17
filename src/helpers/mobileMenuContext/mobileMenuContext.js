@@ -5,7 +5,7 @@ export const useMobileMenu = () => useContext(MobileMenuContext);
 
 export const MobileMenuProvider = ({ children }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  console.log(isMobileMenuOpen);
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };

@@ -56,6 +56,7 @@ const DiaryPage = () => {
             <div className={styles.exampleBox}>
               <DiaryAddProductForm />
               <KeyboardBackspaceIcon
+                sx={{ display: { sx: 'block', sm: 'block', md: 'none' } }}
                 className={styles.backButton}
                 onClick={handleClick}
               />
