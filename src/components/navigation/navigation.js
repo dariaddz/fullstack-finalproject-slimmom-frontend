@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+// import { useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import { Button, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 
@@ -16,13 +16,16 @@ const typografyStyle = {
   },
 };
 export default function Navigation() {
-  const [active, setActiv] = useState('diary');
-  const onClickDiary = () => {
-    setActiv('diary');
-  };
-  const onClickCalculator = () => {
-    setActiv('calculator');
-  };
+  // const [active, setActiv] = useState('diary');
+  const { pathname } = useLocation();
+  console.log(pathname);
+
+  // const onClickDiary = () => {
+  //   setActiv('diary');
+  // };
+  // const onClickCalculator = () => {
+  //   setActiv('calculator');
+  // };
   return (
     <Box sx={{ display: 'flex' }}>
       <Button component={NavLink} to="/diary" sx={{ padding: '0' }}>
@@ -31,8 +34,8 @@ export default function Navigation() {
             ...typografyStyle,
             display: { xs: 'none', sm: 'none', md: 'none', lg: 'flex' },
           }}
-          color={active === 'diary' ? '#212121' : '#9B9FAA'}
-          onClick={onClickDiary}
+          color={pathname === '/diary' ? '#212121' : '#9B9FAA'}
+          // onClick={onClickDiary}
         >
           щоденник
         </Typography>
@@ -48,8 +51,8 @@ export default function Navigation() {
       >
         <Typography
           sx={{ ...typografyStyle }}
-          onClick={onClickCalculator}
-          color={active === 'calculator' ? '#212121' : '#9B9FAA'}
+          // onClick={onClickCalculator}
+          color={pathname === '/calculator' ? '#212121' : '#9B9FAA'}
         >
           калькулятор
         </Typography>
