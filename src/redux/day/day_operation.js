@@ -31,7 +31,7 @@ export const addProduct =
     dispatch(productActions.addProductRequest());
 
     axiosInstance
-      .post('/products', newProduct)
+      .post('api/products', newProduct)
       .then(({ data }) => {
         dispatch(productActions.addProductSuccess(data));
       })
@@ -42,7 +42,7 @@ export const dateEatenProduct = date => dispatch => {
   dispatch(productActions.dateEatenProductsRequest());
 
   axiosInstance
-    .get(`/products/${date}`)
+    .get(`api/products/${date}`)
     .then(responce => {
       dispatch(productActions.dateEatenProductsSuccess(responce.data));
     })
@@ -53,7 +53,7 @@ export const deleteProduct = id => dispatch => {
   dispatch(productActions.deleteProductIdRequest());
 
   axiosInstance
-    .delete(`/products/${id}`)
+    .delete(`api/products/${id}`)
     .then(() => dispatch(productActions.deleteProductIdSuccess(id)))
     .catch(error =>
       dispatch(productActions.deleteProductIdError(error.messages))

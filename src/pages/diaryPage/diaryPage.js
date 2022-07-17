@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import DiaryProductsList from '../../components/diaryProductsList';
 import DiaryAddProductForm from '../../components/diaryAddProductForm';
+import DiaryDateCalendar from '../../components/dateForm';
 import Button from '../../components/button';
 import AddIcon from '@mui/icons-material/Add';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
@@ -34,6 +35,7 @@ const DiaryPage = () => {
         {!mobileFormIsVisible ? (
           <>
             <div className={styles.exampleBox}>
+              <DiaryDateCalendar />
               <div className={styles.isHidddenMobile}>
                 <DiaryAddProductForm />
               </div>
