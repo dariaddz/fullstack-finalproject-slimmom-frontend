@@ -8,7 +8,7 @@ function MainPage() {
 
   // let location = window.location.pathname
 
-  // location ='/'||'.login' ||'.register' 
+  // location ='/'||'/login' ||'/register' 
 
   // console.log("location:",location)
   return (
