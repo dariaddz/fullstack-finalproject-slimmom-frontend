@@ -53,7 +53,8 @@ export default function UserInfo() {
 
       <Box
         component={NavLink}
-        to="/login"
+        to="/"
+        // to="/login"
         sx={{
           ...typografyStyle,
           textTransform: 'Capitalize',

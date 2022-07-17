@@ -90,7 +90,7 @@ export const RegistrationForm = ({ onRegister }) => {
               variant="standard"
               id="name"
               name="name"
-              label="І'мя *"
+              label="Ім'я *"
               value={formik.values.name}
               onChange={formik.handleChange}
               error={formik.touched.name && Boolean(formik.errors.name)}
@@ -162,9 +162,10 @@ export const RegistrationForm = ({ onRegister }) => {
             }}
             color="buttonRegister"
             type="submit"
-            onClick={() => {
-              onClickRegister();
-            }}
+          // onClick={() => {
+          //   console.log('onclickregister');
+          //   onRegister();
+          // }}
           >
             <Typography sx={{ ...labelFontStyle, color: '#fc842d' }}>
               Реєстрація

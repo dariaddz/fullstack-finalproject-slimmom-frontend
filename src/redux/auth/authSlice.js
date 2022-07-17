@@ -37,19 +37,21 @@ const authSlice = createSlice({
 
   extraReducers: {
     [authOperations.register.pending]: state => {
-      state.isFetching = true;
+      // state.isFetching = true;
       state.isPending = true;
     },
     [authOperations.register.fulfilled]: (state, { payload }) => {
-      state.token = payload.token;
-      state.name = payload.name;
+      // state.token = payload.token;
+      // state.name = payload.name;
+      state.user = payload;
       state.avatarURL = null;
-      state.isFetching = false;
+      // state.isFetching = false;
       state.isLoggedIn = true;
       state.isPending = false;
     },
     [authOperations.register.rejected]: state => {
-      state.isFetching = false;
+      // state.isFetching = false;
+      resetToInitialState(state);
     },
 
     [authOperations.login.pending](state) {
