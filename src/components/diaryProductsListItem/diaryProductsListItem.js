@@ -29,7 +29,7 @@ const typografyStyle = {
   whiteSpace: 'nowrap',
 };
 
-function DiaryProductsListItem({ product: { _id, title, weight, kcal } }) {
+function DiaryProductsListItem({ product: { id, title, weight, kcal } }) {
   const dispatch = useDispatch();
   const currentDate = useSelector(dateEatenProducts); // Текущий день из базы
 
@@ -38,10 +38,12 @@ function DiaryProductsListItem({ product: { _id, title, weight, kcal } }) {
   )
     .toISOString()
     .split('T')[0]; // Текущий день локально
+
   const disadled = currentDate === today ? false : true;
+  const cursor = disadled ? 'no-drop' : 'pointer';
 
   const handleClick = async () => {
-    dispatch(deleteProduct(_id));
+    dispatch(deleteProduct(id));
     dispatch(dateEatenProduct(currentDate));
   };
 
@@ -110,7 +112,7 @@ function DiaryProductsListItem({ product: { _id, title, weight, kcal } }) {
           </Box>
         </Typography>
         <IconButton
-          disabled={!disadled}
+          disabled={disadled}
           onClick={handleClick}
           sx={{
             width: {
@@ -127,7 +129,7 @@ function DiaryProductsListItem({ product: { _id, title, weight, kcal } }) {
             },
             mr: '8px',
             color: 'primary.main',
-            cursor: 'no-drop',
+            cursor: { cursor },
             transition: 'all 250ms linear',
             '&:hover': {
               color: 'background.dark',
