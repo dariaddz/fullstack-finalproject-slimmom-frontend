@@ -42,7 +42,7 @@ const Logo = () => {
           <img src={logoMom} alt="Logo name" width={47} height={16} />
         </Box>
       </Box>
-      <Box //вертикальная палочка
+      {/* <Box //вертикальная палка
         sx={{
           display: { xs: 'none', lg: 'flex' },
           width: '2px',
@@ -50,7 +50,7 @@ const Logo = () => {
           backgroundColor: '#E0E0E0',
           margin: '0',
         }}
-      />
+      /> */}
     </>
   );
 };
