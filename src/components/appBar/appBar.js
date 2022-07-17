@@ -6,6 +6,7 @@ import Logo from '../logo';
 import AuthNav from '../authNav';
 import Navigation from '../navigation';
 import UserInfo from '../userInfo';
+import Burger from '../burger';
 import s from './appBar.module.css';
 
 function AppBar() {
@@ -25,27 +26,34 @@ function AppBar() {
             lg: '0 16px 0 16px',
           },
           alignItems: { xs: 'center', lg: 'flex-end' },
-          justifyContent: { xs: 'space-between', lg: 'left' },
-          width: {
-            xs: 'calc(100vw-40px)',
-            md: 'calc(100vw-64px)',
-            lg: 'calc(100vw-32px)',
+          justifyContent: {
+            xs: 'space-between',
+            sm: 'space-between',
+            md: 'space-between',
+            lg: 'space-between',
           },
+          // width: {
+          //   xs: 'calc(100vw-40px)',
+          //   md: 'calc(100vw-64px)',
+          //   lg: 'calc(100vw-32px)',
+          // },
           backgroundColor: 'transparent',
         }}
         disableGutters={true}
         fixed={true}
       >
-        <Logo />
-
-        <Box
+        <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
+          <Logo />
+          {isLoggedIn && <Navigation />}
+        </Box>
+        {/* <Box
           sx={{
             display: 'flex',
             justifyContent: 'space-between',
             width: { lg: '85vw' },
           }}
-        >
-          {/* {isLoggedIn && (
+        > */}
+        {/* {isLoggedIn && (
             <Box
               sx={{
                 display: { md: 'none', lg: 'flex' },
@@ -57,7 +65,7 @@ function AppBar() {
             </Box>
           )} */}
 
-          {/* {isLoggedIn && (
+        {/* {isLoggedIn && (
             <Box
               sx={{
                 display: { xs: 'none', md: 'flex' },
@@ -66,10 +74,26 @@ function AppBar() {
               <UserInfo />
             </Box>
           )} */}
-        </Box>
+        {/* </Box> */}
 
-        <div className={s.container}>{isLoggedIn && <UserInfo />}</div>
-        {isLoggedIn && <Navigation />}
+        <Box sx={{ display: 'flex' }}>
+          <Box
+            sx={{
+              display: { xs: 'none', sm: 'none', md: 'block', lg: 'block' },
+            }}
+          >
+            {isLoggedIn && <UserInfo />}
+          </Box>
+          {isLoggedIn && (
+            <Box
+              sx={{
+                display: { xs: 'block', sm: 'block', md: 'block', lg: 'none' },
+              }}
+            >
+              <Burger />
+            </Box>
+          )}
+        </Box>
 
         {!isLoggedIn && <AuthNav />}
       </Box>
@@ -87,9 +111,9 @@ function AppBar() {
       {isLoggedIn && (
         <Box
           sx={{
-            display: { xs: 'flex', md: 'none' },
+            display: { xs: 'flex', sm: 'flex', md: 'none', lg: 'none' },
             height: '40px',
-            width: '100vw',
+            width: '100%',
             backgroundColor: '#EFF1F3',
             justifyContent: 'flex-end',
             alignItems: 'center',
