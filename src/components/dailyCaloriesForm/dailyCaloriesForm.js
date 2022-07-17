@@ -1,38 +1,48 @@
-import { useDispatch } from 'react-redux';
-import { postProduct } from '../../redux/userSlice';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useFormik } from 'formik';
-import { Typography, TextField, Button } from '@mui/material';
-import Modal from '../modal';
-import DailyCalorieIntake from '../dailyCalorieIntake';
-import s from './dailyCaloriesForm.module.css';
+import { useDispatch } from "react-redux";
+import { postProduct } from "../../redux/userSlice";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { useFormik } from "formik";
+import { Typography, TextField, Button } from "@mui/material";
+import Modal from "../modal";
+import DailyCalorieIntake from "../dailyCalorieIntake";
+import s from "./dailyCaloriesForm.module.css";
 import {
   FormLabel,
   buttonLR,
   FormBox,
   labelFontStyle,
   MainContainer,
-} from '../../theme';
-import validationSchema from '../../middlewares';
-import { Spiner } from '../../components/spiner';
+} from "../../theme";
+import validationSchema from "../../middlewares";
+import { Spiner } from "../../components/spiner";
+import authSelectors from "../../redux/auth/authSelectors";
+import { calcDataPrivate } from "../../redux/calculator/calculator_operation";
+
+console.log(calcDataPrivate);
 
 const DailyCaloriesForm = () => {
-  const userData = useSelector(state => {
+  const isLogin = useSelector(authSelectors.getIsLoggedIn);
+  const token = useSelector((state) => state.auth.token);
+
+  console.log(token);
+
+  const userData = useSelector((state) => {
     return state.userData.user;
   });
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
 
-const isPending = useSelector(state => {
-  return state.userData.isPending});
-  
+  const isPending = useSelector((state) => {
+    return state.userData.isPending;
+  });
+
   const initialValues = {
-    height: '',
-    age: '',
-    currentWeight: '',
-    desiredWeight: '',
-    bloodType: '1',
+    height: "",
+    age: "",
+    currentWeight: "",
+    desiredWeight: "",
+    bloodType: "1",
   };
 
   const formik = useFormik({
@@ -40,7 +50,11 @@ const isPending = useSelector(state => {
 
     enableReinitialize: true,
     onSubmit: (value, actions) => {
-      dispatch(postProduct(formik.values));
+      if (!isLogin) {
+        dispatch(postProduct(formik.values));
+      } else {
+        dispatch(calcDataPrivate(formik.values, token));
+      }
       actions.resetForm(initialValues);
     },
     validationSchema: validationSchema,
@@ -51,13 +65,13 @@ const isPending = useSelector(state => {
         <form onSubmit={formik.handleSubmit}>
           <Typography
             conponent="h2"
-            display={'block'}
+            display={"block"}
             sx={{
-              fontFamily: 'Gotham Pro',
-              fontSize: { sm: '18px', md: '34px' },
-              fontWeight: '700',
-              width: { sm: '280px', md: '700px', lg: '600px' },
-              mb: { xs: '32px', md: '68px' },
+              fontFamily: "Gotham Pro",
+              fontSize: { sm: "18px", md: "34px" },
+              fontWeight: "700",
+              width: { sm: "280px", md: "700px", lg: "600px" },
+              mb: { xs: "32px", md: "68px" },
             }}
           >
             Прорахуй свою добову норму калорій прямо зараз
@@ -69,9 +83,9 @@ const isPending = useSelector(state => {
                 <TextField
                   InputLabelProps={{ style: { ...labelFontStyle } }}
                   inputProps={{
-                    style: { color: '#111111', paddingBottom: '15px' },
+                    style: { color: "#111111", paddingBottom: "15px" },
                   }}
-                  sx={{ width: { xs: '280px', md: '240px' } }}
+                  sx={{ width: { xs: "280px", md: "240px" } }}
                   variant="standard"
                   id="height"
                   name="height"
@@ -88,9 +102,9 @@ const isPending = useSelector(state => {
                 <TextField
                   InputLabelProps={{ style: { ...labelFontStyle } }}
                   inputProps={{
-                    style: { color: '#111111', paddingBottom: '15px' },
+                    style: { color: "#111111", paddingBottom: "15px" },
                   }}
-                  sx={{ width: { xs: '280px', md: '240px' } }}
+                  sx={{ width: { xs: "280px", md: "240px" } }}
                   variant="standard"
                   id="age"
                   name="age"
@@ -107,9 +121,9 @@ const isPending = useSelector(state => {
                 <TextField
                   InputLabelProps={{ style: { ...labelFontStyle } }}
                   inputProps={{
-                    style: { color: '#111111', paddingBottom: '15px' },
+                    style: { color: "#111111", paddingBottom: "15px" },
                   }}
-                  sx={{ width: { xs: '280px', md: '240px' } }}
+                  sx={{ width: { xs: "280px", md: "240px" } }}
                   variant="standard"
                   id="currentWeight"
                   name="currentWeight"
@@ -132,9 +146,9 @@ const isPending = useSelector(state => {
                 <TextField
                   InputLabelProps={{ style: { ...labelFontStyle } }}
                   inputProps={{
-                    style: { color: '#111111', paddingBottom: '15px' },
+                    style: { color: "#111111", paddingBottom: "15px" },
                   }}
-                  sx={{ width: { xs: '280px', md: '240px' } }}
+                  sx={{ width: { xs: "280px", md: "240px" } }}
                   variant="standard"
                   id="desiredWeight"
                   name="desiredWeight"
@@ -159,11 +173,11 @@ const isPending = useSelector(state => {
                   className={s.radioGroup}
                 >
                   <Typography
-                    mb={'20px'}
-                    fontWeight={'700'}
-                    fontFamily={'Verdana'}
-                    fontSize={'14px'}
-                    color={'rgb(118, 118, 118)'}
+                    mb={"20px"}
+                    fontWeight={"700"}
+                    fontFamily={"Verdana"}
+                    fontSize={"14px"}
+                    color={"rgb(118, 118, 118)"}
                   >
                     Група крові*
                   </Typography>
@@ -174,7 +188,7 @@ const isPending = useSelector(state => {
                     name="bloodType"
                     value="1"
                     onChange={formik.handleChange}
-                    checked={formik.values.bloodType === '1'}
+                    checked={formik.values.bloodType === "1"}
                   />
                   <span className={s.radioButton}>1</span>
 
@@ -183,7 +197,7 @@ const isPending = useSelector(state => {
                     name="bloodType"
                     value="2"
                     onChange={formik.handleChange}
-                    checked={formik.values.bloodType === '2'}
+                    checked={formik.values.bloodType === "2"}
                   />
                   <span className={s.radioButton}>2</span>
 
@@ -192,7 +206,7 @@ const isPending = useSelector(state => {
                     name="bloodType"
                     value="3"
                     onChange={formik.handleChange}
-                    checked={formik.values.bloodType === '3'}
+                    checked={formik.values.bloodType === "3"}
                   />
                   <span className={s.radioButton}>3</span>
 
@@ -201,7 +215,7 @@ const isPending = useSelector(state => {
                     name="bloodType"
                     value="4"
                     onChange={formik.handleChange}
-                    checked={formik.values.bloodType === '4'}
+                    checked={formik.values.bloodType === "4"}
                   />
                   <span className={s.radioButtonLast}>4</span>
                 </div>
@@ -215,12 +229,12 @@ const isPending = useSelector(state => {
               ...buttonLR,
 
               margin: {
-                xs: '0 auto ',
-                md: '40px 32px 0 0px',
-                lg: '40px 0 0 330px',
+                xs: "0 auto ",
+                md: "40px 32px 0 0px",
+                lg: "40px 0 0 330px",
               },
-              textAlign: 'center',
-              display: 'block',
+              textAlign: "center",
+              display: "block",
             }}
             color="buttonLogin"
             type="submit"
@@ -228,24 +242,18 @@ const isPending = useSelector(state => {
               setShowModal(true);
             }}
           >
-            <Typography sx={{ ...labelFontStyle, color: '#FFFFFF' }}>
+            <Typography sx={{ ...labelFontStyle, color: "#FFFFFF" }}>
               Схуднути
             </Typography>
           </Button>
         </form>
       </MainContainer>
-
-      {isPending ? (
-        <Spiner />
-      ) : (
-        showModal &&
-        userData && (
-          <Modal onClose={() => setShowModal(false)}>
-            {<DailyCalorieIntake />}
-          </Modal>
-        )
+      {isPending && <Spiner />}
+      {!isLogin && showModal && userData && (
+        <Modal onClose={() => setShowModal(false)}>
+          {<DailyCalorieIntake />}
+        </Modal>
       )}
-
     </>
   );
 };
