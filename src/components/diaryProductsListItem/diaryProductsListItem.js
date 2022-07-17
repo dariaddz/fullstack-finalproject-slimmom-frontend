@@ -4,6 +4,7 @@ import { ListItem, Typography, Box, IconButton } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { dateEatenProducts } from '../../redux/day/day_selector';
 import { deleteProduct, dateEatenProduct } from '../../redux/day/day_operation';
+import today from '../../helpers/currentDateLocal';
 
 const typografyStyle = {
   paddingBottom: {
@@ -32,12 +33,6 @@ const typografyStyle = {
 function DiaryProductsListItem({ product: { id, title, weight, kcal } }) {
   const dispatch = useDispatch();
   const currentDate = useSelector(dateEatenProducts); // Текущий день из базы
-
-  const today = new Date(
-    new Date().getTime() - new Date().getTimezoneOffset() * 60000
-  )
-    .toISOString()
-    .split('T')[0]; // Текущий день локально
 
   const disadled = currentDate === today ? false : true;
   const cursor = disadled ? 'no-drop' : 'pointer';

@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { allProducts } from '../../redux/day/day_selector';
+import { allProducts, dateEatenProducts } from '../../redux/day/day_selector';
+import today from '../../helpers/currentDateLocal';
 import DiaryProductsListItem from '../diaryProductsListItem';
 import { List, Box } from '@mui/material';
 
 function DiaryProductsList() {
-  const dayProducts = useSelector(allProducts);
+  const currentDate = useSelector(dateEatenProducts); // Текущий день из базы
 
+  const dayProducts = useSelector(allProducts);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -15,7 +17,7 @@ function DiaryProductsList() {
     }
   }, [dayProducts]);
 
-  return (
+  return dayProducts.length !== 0 ? (
     <Box
       sx={{
         maxHeight: { xs: '210px', md: '240px', lg: '305px' },
@@ -34,12 +36,15 @@ function DiaryProductsList() {
           pr: { xs: '5px', md: '40px' },
         }}
       >
-        {products.length > 0 &&
-          products.map(product => (
-            <DiaryProductsListItem key={product.id} product={product} />
-          ))}
+        {products.map(product => (
+          <DiaryProductsListItem key={product.id} product={product} />
+        ))}
       </List>
     </Box>
+  ) : currentDate === today ? (
+    <Box>Сьогодні Ви нічого не їли :(</Box>
+  ) : (
+    <Box>{`${currentDate} Ви  нічого не їли`}</Box>
   );
 }
 
