@@ -139,7 +139,7 @@ export const RegistrationForm = ({ onRegister }) => {
             flexDirection: { xs: 'column', sm: 'column', md: 'row' },
           }}
         >
-          <Button
+          {/* <Button
             variant="contained"
             sx={{ ...buttonLR, margin: { xs: '0 0 20px 0', md: '0 32px 0 0' } }}
             color="buttonLogin"
@@ -152,7 +152,7 @@ export const RegistrationForm = ({ onRegister }) => {
             <Typography sx={{ ...labelFontStyle, color: '#ffffff' }}>
               Вхід
             </Typography>
-          </Button>
+          </Button> */}
           <Button
             variant="contained"
             sx={{
@@ -162,10 +162,10 @@ export const RegistrationForm = ({ onRegister }) => {
             }}
             color="buttonRegister"
             type="submit"
-          // onClick={() => {
-          //   console.log('onclickregister');
-          //   onRegister();
-          // }}
+            // onClick={() => {
+            //   console.log('onclickregister');
+            //   onRegister();
+            // }}
           >
             <Typography sx={{ ...labelFontStyle, color: '#fc842d' }}>
               Реєстрація

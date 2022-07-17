@@ -53,7 +53,7 @@ const DiaryDateCalendar = () => {
         maxDate={new Date()}
         onChange={date => onChange(date)}
         todayButton="Сегодня"
-        locale="ru-RU"
+        // locale="ru-RU"
       />
     </div>
   );

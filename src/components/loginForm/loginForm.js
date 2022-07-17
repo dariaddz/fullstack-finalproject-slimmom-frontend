@@ -123,7 +123,7 @@ export const LoginForm = ({ onLogin }) => {
               Вхід
             </Typography>
           </Button>
-          <Button
+          {/* <Button
             variant="contained"
             sx={{
               ...buttonLR,
@@ -140,7 +140,7 @@ export const LoginForm = ({ onLogin }) => {
             <Typography sx={{ ...labelFontStyle, color: '#FC842D' }}>
               Реєстрація
             </Typography>
-          </Button>
+          </Button> */}
         </Box>
       </Box>
     </form>
