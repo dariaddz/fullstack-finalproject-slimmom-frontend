@@ -11,7 +11,7 @@ const CalculatorPage = () => {
   const { pathname } = useLocation();
 
   return (
-    <Box sx={{ position: 'relative' }}>
+    <Box>
       {isMobileMenuOpen && (
         <MobileMenuPage
           pathname={pathname}

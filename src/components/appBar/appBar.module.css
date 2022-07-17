@@ -1,4 +1,5 @@
 .appbar{
+    position: relative;
     z-index: 1000;
     background-color: transparent;
 }
