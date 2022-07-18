@@ -46,15 +46,15 @@ export const theme = createTheme({
 });
 
 const MainContainer = styled(Container)(({ theme }) => ({
-  display:'flex',
-  justifyContent:'center',
+  display: 'flex',
+  justifyContent: 'center',
   padding: '32px 20px',
   [theme.breakpoints.up('md')]: {
     padding: '100px 32px 0px',
-    justifyContent:'start',
+    justifyContent: 'start',
   },
   [theme.breakpoints.up('lg')]: {
-    padding: '147px 0px 0px 25px',
+    padding: '0 0px 0px 25px',
   },
 }));
 const labelFontStyle = {
@@ -89,7 +89,7 @@ const buttonLR = {
 const FormLabel = styled('label')(({ theme }) => ({
   display: 'block',
   width: '240px',
-  height:"77px",
+  height: '77px',
   [theme.breakpoints.up('md')]: {
     marginBottom: '0px',
     marginRight: '32px',
