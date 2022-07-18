@@ -1,8 +1,8 @@
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { Box, TextField, Typography, Button } from '@mui/material';
 import { buttonLR, labelFontStyle } from '../../theme';
-import { useAuth } from '../../helpers/authContext/authContext';
+// import { useAuth } from '../../helpers/authContext/authContext';
 
 const validateRegister = values => {
   const errors = {};
@@ -20,8 +20,8 @@ const validateRegister = values => {
 };
 
 export const LoginForm = ({ onLogin }) => {
-  const { onClickRegister } = useAuth();
-  const navigate = useNavigate();
+  // const { onClickRegister } = useAuth();
+  // const navigate = useNavigate();
 
   const initialValues = {
     email: '',

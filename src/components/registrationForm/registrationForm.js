@@ -1,11 +1,11 @@
 import React from 'react';
 import { useFormik } from 'formik';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 //import Visibility from '@mui/icons-material/Visibility';
 //import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { Box, TextField, Typography, Button } from '@mui/material';
 import { buttonLR, labelFontStyle } from '../../theme';
-import { useAuth } from '../../helpers/authContext/authContext';
+// import { useAuth } from '../../helpers/authContext/authContext';
 
 const validateRegister = values => {
   const errors = {};
@@ -28,8 +28,8 @@ const validateRegister = values => {
 };
 
 export const RegistrationForm = ({ onRegister }) => {
-  const { onClickSignIn, onClickRegister } = useAuth();
-  const navigate = useNavigate();
+  // const { onClickSignIn, onClickRegister } = useAuth();
+  // const navigate = useNavigate();
 
   const initialValues = {
     name: '',

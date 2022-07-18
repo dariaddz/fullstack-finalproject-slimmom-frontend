@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Button, Typography, Box } from '@mui/material';
-import { Paper } from '@mui/material';
+import {
+  // Button, Typography,
+  Box,
+} from '@mui/material';
+// import { Paper } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 import { authSelectors, authOperations } from '../../redux/auth';
 import { Spiner } from '../../components/spiner';
