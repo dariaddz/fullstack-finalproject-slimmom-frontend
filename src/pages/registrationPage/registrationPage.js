@@ -26,8 +26,8 @@ export function RegistrationPage() {
         sx={{
           padding: {
             xs: '40px 20px 0 20px',
-            md: '160px 32px 0 32px',
-            lg: '160px 16px 0 16px',
+            md: '100px 32px 0 32px',
+            lg: '100px 16px 0 16px',
           },
         }}
       >
