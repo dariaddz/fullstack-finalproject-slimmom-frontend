@@ -7,6 +7,7 @@ import { Spiner } from '../../components/spiner';
 
 import { Box } from '@mui/material';
 import { LoginForm } from '../../components/loginForm';
+import s from './loginPage.module.css';
 
 export function LoginPage() {
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ export function LoginPage() {
         },
       }}
     >
+      <div className={s.container}></div>
       <LoginForm onLogin={onLogin} />
       {isPending && <Spiner />}
     </Box>

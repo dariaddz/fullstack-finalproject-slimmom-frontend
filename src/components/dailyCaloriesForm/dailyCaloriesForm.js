@@ -1,51 +1,48 @@
-import { useDispatch } from "react-redux";
-import { postProduct } from "../../redux/userSlice";
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import { useFormik } from "formik";
-import { Typography, TextField, Button } from "@mui/material";
-import Modal from "../modal";
-import DailyCalorieIntake from "../dailyCalorieIntake";
-import s from "./dailyCaloriesForm.module.css";
+import { useDispatch } from 'react-redux';
+import { postProduct } from '../../redux/userSlice';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useFormik } from 'formik';
+import { Typography, TextField, Button } from '@mui/material';
+import Modal from '../modal';
+import DailyCalorieIntake from '../dailyCalorieIntake';
+import s from './dailyCaloriesForm.module.css';
 import {
   FormLabel,
   buttonLR,
   FormBox,
   labelFontStyle,
   MainContainer,
-} from "../../theme";
-import validationSchema from "../../middlewares";
-import { Spiner } from "../../components/spiner";
-import authSelectors from "../../redux/auth/authSelectors";
-import { calcDataPrivate } from "../../redux/calculator/calculator_operation";
-
+} from '../../theme';
+import validationSchema from '../../middlewares';
+import { Spiner } from '../../components/spiner';
+import authSelectors from '../../redux/auth/authSelectors';
+import { calcDataPrivate } from '../../redux/calculator/calculator_operation';
 
 console.log(calcDataPrivate);
 
 const DailyCaloriesForm = () => {
   const isLogin = useSelector(authSelectors.getIsLoggedIn);
-  const token = useSelector((state) => state.auth.token);
+  const token = useSelector(state => state.auth.token);
 
-
-
-  const userData = useSelector((state) => {
+  const userData = useSelector(state => {
     return state.userData.user;
   });
 
-  console.log("userData:",userData)
+  console.log('userData:', userData);
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
 
-  const isPending = useSelector((state) => {
+  const isPending = useSelector(state => {
     return state.userData.isPending;
   });
 
   const initialValues = {
-    height: "",
-    age: "",
-    currentWeight: "",
-    desiredWeight: "",
-    bloodType: "1",
+    height: '',
+    age: '',
+    currentWeight: '',
+    desiredWeight: '',
+    bloodType: '1',
   };
 
   const formik = useFormik({
@@ -63,23 +60,22 @@ const DailyCaloriesForm = () => {
     validationSchema: validationSchema,
   });
 
-  const  onClose=()=>{
-    setShowModal(false)
-   
-    }
+  const onClose = () => {
+    setShowModal(false);
+  };
   return (
     <>
       <MainContainer>
         <form onSubmit={formik.handleSubmit}>
           <Typography
             conponent="h2"
-            display={"block"}
+            display={'block'}
             sx={{
-              fontFamily: "Gotham Pro",
-              fontSize: { sm: "18px", md: "34px" },
-              fontWeight: "700",
-              width: { sm: "280px", md: "700px", lg: "600px" },
-              mb: { xs: "32px", md: "68px" },
+              fontFamily: 'Gotham Pro',
+              fontSize: { sm: '18px', md: '34px' },
+              fontWeight: '700',
+              width: { sm: '280px', md: '700px', lg: '600px' },
+              mb: { xs: '32px', md: '68px' },
             }}
           >
             Прорахуй свою добову норму калорій прямо зараз
@@ -91,9 +87,9 @@ const DailyCaloriesForm = () => {
                 <TextField
                   InputLabelProps={{ style: { ...labelFontStyle } }}
                   inputProps={{
-                    style: { color: "#111111", paddingBottom: "15px" },
+                    style: { color: '#111111', paddingBottom: '15px' },
                   }}
-                  sx={{ width: { xs: "280px", md: "240px" } }}
+                  sx={{ width: { xs: '280px', md: '240px' } }}
                   variant="standard"
                   id="height"
                   name="height"
@@ -110,9 +106,9 @@ const DailyCaloriesForm = () => {
                 <TextField
                   InputLabelProps={{ style: { ...labelFontStyle } }}
                   inputProps={{
-                    style: { color: "#111111", paddingBottom: "15px" },
+                    style: { color: '#111111', paddingBottom: '15px' },
                   }}
-                  sx={{ width: { xs: "280px", md: "240px" } }}
+                  sx={{ width: { xs: '280px', md: '240px' } }}
                   variant="standard"
                   id="age"
                   name="age"
@@ -129,9 +125,9 @@ const DailyCaloriesForm = () => {
                 <TextField
                   InputLabelProps={{ style: { ...labelFontStyle } }}
                   inputProps={{
-                    style: { color: "#111111", paddingBottom: "15px" },
+                    style: { color: '#111111', paddingBottom: '15px' },
                   }}
-                  sx={{ width: { xs: "280px", md: "240px" } }}
+                  sx={{ width: { xs: '280px', md: '240px' } }}
                   variant="standard"
                   id="currentWeight"
                   name="currentWeight"
@@ -154,9 +150,9 @@ const DailyCaloriesForm = () => {
                 <TextField
                   InputLabelProps={{ style: { ...labelFontStyle } }}
                   inputProps={{
-                    style: { color: "#111111", paddingBottom: "15px" },
+                    style: { color: '#111111', paddingBottom: '15px' },
                   }}
-                  sx={{ width: { xs: "280px", md: "240px" } }}
+                  sx={{ width: { xs: '280px', md: '240px' } }}
                   variant="standard"
                   id="desiredWeight"
                   name="desiredWeight"
@@ -181,11 +177,11 @@ const DailyCaloriesForm = () => {
                   className={s.radioGroup}
                 >
                   <Typography
-                    mb={"20px"}
-                    fontWeight={"700"}
-                    fontFamily={"Verdana"}
-                    fontSize={"14px"}
-                    color={"rgb(118, 118, 118)"}
+                    mb={'20px'}
+                    fontWeight={'700'}
+                    fontFamily={'Verdana'}
+                    fontSize={'14px'}
+                    color={'rgb(118, 118, 118)'}
                   >
                     Група крові*
                   </Typography>
@@ -196,7 +192,7 @@ const DailyCaloriesForm = () => {
                     name="bloodType"
                     value="1"
                     onChange={formik.handleChange}
-                    checked={formik.values.bloodType === "1"}
+                    checked={formik.values.bloodType === '1'}
                   />
                   <span className={s.radioButton}>1</span>
 
@@ -205,7 +201,7 @@ const DailyCaloriesForm = () => {
                     name="bloodType"
                     value="2"
                     onChange={formik.handleChange}
-                    checked={formik.values.bloodType === "2"}
+                    checked={formik.values.bloodType === '2'}
                   />
                   <span className={s.radioButton}>2</span>
 
@@ -214,7 +210,7 @@ const DailyCaloriesForm = () => {
                     name="bloodType"
                     value="3"
                     onChange={formik.handleChange}
-                    checked={formik.values.bloodType === "3"}
+                    checked={formik.values.bloodType === '3'}
                   />
                   <span className={s.radioButton}>3</span>
 
@@ -223,7 +219,7 @@ const DailyCaloriesForm = () => {
                     name="bloodType"
                     value="4"
                     onChange={formik.handleChange}
-                    checked={formik.values.bloodType === "4"}
+                    checked={formik.values.bloodType === '4'}
                   />
                   <span className={s.radioButtonLast}>4</span>
                 </div>
@@ -237,12 +233,12 @@ const DailyCaloriesForm = () => {
               ...buttonLR,
 
               margin: {
-                xs: "0 auto ",
-                md: "40px 32px 0 0px",
-                lg: "40px 0 0 330px",
+                xs: '0 auto ',
+                md: '40px 32px 0 0px',
+                lg: '40px 0 0 330px',
               },
-              textAlign: "center",
-              display: "block",
+              textAlign: 'center',
+              display: 'block',
             }}
             color="buttonLogin"
             type="submit"
@@ -250,7 +246,7 @@ const DailyCaloriesForm = () => {
               setShowModal(true);
             }}
           >
-            <Typography sx={{ ...labelFontStyle, color: "#FFFFFF" }}>
+            <Typography sx={{ ...labelFontStyle, color: '#FFFFFF' }}>
               Схуднути
             </Typography>
           </Button>
@@ -258,9 +254,7 @@ const DailyCaloriesForm = () => {
       </MainContainer>
       {isPending && <Spiner />}
       {!isLogin && showModal && userData && (
-        <Modal onClose={onClose}>
-          {<DailyCalorieIntake />}
-        </Modal>
+        <Modal onClose={onClose}>{<DailyCalorieIntake />}</Modal>
       )}
     </>
   );

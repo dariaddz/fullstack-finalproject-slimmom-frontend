@@ -27,7 +27,8 @@ const DiaryPage = () => {
   };
 
   return (
-    <Box sx={{ position: 'relative' }}>
+    <Box>
+      {/* sx={{ position: 'relative' }} */}
       {isLoggedIn && (
         <Box
           sx={{

@@ -1,26 +1,30 @@
 @media screen and (min-width: 768px) {
-    .container {
-        min-height: 100vh;
-        background-image: url('../../images/mainPage/StrawberryLaptop.png'),
-            url('../../images/mainPage/GreenLaptop.png'),
-            url('../../images/mainPage/BananaLaptop.png'),
-            url('../../images/mainPage/DecoreLaptop.png');
-        background-position: bottom 147px right -20px, right bottom, right bottom,
-            right bottom;
-        background-repeat: no-repeat;
-        transition: all 950ms cubic-bezier(0.4, 0, 0.2, 1);
-    }
+  .container {
+    min-height: 100vh;
+    background-image: url('../../images/mainPage/StrawberryLaptop.png'),
+      url('../../images/mainPage/GreenLaptop.png'),
+      url('../../images/mainPage/BananaLaptop.png'),
+      url('../../images/mainPage/DecoreLaptop.png');
+    /* background-position: bottom 147px right -20px, right bottom, right bottom,
+      right bottom; */
+    background-position: bottom 30% right -20px, right 30% bottom, right bottom,
+      right bottom;
+    background-repeat: no-repeat;
+    transition: all 950ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
 }
 
 @media screen and (min-width: 1280px) {
-    .container {
-        background-image: url('../../images/mainPage/StrawberryDesc.png'),
-            url('../../images/mainPage/GreenDesc.png'),
-            url('../../images/mainPage/BananaDesc.png'),
-            url('../../images/mainPage/DecoreDesc.png');
-        background-position: top 350px right 345px, left top, right top,
-            right bottom;
-        background-repeat: no-repeat;
-        transition: all 950ms cubic-bezier(0.4, 0, 0.2, 1);
-    }
+  .container {
+    background-image: url('../../images/mainPage/StrawberryDesc.png'),
+      url('../../images/mainPage/GreenDesc.png'),
+      url('../../images/mainPage/BananaDesc.png'),
+      url('../../images/mainPage/DecoreDesc.png');
+    /* background-position: top 350px right 345px, left top, right top, */
+    /* right bottom; */
+    background-position: bottom 10% right 5%, left 65% top 20%, right top 0%,
+      right 0% bottom 0%;
+    background-repeat: no-repeat;
+    transition: all 950ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
 }
