@@ -17,7 +17,8 @@ const CalculatorPage = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   return (
-    <Box sx={{ position: 'relative' }}>
+    <Box>
+      {/* sx={{ position: 'relative' }} */}
       {isLoggedIn && (
         <Box
           sx={{
@@ -48,9 +49,7 @@ const CalculatorPage = () => {
         />
       )}
       <div className={s.container}>
-        <div>
-          <DailyCaloriesForm />
-        </div>
+        <DailyCaloriesForm />
         <RightSideBar />
       </div>
     </Box>

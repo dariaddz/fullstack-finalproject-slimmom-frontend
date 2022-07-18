@@ -42,7 +42,9 @@ function DiaryProductsList() {
       </List>
     </Box>
   ) : currentDate === today ? (
-    <Box>Сьогодні Ви нічого не їли :(</Box>
+    <Box sx={{ color: '#fc842d', marginBottom: 5 }}>
+      Сьогодні Ви нічого не їли :(
+    </Box>
   ) : (
     <Box>{`${currentDate} Ви  нічого не їли`}</Box>
   );

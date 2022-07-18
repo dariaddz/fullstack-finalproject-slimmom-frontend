@@ -49,9 +49,10 @@ input[type='radio']:checked::after {
   visibility: visible;
 }
 
-.radioButton, .radioButtonLast {
+.radioButton,
+.radioButtonLast {
   margin-left: 10px;
-    font-size: 20px;
+  font-size: 20px;
   line-height: 17px;
   letter-spacing: 0.04em;
   font-weight: 400;
@@ -61,9 +62,9 @@ hr {
 }
 
 .radioButton {
-    margin-right: 31px;
+  margin-right: 31px;
 }
-.radioButtonLast{
+.radioButtonLast {
   margin-right: 0;
 }
 .radioGroup {
@@ -71,7 +72,6 @@ hr {
 }
 
 @media screen and (max-width: 767px) {
-  
   .radioGroup {
     width: 280px;
   }
@@ -85,5 +85,8 @@ hr {
   .hr {
     width: 240px;
     border-top: 1px solid rgb(118, 118, 118);
+  }
+  form {
+    margin-top: 50px;
   }
 }

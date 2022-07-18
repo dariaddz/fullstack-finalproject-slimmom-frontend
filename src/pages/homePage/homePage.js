@@ -1,12 +1,12 @@
 import { NavLink } from 'react-router-dom';
 import { Box } from '@mui/material';
-
+import s from './homePage.module.css';
 import DailyCaloriesForm from '../../../src/components/dailyCaloriesForm';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 const HomePage = () => {
   return (
-    <>
+    <div className={s.container}>
       {/* {isLoggedIn && ( */}
       <Box
         sx={{
@@ -30,7 +30,7 @@ const HomePage = () => {
       </Box>
       {/* )} */}
       <DailyCaloriesForm />
-    </>
+    </div>
   );
 };
 
