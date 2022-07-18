@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { authSelectors } from '../../redux/auth';
+// import { NavLink, useLocation } from 'react-router-dom';
 
 import { Box } from '@mui/material';
 import Logo from '../logo';
@@ -7,11 +8,12 @@ import AuthNav from '../authNav';
 import Navigation from '../navigation';
 import UserInfo from '../userInfo';
 import Burger from '../burger';
-import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+// import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import s from './appBar.module.css';
 
 function AppBar() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  // const { pathname } = useLocation();
 
   return (
     <div className={s.appbar}>
@@ -110,7 +112,7 @@ function AppBar() {
       /> */}
       {/* серый контейнер */}
       {/* ----------------------- */}
-      {isLoggedIn && (
+      {/* {isLoggedIn && (
         <Box
           sx={{
             display: { xs: 'flex', sm: 'flex', md: 'none', lg: 'none' },
@@ -122,14 +124,16 @@ function AppBar() {
             padding: '14px 20px',
           }}
         >
-          <KeyboardBackspaceIcon
-            sx={{ display: { sx: 'block', sm: 'block', md: 'none' } }}
-            // className={styles.backButton}
-            // onClick={handleClick}
-          />
+          <NavLink to={pathname === '/diary' ? '/calculator' : '/diary'}>
+            <KeyboardBackspaceIcon
+              sx={{ display: { sx: 'block', sm: 'block', md: 'none' } }}
+              // className={styles.backButton}
+              // onClick={handleClick}
+            />
+          </NavLink>
           <UserInfo />
         </Box>
-      )}
+      )} */}
 
       {/* ----------------------- */}
     </div>
