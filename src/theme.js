@@ -54,7 +54,7 @@ const MainContainer = styled(Container)(({ theme }) => ({
     justifyContent: 'start',
   },
   [theme.breakpoints.up('lg')]: {
-    padding: '0 0px 0px 25px',
+    padding: '150px 0px 0px 25px',
   },
 }));
 const labelFontStyle = {
