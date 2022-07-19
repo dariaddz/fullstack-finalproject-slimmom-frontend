@@ -8,6 +8,7 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { authSelectors, authOperations } from '../../redux/auth';
 import { Spiner } from '../../components/spiner';
+import { ResetProductState } from '../rightSideBar/rightSideBar';
 
 // import s from './userInfo.module.css';
 
@@ -75,7 +76,10 @@ export default function UserInfo() {
             marginLeft: '16px',
             display: 'inline-flex',
           }}
-          onClick={() => dispatch(authOperations.logout())}
+          onClick={() => {
+            dispatch(authOperations.logout());
+            ResetProductState();
+          }}
           color={active === 'exit' ? '#212121' : '#9B9FAA'}
         >
           Вихід
