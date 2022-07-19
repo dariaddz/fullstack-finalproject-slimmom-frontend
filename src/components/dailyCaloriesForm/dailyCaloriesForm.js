@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { postProduct } from '../../redux/userSlice';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import { Typography, TextField, Button } from '@mui/material';
@@ -21,7 +21,7 @@ import { calcDataPrivate } from '../../redux/calculator/calculator_operation';
 
 console.log(calcDataPrivate);
 
-const DailyCaloriesForm = ({ getShowModal, isModalOpen }) => {
+const DailyCaloriesForm = () => {
   const isLogin = useSelector(authSelectors.getIsLoggedIn);
   const token = useSelector(state => state.auth.token);
 
@@ -33,20 +33,6 @@ const DailyCaloriesForm = ({ getShowModal, isModalOpen }) => {
   const [showModal, setShowModal] = useState(false);
   console.log(showModal);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (isLogin) {
-      return;
-    }
-    getShowModal(showModal);
-  }, [showModal]);
-
-  useEffect(() => {
-    if (isLogin) {
-      return;
-    }
-    setShowModal(isModalOpen);
-  }, [isModalOpen]);
 
   const isPending = useSelector(state => {
     return state.userData.isPending;
@@ -269,7 +255,9 @@ const DailyCaloriesForm = ({ getShowModal, isModalOpen }) => {
       </MainContainer>
       {isPending && <Spiner />}
       {!isLogin && showModal && userData && (
-        <Modal onClose={onClose}>{<DailyCalorieIntake />}</Modal>
+        <Modal onClose={onClose}>
+          {<DailyCalorieIntake onClose={onClose} />}
+        </Modal>
       )}
     </>
   );
