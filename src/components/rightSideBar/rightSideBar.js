@@ -25,7 +25,7 @@ const SideBar = () => {
   const dispatch = useDispatch();
   const date = useSelector(dateEatenProducts);
   const notRecommended = useSelector(notRecommendedProducts);
-  const token = useSelector(state => state.auth.token);
+  // const token = useSelector(state => state.auth.token);
   const kcalRemain = useSelector(getKcalRemain);
   const percentage = useSelector(getPercentage);
   const totalKcalPerDay = useSelector(getTotalKcalPerDay);
@@ -39,8 +39,8 @@ const SideBar = () => {
     (today.getMonth() + 1)
   ).slice(-2)}-${today.getDate()}`;
   useEffect(() => {
-    dispatch(getCalcData(currentDate, token));
-  }, [dispatch, currentDate, token, kcal]);
+    dispatch(getCalcData(currentDate));
+  }, [dispatch, currentDate]);
 
   const getMeRandomProducts = (sourceArray, neededElements) => {
     let result = [];
