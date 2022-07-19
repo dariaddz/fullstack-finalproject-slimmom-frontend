@@ -5,6 +5,15 @@ import DailyCaloriesForm from '../../../src/components/dailyCaloriesForm';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 const HomePage = () => {
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // const getShowModal = data => {
+  //   setIsModalOpen(data);
+  // };
+
+  // const toggleIsModalOpen = () => {
+  //   setIsModalOpen(!isModalOpen);
+  // };
   return (
     <div className={s.container}>
       {/* {isLoggedIn && ( */}
@@ -29,7 +38,9 @@ const HomePage = () => {
         {/* <UserInfo /> */}
       </Box>
       {/* )} */}
-      <DailyCaloriesForm />
+      <Box sx={{ position: 'relative' }}>
+        <DailyCaloriesForm />
+      </Box>
     </div>
   );
 };
