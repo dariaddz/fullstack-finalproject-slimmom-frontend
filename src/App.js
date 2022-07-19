@@ -95,7 +95,7 @@ function App() {
                 element={
                   <PrivateRoute
                     component={<CalculatorPage />}
-                    redirectTo={'login'}
+                    redirectTo={'/login'}
                   />
                 }
               />
