@@ -64,6 +64,7 @@ const DailyCaloriesForm = () => {
   const onClose = () => {
     setShowModal(false);
   };
+
   return (
     <>
       <MainContainer>
@@ -243,6 +244,7 @@ const DailyCaloriesForm = () => {
             }}
             color="buttonLogin"
             type="submit"
+            disabled={!formik.isValid || !formik.dirty}
             onClick={() => {
               setShowModal(true);
             }}
