@@ -42,9 +42,9 @@ function App() {
                   <PublicRoute
                     component={<HomePage />}
                     restricted
-                    redirectTo={'/diary'}
-                    // redirectTo={!isCalculated ? '/' : '/diary'}
-                    // restricted
+                    // redirectTo={'/diary'}
+                    redirectTo={!isCalculated ? '/calculator' : '/diary'}
+                  // restricted
                   />
                 }
               />
