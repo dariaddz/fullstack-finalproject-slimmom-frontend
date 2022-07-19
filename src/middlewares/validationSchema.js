@@ -14,7 +14,7 @@ const validationSchema = yup.object().shape({
       .positive()
       .integer()
       .min(18, 'Тільки для повнолітніх (18+)')
-      .max(100, 'Ваш вік не повинен перевищувати 100 років'),
+      .max(100, 'Максимальний вік 100 років'),
   
     currentWeight: yup
       .number()
@@ -22,16 +22,16 @@ const validationSchema = yup.object().shape({
       .required('Зазначте вашу поточну вагу')
       .positive()
       .integer()
-      .min(20)
-      .max(500),
+      .min(20, 'Мінімальна вага 20 кг')
+      .max(500, 'Максимальна вага 500 кг'),
     desiredWeight: yup
       .number()
   
       .required('Зазначте вашу бажану вагу')
       .positive()
       .integer()
-      .min(40)
-      .max(300),
+      .min(20, 'Мінімальна вага 20 кг')
+      .max(500, 'Максимальна вага 500 кг'),
   });
 
   export default validationSchema;
