@@ -17,7 +17,16 @@ const CalculatorPage = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   return (
-    <Box>
+    <Box
+      sx={{
+        position: {
+          xs: 'relative',
+          sm: 'relative',
+          md: 'relative',
+          lg: 'static',
+        },
+      }}
+    >
       {/* sx={{ position: 'relative' }} */}
       {isLoggedIn && (
         <Box
