@@ -244,7 +244,7 @@ const DailyCaloriesForm = () => {
             }}
             color="buttonLogin"
             type="submit"
-            disabled={!formik.isValid || !formik.dirty}
+            disabled={!formik.dirty}
             onClick={() => {
               setShowModal(true);
             }}
