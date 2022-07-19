@@ -1,7 +1,6 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { Button, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import { useAuth } from '../../helpers/authContext/authContext';
 
 const typografyStyle = {
   fontFamily: 'Gotham Pro',
@@ -17,8 +16,7 @@ const typografyStyle = {
 };
 
 const AuthNav = () => {
-  const { active, onClickSignIn, onClickRegister } = useAuth();
-
+  const { pathname } = useLocation();
   return (
     <Box sx={{ display: 'flex' }}>
       <Button
@@ -28,8 +26,7 @@ const AuthNav = () => {
       >
         <Typography
           sx={{ ...typografyStyle }}
-          color={active === 'signIn' ? '#212121' : '#9B9FAA'}
-          onClick={onClickSignIn}
+          color={pathname === '/login' ? '#212121' : '#9B9FAA'}
         >
           Вхід
         </Typography>
@@ -41,8 +38,7 @@ const AuthNav = () => {
       >
         <Typography
           sx={{ ...typografyStyle }}
-          onClick={onClickRegister}
-          color={active === 'register' ? '#212121' : '#9B9FAA'}
+          color={pathname === '/register' ? '#212121' : '#9B9FAA'}
         >
           Реєстрація
         </Typography>

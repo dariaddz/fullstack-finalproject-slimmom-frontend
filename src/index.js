@@ -11,7 +11,6 @@ import { store, persistor } from './redux/store';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
-import { AuthProvider } from './helpers/authContext/authContext';
 import { MobileMenuProvider } from './helpers/mobileMenuContext/mobileMenuContext';
 
 import './fonts/fonts.css';
@@ -22,11 +21,9 @@ ReactDOM.createRoot(document.querySelector('#root')).render(
       <React.StrictMode>
         <BrowserRouter>
           <ThemeProvider theme={theme}>
-            <AuthProvider>
-              <MobileMenuProvider>
-                <App />
-              </MobileMenuProvider>
-            </AuthProvider>
+            <MobileMenuProvider>
+              <App />
+            </MobileMenuProvider>
             <Toaster position="top-right" toastOptions={{ duration: 3000 }} />
           </ThemeProvider>
         </BrowserRouter>
