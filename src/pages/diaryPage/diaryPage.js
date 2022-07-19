@@ -35,7 +35,9 @@ const DiaryPage = () => {
           md: 'relative',
           lg: 'static',
         },
-        width: '100%',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        width: { xs: '320px', sm: '320px', md: '100%', lg: '100%' },
       }}
     >
       {isLoggedIn && (

@@ -40,11 +40,13 @@ const DailyCalorieIntake = ({ onClose }) => {
         sx={{
           display: { xs: 'flex', sm: 'flex', md: 'none', lg: 'none' },
           height: '14px',
-          width: 'inherit',
+
           backgroundColor: '#EFF1F3',
           justifyContent: 'space-between',
           alignItems: 'center',
           padding: '14px 20px',
+          width: '240px',
+          marginBottom: '40px',
         }}
       >
         <NavLink
