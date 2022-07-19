@@ -1,17 +1,19 @@
-import { useState, forwardRef } from 'react';
+import { useState, useEffect, forwardRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { dateEatenProduct } from '../../redux/day/day_operation';
-
 import styles from './dateForm.module.css';
 import { ReactComponent as CalendarIcon } from '../../images/calendar.svg';
-
 import DatePicker from 'react-datepicker';
-
 import 'react-datepicker/dist/react-datepicker.css';
+import today from '../../helpers/currentDateLocal';
 
 const DiaryDateCalendar = () => {
   const [startDate, setStartDate] = useState(new Date());
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(dateEatenProduct(today));
+  }, [dispatch]);
 
   const onChange = date => {
     const jsonData = date.toJSON();
@@ -26,15 +28,15 @@ const DiaryDateCalendar = () => {
         className={styles.date}
         onClick={onClick}
         ref={ref}
-        title="Нажмите для выбора даты"
+        title="Нажміть для выбора дати"
       >
-        {startDate.toLocaleDateString('ru-RU')}
+        {startDate.toLocaleDateString('fr-CA')}
       </span>
 
       <span>
         <CalendarIcon
-          alt="Выбор даты на календаре"
-          title="Нажмите для выбора даты"
+          alt="Вибір дати на календарі"
+          title="Нажміть для выбора дати"
           width="18px"
           height="20px"
           className={styles.icon}
@@ -52,7 +54,7 @@ const DiaryDateCalendar = () => {
         customInput={<CustomInput />}
         maxDate={new Date()}
         onChange={date => onChange(date)}
-        todayButton="Сегодня"
+        todayButton="Сьогодні"
         // locale="ru-RU"
       />
     </div>
