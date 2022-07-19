@@ -134,7 +134,7 @@ const DiaryAddProductForm = () => {
             value={productWeight}
             placeholder="Грами"
             type="number"
-            min="0"
+            min="1"
             onChange={handleChangeWeight}
             required
           />

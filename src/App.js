@@ -16,6 +16,7 @@ const RegistrationPage = lazy(() => import('./pages/registrationPage'));
 const LoginPage = lazy(() => import('./pages/loginPage'));
 const CalculatorPage = lazy(() => import('./pages/calculatorPage'));
 const DiaryPage = lazy(() => import('./pages/diaryPage'));
+const NotFoundPage = lazy(() => import('./pages/notFoundPage'));
 
 function App() {
   //--Eugen
@@ -44,7 +45,7 @@ function App() {
                     restricted
                     // redirectTo={'/diary'}
                     redirectTo={!isCalculated ? '/calculator' : '/diary'}
-                  // restricted
+                    // restricted
                   />
                 }
               />
@@ -98,6 +99,7 @@ function App() {
                   />
                 }
               />
+              <Route path="*" element={<NotFoundPage />} />
             </Route>
 
             {/* <Route

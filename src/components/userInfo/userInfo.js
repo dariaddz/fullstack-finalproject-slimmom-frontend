@@ -35,6 +35,10 @@ export default function UserInfo() {
     setActiv('nick');
   };
 
+  async function logoutAndReset() {
+    await dispatch(authOperations.logout()).then(ResetProductState());
+  }
+
   return (
     <>
       <Box
@@ -77,8 +81,9 @@ export default function UserInfo() {
             display: 'inline-flex',
           }}
           onClick={() => {
-            dispatch(authOperations.logout());
-            ResetProductState();
+            // dispatch(authOperations.logout());
+            // ResetProductState();
+            logoutAndReset();
           }}
           color={active === 'exit' ? '#212121' : '#9B9FAA'}
         >
