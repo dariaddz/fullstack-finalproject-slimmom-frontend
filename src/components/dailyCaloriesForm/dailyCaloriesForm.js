@@ -31,7 +31,7 @@ const DailyCaloriesForm = () => {
 
   console.log('userData:', userData);
   const [showModal, setShowModal] = useState(false);
-  console.log(showModal);
+
   const dispatch = useDispatch();
 
   const isPending = useSelector(state => {

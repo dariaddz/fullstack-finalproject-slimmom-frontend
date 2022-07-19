@@ -1,7 +1,16 @@
 .appbar{
     position: relative;
-    z-index: 1000;
+    z-index: 100;
     background-color: transparent;
+    width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 768px) {
+    .appbar {
+        width: inherit;
+    }
 }
 
 .container {

@@ -1,5 +1,6 @@
 .modal {
     position: absolute;
+    z-index: 100;
     left: 50%;
     top: 50%;
     background-color: #fff;
@@ -13,11 +14,13 @@
 }
 @media screen and (max-width: 767px){
     .modal {
+        
         margin-top: 100px;
     }}
 
 @media screen and (min-width: 768px) {
     .modal {
+        padding-top: 64px;
         width: 672px;
         height: 572px;
         margin-top: 0;
@@ -27,6 +30,7 @@
     background-repeat: no-repeat;
     }
     .overlay {
+        z-index: 1000;
         position: relative; 
         position: fixed;
         top: 0;
@@ -52,6 +56,7 @@ body .modal {
     position: absolute;
     top: 20px;
     right: 20px;
+    cursor: pointer;
     background: transparent;
     color: black;
     padding: 11px 15px;
