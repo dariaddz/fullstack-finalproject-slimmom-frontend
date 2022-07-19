@@ -33,7 +33,7 @@ const CalculatorPage = () => {
           sx={{
             display: { xs: 'flex', sm: 'flex', md: 'none', lg: 'none' },
             height: '14px',
-            width: '320px',
+            width: 'inherit',
             backgroundColor: '#EFF1F3',
             justifyContent: 'space-between',
             alignItems: 'center',
