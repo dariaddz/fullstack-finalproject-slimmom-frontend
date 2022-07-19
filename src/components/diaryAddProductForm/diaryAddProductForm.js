@@ -3,17 +3,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useWindowWidth } from '@react-hook/window-size';
 import { toast } from 'react-hot-toast';
 
+// import { useNavigate } from 'react-router-dom';
+
 import debounce from 'lodash.debounce';
 import styles from './diaryAddProductForm.module.css';
 
 import { getProducts, addProduct } from '../../redux/day/day_operation';
 import { dateEatenProducts } from '../../redux/day/day_selector';
 
+// import useViewport from './helperAdd';
+
 const DiaryAddProductForm = () => {
   const [productName, setProductName] = useState('');
   const [productWeight, setProductWeight] = useState('');
   const [productCkal, setProductCkal] = useState('');
   const [debouncedProduct, setDebouncedProduct] = useState([]);
+
   const dispatch = useDispatch();
 
   const date = useSelector(dateEatenProducts);
@@ -50,6 +55,9 @@ const DiaryAddProductForm = () => {
     setProductWeight(Number(value));
   });
 
+  // const { width } = useViewport();
+  // const breakpoint = 767;
+
   const handleSubmit = event => {
     event.preventDefault();
     if (debouncedProduct.length === 0) {
@@ -72,10 +80,20 @@ const DiaryAddProductForm = () => {
         title: productName,
       })
     );
-    // dispatch(dateEatenProduct(date))
 
+    // dispatch(dateEatenProduct(date))
+    // if (width < breakpoint) {
+    //   handleGoBack();
+    // }
     clear();
+    return toast.success('Продукт успішно додано');
   };
+
+  // const navigate = useNavigate();
+  // const handleGoBack = () => {
+  //   navigate('/diary');
+  // };
+
   const clear = () => {
     setProductName('');
     setProductWeight('');
