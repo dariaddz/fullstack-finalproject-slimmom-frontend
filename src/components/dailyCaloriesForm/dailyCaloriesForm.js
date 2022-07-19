@@ -256,7 +256,7 @@ const DailyCaloriesForm = () => {
         </form>
       </MainContainer>
       {isPending && <Spiner />}
-      {!isLogin && showModal && userData && (
+      {showModal && userData && (
         <Modal onClose={onClose}>
           {<DailyCalorieIntake onClose={onClose} />}
         </Modal>

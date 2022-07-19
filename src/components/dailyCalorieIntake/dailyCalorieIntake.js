@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import s from './dailyCalorieIntake.module.css';
 import { Typography, Button, Box } from '@mui/material';
+import authSelectors from '../../redux/auth/authSelectors';
 
 const buttonLR = {
   height: '44px',
@@ -22,9 +23,10 @@ const labelFontStyle = {
 };
 
 const DailyCalorieIntake = ({ onClose }) => {
-  const userData = useSelector(state => {
-    return state.userData.user;
-  });
+  const isLogin = useSelector(authSelectors.getIsLoggedIn);
+  const userData = useSelector(state => state.userData.user);
+
+  const userLoginData = useSelector(state => state.kcal.calcData);
 
   const getMeRandomProducts = (sourceArray, neededElements) => {
     let result = [];
@@ -80,16 +82,27 @@ const DailyCalorieIntake = ({ onClose }) => {
         Ваша рекомендована добова норма калорій становить
       </Typography>
 
-      {userData && (
+{!isLogin? (userData && (
         <div className={s.dataResult}>
+  
           {userData.kcal} <span className={s.dataResultText}>калорій</span>
         </div>
-      )}
+      ))
+    :
+    (userLoginData && (
+      <div className={s.dataResult}>
+        {userLoginData.kcal} <span className={s.dataResultText}>калорій</span>
+      </div>
+    ))}
+
+
+
 
       <hr />
       <div className={s.products}>
         <p className={s.description}>Продукти, які вам не варто вживати</p>
 
+        {!isLogin?(
         <ol className={s.productList}>
           {getMeRandomProducts(userData.productsNotRecommended, 7).map(
             product => (
@@ -98,7 +111,18 @@ const DailyCalorieIntake = ({ onClose }) => {
               </li>
             )
           )}
-        </ol>
+        </ol>)
+        :(
+          <ol className={s.productList}>
+            {getMeRandomProducts(userLoginData.productsNotRecommended, 7).map(
+              product => (
+                <li key={uuidv4()} className={s.productItem}>
+                  {product}
+                </li>
+              )
+            )}
+          </ol>)
+}
       </div>
 
       <Link to={`/register`}>
