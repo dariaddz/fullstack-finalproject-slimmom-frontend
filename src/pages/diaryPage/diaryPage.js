@@ -51,7 +51,11 @@ const DiaryPage = () => {
         >
           <NavLink to="/calculator">
             <KeyboardBackspaceIcon
-              sx={{ display: { sx: 'block', sm: 'block', md: 'none' } }}
+              sx={{
+                textDecoration: 'none',
+                color: '#000000',
+                display: { sx: 'block', sm: 'block', md: 'none' },
+              }}
               // className={styles.backButton}
               // onClick={handleClick}
             />

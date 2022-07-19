@@ -31,13 +31,20 @@ const DailyCaloriesForm = ({ getShowModal, isModalOpen }) => {
 
   console.log('userData:', userData);
   const [showModal, setShowModal] = useState(false);
+  console.log(showModal);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (isLogin) {
+      return;
+    }
     getShowModal(showModal);
   }, [showModal]);
 
   useEffect(() => {
+    if (isLogin) {
+      return;
+    }
     setShowModal(isModalOpen);
   }, [isModalOpen]);
 
