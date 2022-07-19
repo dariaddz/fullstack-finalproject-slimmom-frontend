@@ -25,6 +25,9 @@ const CalculatorPage = () => {
           md: 'relative',
           lg: 'static',
         },
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        width: { xs: '320px', sm: '320px', md: '100%', lg: '100%' },
       }}
     >
       {/* sx={{ position: 'relative' }} */}
