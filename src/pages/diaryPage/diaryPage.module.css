@@ -12,10 +12,11 @@
 }
 
 .backButton {
-  position: absolute;
-  z-index: 1001;
-  top: -33px;
-  left: 20px;
+    position: absolute;
+    z-index: 1001;
+    top: 9px;
+    left: 20px;
+    color: transparent;
 }
 
 .notification {
