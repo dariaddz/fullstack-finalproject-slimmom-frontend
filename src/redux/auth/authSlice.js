@@ -51,6 +51,8 @@ const authSlice = createSlice({
     },
     [authOperations.register.rejected]: state => {
       state.isFetching = false;
+      state.isPending = false;
+      state.isLoggedIn = false;
     },
 
     [authOperations.login.pending](state) {
