@@ -33,7 +33,7 @@ const CalculatorPage = () => {
           sx={{
             display: { xs: 'flex', sm: 'flex', md: 'none', lg: 'none' },
             height: '14px',
-            width: 'inherit',
+            // width: '100%',
             backgroundColor: '#EFF1F3',
             justifyContent: 'space-between',
             alignItems: 'center',
@@ -42,7 +42,11 @@ const CalculatorPage = () => {
         >
           <NavLink to="/diary">
             <KeyboardBackspaceIcon
-              sx={{ display: { sx: 'block', sm: 'block', md: 'none' } }}
+              sx={{
+                textDecoration: 'none',
+                color: '#000000',
+                display: { sx: 'block', sm: 'block', md: 'none' },
+              }}
               // className={styles.backButton}
               // onClick={handleClick}
             />

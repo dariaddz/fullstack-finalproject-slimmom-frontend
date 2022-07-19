@@ -31,6 +31,7 @@ const DailyCaloriesForm = () => {
 
   console.log('userData:', userData);
   const [showModal, setShowModal] = useState(false);
+  console.log(showModal);
   const dispatch = useDispatch();
 
   const isPending = useSelector(state => {
@@ -254,7 +255,9 @@ const DailyCaloriesForm = () => {
       </MainContainer>
       {isPending && <Spiner />}
       {!isLogin && showModal && userData && (
-        <Modal onClose={onClose}>{<DailyCalorieIntake />}</Modal>
+        <Modal onClose={onClose}>
+          {<DailyCalorieIntake onClose={onClose} />}
+        </Modal>
       )}
     </>
   );

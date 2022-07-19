@@ -1,7 +1,8 @@
 import { useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom';
-
+import { NavLink } from 'react-router-dom';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import s from './dailyCalorieIntake.module.css';
 import { Typography, Button, Box } from '@mui/material';
 
@@ -20,7 +21,7 @@ const labelFontStyle = {
   letterSpacing: '0.04em',
 };
 
-const DailyCalorieIntake = () => {
+const DailyCalorieIntake = ({ onClose }) => {
   const userData = useSelector(state => {
     return state.userData.user;
   });
@@ -35,6 +36,35 @@ const DailyCalorieIntake = () => {
 
   return (
     <>
+      <Box
+        sx={{
+          display: { xs: 'flex', sm: 'flex', md: 'none', lg: 'none' },
+          height: '14px',
+          width: 'inherit',
+          backgroundColor: '#EFF1F3',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: '14px 20px',
+        }}
+      >
+        <NavLink
+          to="/"
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+          }}
+          onClick={onClose}
+        >
+          <KeyboardBackspaceIcon
+            sx={{
+              textDecoration: 'none',
+              color: '#000000',
+              display: { sx: 'block', sm: 'block', md: 'none' },
+            }}
+          />
+        </NavLink>
+        {/* <UserInfo /> */}
+      </Box>
       <Typography
         sx={{
           fontFamily: 'Gotham Pro',
