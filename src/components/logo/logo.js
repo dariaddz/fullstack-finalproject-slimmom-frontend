@@ -49,7 +49,7 @@ const Logo = () => {
         ) : (
           <Box
             sx={{
-              display: { sm: 'none', md: 'flex' },
+              display: { xs: 'none', sm: 'none', md: 'flex' },
               height: '16px',
             }}
           >
