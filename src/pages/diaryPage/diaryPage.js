@@ -11,7 +11,7 @@ import Box from '@mui/material/Box';
 import MobileMenuPage from '../mobileMenuPage';
 import { useMobileMenu } from '../../helpers/mobileMenuContext/mobileMenuContext';
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import { authSelectors } from '../../redux/auth';
 import UserInfo from '../../components/userInfo';
 import styles from './diaryPage.module.css';
