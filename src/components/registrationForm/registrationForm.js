@@ -12,17 +12,17 @@ const validateRegister = values => {
   if (!values.email) {
     errors.email = "Обов'зкове поле";
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Не вірний формат адреси ';
+    errors.email = 'Адреса має бути виду name@xxx.xxx  ';
   }
   if (!values.name) {
     errors.name = "Обов'зкове поле";
   } else if (values.name.length < 2) {
-    errors.name = 'Не вірний формат імені ';
+    errors.name = `Ім'я повинне містити мінімум 2 символи`;
   }
   if (!values.password) {
     errors.password = "Обов'зкове поле";
   } else if (values.password.length < 8) {
-    errors.password = 'Не вірний формат паролю';
+    errors.password = 'Пароль повинен містити мінімум 8 символів';
   }
   return errors;
 };
@@ -162,10 +162,10 @@ export const RegistrationForm = ({ onRegister }) => {
             }}
             color="buttonRegister"
             type="submit"
-            // onClick={() => {
-            //   console.log('onclickregister');
-            //   onRegister();
-            // }}
+          // onClick={() => {
+          //   console.log('onclickregister');
+          //   onRegister();
+          // }}
           >
             <Typography sx={{ ...labelFontStyle, color: '#fc842d' }}>
               Реєстрація
