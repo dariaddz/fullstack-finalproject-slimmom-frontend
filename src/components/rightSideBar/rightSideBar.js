@@ -45,8 +45,8 @@ const SideBar = () => {
   ).slice(-2)}-${today.getDate()}`;
 
   useEffect(() => {
-    dispatch(dateEatenProduct(date));
-  }, [dispatch, date]);
+    dispatch(dateEatenProduct(currentDate));
+  }, [dispatch, currentDate]);
 
   const getMeRandomProducts = (sourceArray, neededElements) => {
     let result = [];
