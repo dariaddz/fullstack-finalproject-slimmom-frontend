@@ -8,7 +8,7 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { authSelectors, authOperations } from '../../redux/auth';
 import { Spiner } from '../../components/spiner';
-import { ResetProductState } from '../rightSideBar/rightSideBar';
+// import { ResetProductState } from '../rightSideBar/rightSideBar';
 
 // import s from './userInfo.module.css';
 
@@ -35,9 +35,9 @@ export default function UserInfo() {
     setActiv('nick');
   };
 
-  async function logoutAndReset() {
-    await dispatch(authOperations.logout()).then(ResetProductState());
-  }
+  // async function logoutAndReset() {
+  //   await dispatch(authOperations.logout()).then(ResetProductState());
+  // }
 
   return (
     <>
@@ -81,9 +81,9 @@ export default function UserInfo() {
             display: 'inline-flex',
           }}
           onClick={() => {
-            // dispatch(authOperations.logout());
+            dispatch(authOperations.logout());
             // ResetProductState();
-            logoutAndReset();
+            // logoutAndReset();
           }}
           color={active === 'exit' ? '#212121' : '#9B9FAA'}
         >

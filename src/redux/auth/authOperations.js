@@ -76,7 +76,9 @@ const fetchCurrentUser = createAsyncThunk(
       return data.data;
     } catch (error) {
       if (error.response.status === 400) {
-        toast.error('Помилка авторизації або час сесії закінчився.\nАвторизуйтесь повторно.');
+        toast.error(
+          'Помилка авторизації або час сесії закінчився.\nАвторизуйтесь повторно.'
+        );
       }
       if (error.response.status === 401) {
         toast.error('Авторизацію не виконано.');

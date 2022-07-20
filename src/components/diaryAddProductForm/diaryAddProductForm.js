@@ -8,7 +8,11 @@ import { toast } from 'react-hot-toast';
 import debounce from 'lodash.debounce';
 import styles from './diaryAddProductForm.module.css';
 
-import { getProducts, addProduct } from '../../redux/day/day_operation';
+import {
+  getProducts,
+  addProduct,
+  dateEatenProduct,
+} from '../../redux/day/day_operation';
 import { dateEatenProducts } from '../../redux/day/day_selector';
 
 // import useViewport from './helperAdd';
@@ -80,8 +84,7 @@ const DiaryAddProductForm = () => {
         title: productName,
       })
     );
-
-    // dispatch(dateEatenProduct(date))
+    dispatch(dateEatenProduct(date));
     // if (width < breakpoint) {
     //   handleGoBack();
     // }
