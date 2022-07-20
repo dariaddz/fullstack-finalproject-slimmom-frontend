@@ -15,12 +15,16 @@ import { NavLink } from 'react-router-dom';
 import { authSelectors } from '../../redux/auth';
 import UserInfo from '../../components/userInfo';
 import styles from './diaryPage.module.css';
+import { dateEatenProducts } from '../../redux/day/day_selector';
 
 const DiaryPage = () => {
   const [mobileFormIsVisible, setMobileFormIsVisible] = useState(false);
   const { isMobileMenuOpen, toggleMobileMenu } = useMobileMenu();
   const { pathname } = useLocation();
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+
+  const dateEatenProductsInfo = useSelector(dateEatenProducts);
+  const currentDate = new Date().toLocaleDateString('fr-CA');
 
   const handleClick = () => {
     setMobileFormIsVisible(prev => !prev);
@@ -83,13 +87,16 @@ const DiaryPage = () => {
               </div>
               <DiaryProductsList />
               <div className={styles.isHidddenTablet}>
-                <Button
-                  customType="primary"
-                  className="small"
-                  onClick={handleClick}
-                >
-                  <AddIcon />
-                </Button>
+                {currentDate === dateEatenProductsInfo ? (
+                  <Button
+                    customType="primary"
+                    className="small"
+                    onClick={handleClick}
+                    disabled={currentDate !== dateEatenProductsInfo}
+                  >
+                    <AddIcon />
+                  </Button>
+                ) : null}
               </div>
             </div>
           </>
