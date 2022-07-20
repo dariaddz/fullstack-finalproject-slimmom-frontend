@@ -86,7 +86,10 @@ hr {
     width: 240px;
     border-top: 1px solid rgb(118, 118, 118);
   }
-  form {
-    margin-top: 50px;
+  .formCalc {
+    margin-top: 100px;
+  }
+  .formHome {
+    margin-top: 200px;
   }
 }

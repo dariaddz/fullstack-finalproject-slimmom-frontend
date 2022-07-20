@@ -1,4 +1,6 @@
 .exampleBox {
+  margin: 0 auto;
+  width: 280px;
   padding: 40px 15px 60px;
 }
 
@@ -12,11 +14,11 @@
 }
 
 .backButton {
-    position: absolute;
-    z-index: 1001;
-    top: 9px;
-    left: 20px;
-    color: transparent;
+  position: absolute;
+  z-index: 1001;
+  top: 9px;
+  left: 20px;
+  color: transparent;
 }
 
 .notification {
@@ -29,11 +31,13 @@
 
 @media screen and (min-width: 768px) {
   .exampleBox {
+    width: auto;
     height: auto;
-    min-height: 41vh;
-    padding: 70px 87px 61px 92px;
+    margin: 0;
     margin-bottom: 0;
     margin-top: 30px;
+    padding: 70px 87px 61px 92px;
+    min-height: 41vh;
   }
 
   .notification {

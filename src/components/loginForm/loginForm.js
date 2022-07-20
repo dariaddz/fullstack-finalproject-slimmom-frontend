@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import { Box, TextField, Typography, Button } from '@mui/material';
 import { buttonLR, labelFontStyle } from '../../theme';
 // import { useAuth } from '../../helpers/authContext/authContext';
-
+import style from './loginForm.module.css';
 const validateRegister = values => {
   const errors = {};
   if (!values.email) {

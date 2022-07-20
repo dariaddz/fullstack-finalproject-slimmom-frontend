@@ -1,4 +1,4 @@
-import { useDispatch,  useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { postProduct } from '../../redux/userSlice';
 import { useState } from 'react';
 import { useFormik } from 'formik';
@@ -18,11 +18,10 @@ import { Spiner } from '../../components/spiner';
 import authSelectors from '../../redux/auth/authSelectors';
 import { calcDataPrivate } from '../../redux/calculator/calculator_operation';
 
-
-
 const DailyCaloriesForm = () => {
   const isLogin = useSelector(authSelectors.getIsLoggedIn);
   const token = useSelector(state => state.auth.token);
+  const currentLocation = window.location.pathname;
 
   const userData = useSelector(state => {
     return state.userData.user;
@@ -52,6 +51,7 @@ const DailyCaloriesForm = () => {
       if (!isLogin) {
         dispatch(postProduct(formik.values));
       } else {
+        // dispatch(postProduct(formik.values));
         dispatch(calcDataPrivate(formik.values, token));
       }
       actions.resetForm(initialValues);
@@ -62,11 +62,18 @@ const DailyCaloriesForm = () => {
   const onClose = () => {
     setShowModal(false);
   };
-
+  if (showModal) {
+    document.body.style.overflow = 'hidden';
+  }
   return (
     <>
       <MainContainer>
-        <form onSubmit={formik.handleSubmit}>
+        <form
+          onSubmit={formik.handleSubmit}
+          className={
+            currentLocation === '/calculator' ? s.formCalc : s.formHome
+          }
+        >
           <Typography
             conponent="h2"
             display={'block'}
