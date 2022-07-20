@@ -9,12 +9,12 @@ const validateRegister = values => {
   if (!values.email) {
     errors.email = "Обов'зкове поле";
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Не вірний формат адреси ';
+    errors.email = 'Адреса має бути виду name@xxx.xxx  ';
   }
   if (!values.password) {
     errors.password = "Обов'зкове поле";
   } else if (values.password.length < 8) {
-    errors.password = 'Не вірний формат паролю';
+    errors.password = 'Пароль містить мінімум 8 символів';
   }
   return errors;
 };
