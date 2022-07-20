@@ -25,9 +25,9 @@ const DailyCaloriesForm = () => {
   const isLogin = useSelector(authSelectors.getIsLoggedIn);
   const token = useSelector(state => state.auth.token);
 
-  const userData = useSelector(state => {
-    return state.userData.user;
-  });
+  const userData = useSelector(state =>state.userData.user);
+  const userLoginData = useSelector(state => state.kcal.calcData);
+  
 
   console.log('userData:', userData);
   const [showModal, setShowModal] = useState(false);
@@ -37,6 +37,7 @@ const DailyCaloriesForm = () => {
   const isPending = useSelector(state => {
     return state.userData.isPending;
   });
+
 
   const initialValues = {
     height: '',
@@ -64,6 +65,8 @@ const DailyCaloriesForm = () => {
   const onClose = () => {
     setShowModal(false);
   };
+
+  console.log('ShowModal:', showModal)
 
   return (
     <>
@@ -231,6 +234,10 @@ const DailyCaloriesForm = () => {
 
           <Button
             variant="contained"
+            disabled={!formik.dirty}
+            onClick={() => {
+               setShowModal(true) ;
+            }}
             sx={{
               ...buttonLR,
 
@@ -244,10 +251,7 @@ const DailyCaloriesForm = () => {
             }}
             color="buttonLogin"
             type="submit"
-            disabled={!formik.dirty}
-            onClick={() => {
-              setShowModal(true);
-            }}
+           
           >
             <Typography sx={{ ...labelFontStyle, color: '#FFFFFF' }}>
               Схуднути
@@ -256,7 +260,11 @@ const DailyCaloriesForm = () => {
         </form>
       </MainContainer>
       {isPending && <Spiner />}
-      {showModal && userData && (
+
+    
+
+
+   {showModal && (userData && 
         <Modal onClose={onClose}>
           {<DailyCalorieIntake onClose={onClose} />}
         </Modal>
