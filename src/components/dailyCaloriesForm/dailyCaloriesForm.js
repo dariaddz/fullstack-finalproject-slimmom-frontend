@@ -1,4 +1,4 @@
-import { useDispatch,  useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { postProduct } from '../../redux/userSlice';
 import { useState } from 'react';
 import { useFormik } from 'formik';
@@ -46,8 +46,8 @@ const DailyCaloriesForm = () => {
 
   const formik = useFormik({
     initialValues,
-
     enableReinitialize: true,
+    validationSchema: validationSchema,
     onSubmit: (value, actions) => {
       if (!isLogin) {
         dispatch(postProduct(formik.values));
@@ -55,8 +55,9 @@ const DailyCaloriesForm = () => {
         dispatch(calcDataPrivate(formik.values, token));
       }
       actions.resetForm(initialValues);
+      setShowModal(true);
     },
-    validationSchema: validationSchema,
+
   });
 
   const onClose = () => {
@@ -242,10 +243,10 @@ const DailyCaloriesForm = () => {
             }}
             color="buttonLogin"
             type="submit"
-            disabled={!formik.dirty}
-            onClick={() => {
-              setShowModal(true);
-            }}
+          // disabled={!formik.dirty}
+          // onClick={() => {
+          //   setShowModal(true);
+          // }}
           >
             <Typography sx={{ ...labelFontStyle, color: '#FFFFFF' }}>
               Схуднути
