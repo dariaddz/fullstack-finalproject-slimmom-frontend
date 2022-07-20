@@ -51,12 +51,12 @@ const DiaryPage = () => {
             height: '14px',
             // width: '100%',
             backgroundColor: '#EFF1F3',
-            justifyContent: 'space-between',
+            justifyContent: 'flex-end',
             alignItems: 'center',
             padding: '14px 20px',
           }}
         >
-          <NavLink to="/calculator">
+          {/* <NavLink to="/calculator">
             <KeyboardBackspaceIcon
               sx={{
                 textDecoration: 'none',
@@ -66,7 +66,7 @@ const DiaryPage = () => {
               // className={styles.backButton}
               // onClick={handleClick}
             />
-          </NavLink>
+          </NavLink> */}
           <UserInfo />
         </Box>
       )}
