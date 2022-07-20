@@ -1,12 +1,11 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import productActions from './day_action';
-
-const currentDate = new Date().toLocaleDateString('fr-CA');
+import today from '../../helpers/currentDateLocal';
 
 const diaryInfoState = {
   email: '',
-  date: currentDate,
+  date: today,
   products: [],
   dayNorm: 0,
   totalKcalPerDay: 0,
@@ -38,6 +37,9 @@ const loading = createReducer(false, {
   [productActions.addProductRequest]: (state, action) => true,
   [productActions.addProductSuccess]: (state, action) => false,
   [productActions.addProductError]: (state, action) => false,
+  [productActions.dateEatenProductsRequest]: (state, action) => true,
+  [productActions.dateEatenProductsSuccess]: (state, action) => false,
+  [productActions.dateEatenProductsError]: (state, action) => false,
 });
 
 const error = createReducer(null, {

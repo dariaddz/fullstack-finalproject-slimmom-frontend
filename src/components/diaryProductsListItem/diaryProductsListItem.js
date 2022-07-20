@@ -3,7 +3,8 @@ import { Close } from '@mui/icons-material';
 import { ListItem, Typography, Box, IconButton } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { dateEatenProducts } from '../../redux/day/day_selector';
-import { deleteProduct, dateEatenProduct } from '../../redux/day/day_operation';
+import { deleteProduct } from '../../redux/day/day_operation';
+import { toast } from 'react-hot-toast';
 import today from '../../helpers/currentDateLocal';
 
 const typografyStyle = {
@@ -32,14 +33,13 @@ const typografyStyle = {
 
 function DiaryProductsListItem({ product: { id, title, weight, kcal } }) {
   const dispatch = useDispatch();
-  const currentDate = useSelector(dateEatenProducts); // Текущий день из базы
+  const currentDate = useSelector(dateEatenProducts);
 
-  const disadled = currentDate === today ? false : true;
-  const cursor = disadled ? 'no-drop' : 'pointer';
+  const disabled = currentDate === today ? false : true;
 
   const handleClick = async () => {
     dispatch(deleteProduct(id));
-    dispatch(dateEatenProduct(currentDate));
+    return toast.success('Продукт успішно видалено');
   };
 
   return (
@@ -106,35 +106,37 @@ function DiaryProductsListItem({ product: { id, title, weight, kcal } }) {
             ккал
           </Box>
         </Typography>
-        <IconButton
-          disabled={disadled}
-          onClick={handleClick}
-          sx={{
-            width: {
-              xs: '10px',
-              sm: '10px',
-              md: '22px',
-              lg: '22px',
-            },
-            height: {
-              xs: '10px',
-              sm: '10px',
-              md: '22px',
-              lg: '22xp',
-            },
-            mr: '8px',
-            color: 'primary.main',
-            cursor: { cursor },
-            transition: 'all 250ms linear',
-            '&:hover': {
-              color: 'background.dark',
-              transform: 'scale(1.1)',
-              transition: ' all 250ms linear',
-            },
-          }}
-        >
-          <Close />
-        </IconButton>
+        {!disabled && (
+          <IconButton
+            disabled={disabled}
+            onClick={handleClick}
+            sx={{
+              width: {
+                xs: '10px',
+                sm: '10px',
+                md: '22px',
+                lg: '22px',
+              },
+              height: {
+                xs: '10px',
+                sm: '10px',
+                md: '22px',
+                lg: '22xp',
+              },
+              mr: '8px',
+              color: 'primary.main',
+              cursor: 'pointer',
+              transition: 'all 250ms linear',
+              '&:hover': {
+                color: 'background.dark',
+                transform: 'scale(1.1)',
+                transition: ' all 250ms linear',
+              },
+            }}
+          >
+            <Close />
+          </IconButton>
+        )}
       </ListItem>
     </>
   );
