@@ -2,7 +2,6 @@ import { useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import CloseIcon from '@mui/icons-material/Close';
 import s from './dailyCalorieIntake.module.css';
 import { Typography, Button, Box } from '@mui/material';
 import authSelectors from '../../redux/auth/authSelectors';
