@@ -6,7 +6,6 @@ import { Typography, TextField, Button } from '@mui/material';
 import Modal from '../modal';
 import DailyCalorieIntake from '../dailyCalorieIntake';
 import s from './dailyCaloriesForm.module.css';
-import { v4 as uuidv4 } from 'uuid';
 import {
   FormLabel,
   buttonLR,
@@ -65,7 +64,7 @@ const DailyCaloriesForm = () => {
     setShowModal(false);
   };
 
-  const bloodTypes=[1,2,3,4] 
+  // const bloodTypes=[1,2,3,4] 
 
   return (
     <>
