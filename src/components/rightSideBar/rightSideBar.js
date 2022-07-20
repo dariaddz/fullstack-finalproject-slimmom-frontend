@@ -9,7 +9,10 @@ import {
   getTotalKcalPerDay,
   dateEatenProducts,
   getDayNorm,
+  allProducts,
 } from '../../redux/day/day_selector';
+
+import currentDate from '../../helpers/currentDateLocal'; // текущая дата локально
 
 import {
   getNotRecommendedProducts,
@@ -26,7 +29,7 @@ export const ResetProductState = () => {
 
 const SideBar = () => {
   const dispatch = useDispatch();
-  const date = useSelector(dateEatenProducts);
+  const date = useSelector(dateEatenProducts); // дата в редаксе
   const notRecommended = useSelector(notRecommendedProducts);
   const kcalRemain = useSelector(getKcalRemain);
   const percentage = useSelector(getPercentage);
@@ -34,19 +37,15 @@ const SideBar = () => {
   const kcal = useSelector(getKcalAmount);
   const productsNotRecommended = useSelector(getNotRecommendedProducts);
   const dayNorm = useSelector(getDayNorm);
+  const dayProducts = useSelector(allProducts);
 
-  // const eatenProducts = useSelector(allProducts);
-
-  const today = new Date();
-
-  const currentDate = `${today.getFullYear()}-${(
-    '0' +
-    (today.getMonth() + 1)
-  ).slice(-2)}-${today.getDate()}`;
+  const a = dayProducts.length;
 
   useEffect(() => {
-    dispatch(dateEatenProduct(currentDate));
-  }, [dispatch, currentDate]);
+    if (a || a === 0) {
+      dispatch(dateEatenProduct(date));
+    }
+  }, [dispatch, a, date]);
 
   const getMeRandomProducts = (sourceArray, neededElements) => {
     let result = [];
