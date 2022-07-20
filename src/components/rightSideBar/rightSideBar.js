@@ -8,13 +8,16 @@ import {
   getPercentage,
   getTotalKcalPerDay,
   dateEatenProducts,
+  getDayNorm,
 } from '../../redux/day/day_selector';
 
 import {
   getNotRecommendedProducts,
   getKcalAmount,
 } from '../../redux/calculator/calculator_selector';
-import { getCalcData } from '../../redux/calculator/calculator_operation';
+import { dateEatenProduct } from '../../redux/day/day_operation';
+
+// import { getCalcData } from '../../redux/calculator/calculator_operation';
 
 export const ResetProductState = () => {
   const dispatch = useDispatch();
@@ -25,12 +28,14 @@ const SideBar = () => {
   const dispatch = useDispatch();
   const date = useSelector(dateEatenProducts);
   const notRecommended = useSelector(notRecommendedProducts);
-  // const token = useSelector(state => state.auth.token);
   const kcalRemain = useSelector(getKcalRemain);
   const percentage = useSelector(getPercentage);
   const totalKcalPerDay = useSelector(getTotalKcalPerDay);
   const kcal = useSelector(getKcalAmount);
   const productsNotRecommended = useSelector(getNotRecommendedProducts);
+  const dayNorm = useSelector(getDayNorm);
+
+  // const eatenProducts = useSelector(allProducts);
 
   const today = new Date();
 
@@ -38,9 +43,10 @@ const SideBar = () => {
     '0' +
     (today.getMonth() + 1)
   ).slice(-2)}-${today.getDate()}`;
+
   useEffect(() => {
-    dispatch(getCalcData(currentDate));
-  }, [dispatch, currentDate]);
+    dispatch(dateEatenProduct(date));
+  }, [dispatch, date]);
 
   const getMeRandomProducts = (sourceArray, neededElements) => {
     let result = [];
@@ -62,23 +68,25 @@ const SideBar = () => {
               <li className={s.sideBarItem}>
                 <p className={s.sideBarText}>Залишилось</p>
                 <p className={s.sideBarText}>
-                  {!kcalRemain ? '000' : kcalRemain} ккал
+                  {kcalRemain ? kcalRemain : '000'} ккал
                 </p>
               </li>
               <li className={s.sideBarItem}>
                 <p className={s.sideBarText}>Вжито</p>
                 <p className={s.sideBarText}>
-                  {!totalKcalPerDay ? '000' : totalKcalPerDay} ккал
+                  {totalKcalPerDay ? totalKcalPerDay : '000'} ккал
                 </p>
               </li>
               <li className={s.sideBarItem}>
                 <p className={s.sideBarText}>Дeнна норма</p>
-                <p className={s.sideBarText}>{!kcal ? '000' : kcal} ккал</p>
+                <p className={s.sideBarText}>
+                  {kcal ? kcal : dayNorm ? dayNorm : '000'} ккал
+                </p>
               </li>
               <li className={s.sideBarItem}>
                 <p className={s.sideBarText}>n% вiд норми</p>
                 <p className={s.sideBarText}>
-                  {!percentage ? '0' : percentage} %
+                  {percentage ? percentage : '0'} %
                 </p>
               </li>
             </ul>
