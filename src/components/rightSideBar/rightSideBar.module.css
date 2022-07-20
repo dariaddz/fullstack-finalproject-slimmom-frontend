@@ -8,7 +8,10 @@
 .container {
   width: 100%;
   margin: 0 auto;
-  /* padding: 0 15px; */
+}
+
+.span {
+  margin-left: 10px;
 }
 
 .wrapper {
@@ -49,7 +52,6 @@
 }
 
 .sideBarList {
-  /* width: 270px; */
   margin-bottom: 60px;
 }
 
@@ -81,6 +83,7 @@
   }
 
   .sideBarList {
+    min-width: 270px;
     margin: 0;
   }
 }
