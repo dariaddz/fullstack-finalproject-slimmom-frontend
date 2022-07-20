@@ -94,7 +94,8 @@ const fetchCurrentUser = createAsyncThunk(
   }
 );
 
-const logout = createAsyncThunk('auth/logout', async () => {
+const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+  token.set(thunkAPI.getState().auth.token);
   try {
     await axios.get('/logout');
     token.unset();
