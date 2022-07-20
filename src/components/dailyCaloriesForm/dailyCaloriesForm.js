@@ -68,8 +68,7 @@ const DailyCaloriesForm = () => {
     document.body.style.overflow = 'hidden';
   }
 
-const bloodTypes=[1,2,3,4] 
-
+  // const bloodTypes=[1,2,3,4]
 
   return (
     <>
@@ -200,11 +199,7 @@ const bloodTypes=[1,2,3,4]
                   </Typography>
                   <hr className={s.hr} />
 
-
-
-
-
-{/* {bloodTypes.map(bloodType=>(
+                  {/* {bloodTypes.map(bloodType=>(
 <>
   
   <input
@@ -220,10 +215,6 @@ const bloodTypes=[1,2,3,4]
 
 
 ))} */}
-
-
-
-
 
                   <input
                     type="radio"
@@ -259,7 +250,7 @@ const bloodTypes=[1,2,3,4]
                     onChange={formik.handleChange}
                     checked={formik.values.bloodType === '4'}
                   />
-                  <span className={s.radioButtonLast}>4</span> 
+                  <span className={s.radioButtonLast}>4</span>
                 </div>
               </FormLabel>
             </div>
@@ -281,7 +272,6 @@ const bloodTypes=[1,2,3,4]
             color="buttonLogin"
             type="submit"
             disabled={!formik.dirty}
-            
           >
             <Typography sx={{ ...labelFontStyle, color: '#FFFFFF' }}>
               Схуднути
