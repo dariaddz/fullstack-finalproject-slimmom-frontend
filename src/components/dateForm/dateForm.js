@@ -1,19 +1,19 @@
-import { useState, useEffect, forwardRef } from 'react';
+import { useState, forwardRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { dateEatenProduct } from '../../redux/day/day_operation';
 import styles from './dateForm.module.css';
 import { ReactComponent as CalendarIcon } from '../../images/calendar.svg';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import today from '../../helpers/currentDateLocal';
+// import today from '../../helpers/currentDateLocal';
 
 const DiaryDateCalendar = () => {
   const [startDate, setStartDate] = useState(new Date());
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(dateEatenProduct(today));
-  }, [dispatch]);
+    dispatch(dateEatenProduct(startDate.toISOString().split('T')[0]));
+  }, [dispatch, startDate]);
 
   const onChange = date => {
     const jsonData = date.toJSON();
