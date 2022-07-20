@@ -7,9 +7,9 @@ import { useMobileMenu } from '../../helpers/mobileMenuContext/mobileMenuContext
 import Box from '@mui/material/Box';
 import UserInfo from '../../components/userInfo';
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import { authSelectors } from '../../redux/auth';
-import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+// import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 const CalculatorPage = () => {
   const { isMobileMenuOpen, toggleMobileMenu } = useMobileMenu();
@@ -38,12 +38,12 @@ const CalculatorPage = () => {
             height: '14px',
             // width: '100%',
             backgroundColor: '#EFF1F3',
-            justifyContent: 'space-between',
+            justifyContent: 'flex-end',
             alignItems: 'center',
             padding: '14px 20px',
           }}
         >
-          <NavLink to="/diary">
+          {/* <NavLink to="/diary">
             <KeyboardBackspaceIcon
               sx={{
                 textDecoration: 'none',
@@ -53,7 +53,7 @@ const CalculatorPage = () => {
               // className={styles.backButton}
               // onClick={handleClick}
             />
-          </NavLink>
+          </NavLink> */}
           <UserInfo />
         </Box>
       )}
