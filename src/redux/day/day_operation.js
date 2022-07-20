@@ -22,21 +22,21 @@ export const getProducts = query => {
 
 export const addProduct =
   ({ title, weight, kcal }) =>
-  dispatch => {
-    const newProduct = {
-      kcal,
-      title,
-      weight,
-    };
-    dispatch(productActions.addProductRequest());
+    dispatch => {
+      const newProduct = {
+        kcal,
+        title,
+        weight,
+      };
+      dispatch(productActions.addProductRequest());
 
-    axiosInstance
-      .post('api/products', newProduct)
-      .then(({ data }) => {
-        dispatch(productActions.addProductSuccess(data));
-      })
-      .catch(error => dispatch(productActions.addProductError(error)));
-  };
+      axiosInstance
+        .post('api/products', newProduct)
+        .then(({ data }) => {
+          dispatch(productActions.addProductSuccess(data));
+        })
+        .catch(error => dispatch(productActions.addProductError(error)));
+    };
 
 export const dateEatenProduct = date => dispatch => {
   dispatch(productActions.dateEatenProductsRequest());
@@ -59,3 +59,8 @@ export const deleteProduct = id => dispatch => {
       dispatch(productActions.deleteProductIdError(error.messages))
     );
 };
+//--Eugen
+export const clearProducts = () => dispatch => {
+  dispatch(productActions.clearProductsSuccess());
+}
+//--Eugen

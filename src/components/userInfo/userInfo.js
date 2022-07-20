@@ -11,6 +11,10 @@ import { Spiner } from '../../components/spiner';
 // import { ResetProductState } from '../rightSideBar/rightSideBar';
 
 // import s from './userInfo.module.css';
+//--Eugen
+import { clearProducts } from '../../redux/day/day_operation';
+//--Eugen
+
 
 const typografyStyle = {
   fontFamily: 'Gotham Pro',
@@ -81,7 +85,11 @@ export default function UserInfo() {
             display: 'inline-flex',
           }}
           onClick={() => {
+            //--Eugen
             dispatch(authOperations.logout());
+            dispatch(clearProducts());
+
+            //--Eugen
             // ResetProductState();
             // logoutAndReset();
           }}

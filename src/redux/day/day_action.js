@@ -2,6 +2,9 @@ import { createAction } from '@reduxjs/toolkit';
 const addProductRequest = createAction('products/addProductRequest');
 const addProductSuccess = createAction('products/addProductSuccess');
 const addProductError = createAction('products/addProductError');
+//--Eugen
+const clearProductsSuccess = createAction('products/clearProductsSuccess');
+//--Eugen
 
 const dateEatenProductsRequest = createAction(
   'products/dateEatenProductsRequest'
@@ -19,6 +22,9 @@ const productActions = {
   addProductRequest,
   addProductSuccess,
   addProductError,
+  //--Eugen
+  clearProductsSuccess,
+  //--Eugen
   dateEatenProductsRequest,
   dateEatenProductsSuccess,
   dateEatenProductsError,
