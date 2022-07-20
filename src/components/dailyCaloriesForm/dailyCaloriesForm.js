@@ -54,6 +54,7 @@ const DailyCaloriesForm = () => {
       } else {
         dispatch(calcDataPrivate(formik.values, token));
       }
+      setShowModal(true);
       actions.resetForm(initialValues);
     },
     validationSchema: validationSchema,
@@ -62,6 +63,8 @@ const DailyCaloriesForm = () => {
   const onClose = () => {
     setShowModal(false);
   };
+
+  // const bloodTypes=[1,2,3,4] 
 
   return (
     <>
@@ -187,6 +190,31 @@ const DailyCaloriesForm = () => {
                   </Typography>
                   <hr className={s.hr} />
 
+
+
+
+
+{/* {bloodTypes.map(bloodType=>(
+<>
+  
+  <input
+  type="radio"
+  name={bloodType}
+  value={bloodType}
+  onChange={formik.handleChange}
+  checked={formik.values.bloodType === bloodType}
+/>
+
+ <span className={s.radioButton}>{bloodType}</span>
+</>
+
+
+))} */}
+
+
+
+
+
                   <input
                     type="radio"
                     name="bloodType"
@@ -221,7 +249,7 @@ const DailyCaloriesForm = () => {
                     onChange={formik.handleChange}
                     checked={formik.values.bloodType === '4'}
                   />
-                  <span className={s.radioButtonLast}>4</span>
+                  <span className={s.radioButtonLast}>4</span> 
                 </div>
               </FormLabel>
             </div>
@@ -243,9 +271,7 @@ const DailyCaloriesForm = () => {
             color="buttonLogin"
             type="submit"
             disabled={!formik.dirty}
-            onClick={() => {
-              setShowModal(true);
-            }}
+            
           >
             <Typography sx={{ ...labelFontStyle, color: '#FFFFFF' }}>
               Схуднути
