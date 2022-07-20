@@ -1,7 +1,6 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch,  useSelector } from 'react-redux';
 import { postProduct } from '../../redux/userSlice';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import { Typography, TextField, Button } from '@mui/material';
 import Modal from '../modal';
@@ -19,7 +18,7 @@ import { Spiner } from '../../components/spiner';
 import authSelectors from '../../redux/auth/authSelectors';
 import { calcDataPrivate } from '../../redux/calculator/calculator_operation';
 
-console.log(calcDataPrivate);
+
 
 const DailyCaloriesForm = () => {
   const isLogin = useSelector(authSelectors.getIsLoggedIn);
@@ -29,7 +28,6 @@ const DailyCaloriesForm = () => {
     return state.userData.user;
   });
 
-  console.log('userData:', userData);
   const [showModal, setShowModal] = useState(false);
 
   const dispatch = useDispatch();
