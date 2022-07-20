@@ -50,11 +50,11 @@ const MainContainer = styled(Container)(({ theme }) => ({
   justifyContent: 'center',
   padding: '32px 20px',
   [theme.breakpoints.up('md')]: {
-    padding: '100px 32px 0px',
+    padding: '50px 32px 0px',
     justifyContent: 'start',
   },
   [theme.breakpoints.up('lg')]: {
-    padding: '150px 0px 0px 25px',
+    padding: '0 0px 0px 25px',
   },
 }));
 const labelFontStyle = {

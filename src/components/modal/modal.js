@@ -1,18 +1,17 @@
 import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
 import s from './modal.module.css';
-
-
+import CloseIcon from '@mui/icons-material/Close';
 const modalRoot = document.querySelector('#modal-root');
 
 function Modal({ onClose, children }) {
-
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
         onClose(e);
-
       }
+      document.body.style.overflow = 'hidden';
+      return () => (document.body.style.overflow = 'unset');
     };
 
     window.addEventListener('keydown', handleKeyDown);
@@ -22,16 +21,23 @@ function Modal({ onClose, children }) {
   const handleBackdropclick = e => {
     if (e.target === e.currentTarget) {
       onClose();
-
     }
   };
 
   return createPortal(
     <div className={s.overlay} onClick={handleBackdropclick}>
       <div className={s.modal}>
-        <button className={s.btnCloseModal} type="button" onClick={onClose}>
-          x
-        </button>
+        <CloseIcon
+          onClick={onClose}
+          sx={{
+            cursor: 'pointer',
+            marginLeft: 'auto',
+            marginBottom: 1,
+            textDecoration: 'none',
+            color: '#000000',
+            display: 'block',
+          }}
+        />
 
         {children}
       </div>
