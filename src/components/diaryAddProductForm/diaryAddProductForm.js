@@ -11,7 +11,7 @@ import styles from './diaryAddProductForm.module.css';
 import {
   getProducts,
   addProduct,
-  dateEatenProduct,
+  // dateEatenProduct,
 } from '../../redux/day/day_operation';
 import { dateEatenProducts } from '../../redux/day/day_selector';
 
@@ -84,7 +84,7 @@ const DiaryAddProductForm = () => {
         title: productName,
       })
     );
-    dispatch(dateEatenProduct(date));
+    // dispatch(dateEatenProduct(date));
     // if (width < breakpoint) {
     //   handleGoBack();
     // }

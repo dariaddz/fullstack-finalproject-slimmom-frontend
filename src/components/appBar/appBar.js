@@ -45,9 +45,41 @@ function AppBar() {
         disableGutters={true}
         fixed={true}
       >
-        <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'flex-start',
+            alignItems: 'center',
+          }}
+        >
           <Logo />
+          <Box
+            sx={{
+              display: { xs: 'none', sm: 'none', md: 'none', lg: 'flex' },
+              height: '32px',
+              width: '2px',
+              backgroundColor: '#A9A9A9',
+              marginRight: '20px',
+            }}
+          ></Box>
           {isLoggedIn && <Navigation />}
+          {!isLoggedIn && (
+            <Box
+              sx={{
+                position: {
+                  xs: 'absolute',
+                  sm: 'absolute',
+                  md: 'absolute',
+                  lg: 'static',
+                },
+                top: '34px',
+                right: '30px',
+                // marginLeft: { xs: '100px', sm: '100px', md: '350px', lg: '0' },
+              }}
+            >
+              <AuthNav />
+            </Box>
+          )}
         </Box>
         {/* <Box
           sx={{
@@ -98,8 +130,6 @@ function AppBar() {
             </Box>
           )}
         </Box>
-
-        {!isLoggedIn && <AuthNav />}
       </Box>
 
       {/* <Box //горизонтальная палка

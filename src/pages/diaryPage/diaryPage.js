@@ -11,16 +11,20 @@ import Box from '@mui/material/Box';
 import MobileMenuPage from '../mobileMenuPage';
 import { useMobileMenu } from '../../helpers/mobileMenuContext/mobileMenuContext';
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import { authSelectors } from '../../redux/auth';
 import UserInfo from '../../components/userInfo';
 import styles from './diaryPage.module.css';
+import { dateEatenProducts } from '../../redux/day/day_selector';
 
 const DiaryPage = () => {
   const [mobileFormIsVisible, setMobileFormIsVisible] = useState(false);
   const { isMobileMenuOpen, toggleMobileMenu } = useMobileMenu();
   const { pathname } = useLocation();
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+
+  const dateEatenProductsInfo = useSelector(dateEatenProducts);
+  const currentDate = new Date().toLocaleDateString('fr-CA');
 
   const handleClick = () => {
     setMobileFormIsVisible(prev => !prev);
@@ -47,12 +51,12 @@ const DiaryPage = () => {
             height: '14px',
             // width: '100%',
             backgroundColor: '#EFF1F3',
-            justifyContent: 'space-between',
+            justifyContent: 'flex-end',
             alignItems: 'center',
             padding: '14px 20px',
           }}
         >
-          <NavLink to="/calculator">
+          {/* <NavLink to="/calculator">
             <KeyboardBackspaceIcon
               sx={{
                 textDecoration: 'none',
@@ -62,7 +66,7 @@ const DiaryPage = () => {
               // className={styles.backButton}
               // onClick={handleClick}
             />
-          </NavLink>
+          </NavLink> */}
           <UserInfo />
         </Box>
       )}
@@ -83,13 +87,16 @@ const DiaryPage = () => {
               </div>
               <DiaryProductsList />
               <div className={styles.isHidddenTablet}>
-                <Button
-                  customType="primary"
-                  className="small"
-                  onClick={handleClick}
-                >
-                  <AddIcon />
-                </Button>
+                {currentDate === dateEatenProductsInfo ? (
+                  <Button
+                    customType="primary"
+                    className="small"
+                    onClick={handleClick}
+                    disabled={currentDate !== dateEatenProductsInfo}
+                  >
+                    <AddIcon />
+                  </Button>
+                ) : null}
               </div>
             </div>
           </>

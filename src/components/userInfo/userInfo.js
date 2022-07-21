@@ -12,6 +12,11 @@ import { Spiner } from '../../components/spiner';
 
 // import s from './userInfo.module.css';
 
+//--Eugen
+import { clearProducts } from '../../redux/day/day_operation';
+//--Eugen
+
+
 const typografyStyle = {
   fontFamily: 'Gotham Pro',
   fontStyle: 'normal',
@@ -80,8 +85,12 @@ export default function UserInfo() {
             marginLeft: '16px',
             display: 'inline-flex',
           }}
-          onClick={() => {
-            dispatch(authOperations.logout());
+          onClick={async () => {
+            //--Eugen
+            const res = await dispatch(authOperations.logout());
+            console.log('res', res);
+            if (res.meta.requestStatus === 'fulfilled') { console.log('hire'); dispatch(clearProducts()); };
+            //--Eugen
             // ResetProductState();
             // logoutAndReset();
           }}
