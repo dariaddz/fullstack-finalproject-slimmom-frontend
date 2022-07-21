@@ -85,10 +85,11 @@ export default function UserInfo() {
             marginLeft: '16px',
             display: 'inline-flex',
           }}
-          onClick={() => {
+          onClick={async () => {
             //--Eugen
-            dispatch(authOperations.logout());
-            dispatch(clearProducts());
+            const res = await dispatch(authOperations.logout());
+            console.log('res', res);
+            if (res.meta.requestStatus === 'fulfilled') { console.log('hire'); dispatch(clearProducts()); };
             //--Eugen
             // ResetProductState();
             // logoutAndReset();
