@@ -65,13 +65,6 @@ const DailyCaloriesForm = () => {
     setShowModal(false);
   };
 
-<<<<<<< Updated upstream
-  // const bloodTypes = [1, 2, 3, 4];
-  if (!showModal) {
-    document.body.style.overflow = 'initial';
-  }
-
-=======
   const onlyWidth = useWindowWidth();
   if (showModal) {
     if (onlyWidth >= 768) {
@@ -79,9 +72,12 @@ const DailyCaloriesForm = () => {
     }
   }
 
+  if (!showModal) {
+    document.body.style.overflow = 'initial';
+  }
+
   // const bloodTypes = [1, 2, 3, 4];
 
->>>>>>> Stashed changes
   return (
     <>
       <MainContainer>
