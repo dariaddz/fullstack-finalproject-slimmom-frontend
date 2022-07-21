@@ -17,6 +17,7 @@ import validationSchema from '../../middlewares';
 import { Spiner } from '../../components/spiner';
 import authSelectors from '../../redux/auth/authSelectors';
 import { calcDataPrivate } from '../../redux/calculator/calculator_operation';
+import { useWindowWidth } from '@react-hook/window-size';
 
 const DailyCaloriesForm = () => {
   const isLogin = useSelector(authSelectors.getIsLoggedIn);
@@ -65,6 +66,13 @@ const DailyCaloriesForm = () => {
 
   if (showModal) {
     document.body.style.overflow = 'hidden';
+  }
+
+  const onlyWidth = useWindowWidth();
+  if (showModal) {
+    if (onlyWidth >= 768) {
+      document.body.style.overflow = 'hidden';
+    }
   }
 
   return (
