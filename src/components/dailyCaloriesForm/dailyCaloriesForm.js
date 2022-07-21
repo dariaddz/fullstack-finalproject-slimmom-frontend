@@ -14,6 +14,7 @@ import {
   MainContainer,
 } from '../../theme';
 import validationSchema from '../../middlewares';
+import { useWindowWidth } from '@react-hook/window-size';
 import { Spiner } from '../../components/spiner';
 import authSelectors from '../../redux/auth/authSelectors';
 import { calcDataPrivate } from '../../redux/calculator/calculator_operation';
@@ -64,11 +65,23 @@ const DailyCaloriesForm = () => {
     setShowModal(false);
   };
 
+<<<<<<< Updated upstream
   // const bloodTypes = [1, 2, 3, 4];
   if (!showModal) {
     document.body.style.overflow = 'initial';
   }
 
+=======
+  const onlyWidth = useWindowWidth();
+  if (showModal) {
+    if (onlyWidth >= 768) {
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  // const bloodTypes = [1, 2, 3, 4];
+
+>>>>>>> Stashed changes
   return (
     <>
       <MainContainer>
