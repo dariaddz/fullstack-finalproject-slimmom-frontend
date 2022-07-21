@@ -6,14 +6,29 @@
   background-color: #fff;
   width: 280px;
   height: auto;
-  padding: 40px 20px;
-  margin-top: 32px;
+
+  padding-top: 0;
+  margin-top: 50px;
 }
 @media screen and (max-width: 767px) {
-  .modal {
-    border-radius: 25px;
+  body .modal {
+    /* position: relative; */
   }
-  .overlay {
+  .modal {
+    position: absolute;
+    background-color: #fff;
+    top: 50%;
+    top: 360px;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+    width: 100%;
+  }
+  .wrapper {
+    width: 280px;
+    margin: 0 auto;
+  }
+  /* .overlay {
     z-index: 1000;
     position: relative;
     position: fixed;
@@ -25,6 +40,12 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
+  } */
+  .iconArrowBack {
+    display: block;
+    background-color: #eff1f3;
+    padding: 8px 0 8px 25px;
+    margin-bottom: 40px;
   }
 }
 
@@ -37,6 +58,7 @@
     background-image: url('../../images/mainPage/GreenLaptop.png');
     background-position: bottom right;
     background-repeat: no-repeat;
+    padding: 40px 20px;
   }
   .overlay {
     z-index: 1000;
@@ -51,11 +73,11 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
   }
+  body .modal {
+    transform: translate(-50%, -50%);
+  }
 }
 
-body .modal {
-  transform: translate(-50%, -50%);
-}
 .btnCloseModal {
   cursor: pointer;
 }
