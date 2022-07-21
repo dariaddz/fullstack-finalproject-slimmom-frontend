@@ -64,10 +64,6 @@ const DailyCaloriesForm = () => {
     setShowModal(false);
   };
 
-  if (showModal) {
-    document.body.style.overflow = 'hidden';
-  }
-
   const onlyWidth = useWindowWidth();
   if (showModal) {
     if (onlyWidth >= 768) {
