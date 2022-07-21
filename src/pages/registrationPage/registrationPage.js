@@ -8,8 +8,6 @@ import { RegistrationForm } from '../../components/registrationForm';
 import { Spiner } from '../../components/spiner';
 import { useNavigate } from 'react-router-dom';
 import s from './registrationPage.module.css';
-import { clearKcal } from '../../redux/calculator/calculator_operation';
-import { clearProducts } from '../../redux/day/day_operation';
 
 export function RegistrationPage() {
   const dispatch = useDispatch();
@@ -17,8 +15,6 @@ export function RegistrationPage() {
   const navigate = useNavigate();
 
   const onRegister = async data => {
-    dispatch(clearKcal());
-    dispatch(clearProducts());
     dispatch(authOperations.register(data)).then(data => {
       if (data.meta.requestStatus === 'fulfilled') navigate('/');
     });
