@@ -64,11 +64,7 @@ const DailyCaloriesForm = () => {
     setShowModal(false);
   };
 
-  if (showModal) {
-    // document.body.style.overflow = 'hidden';
-  }
-
-  const bloodTypes = [1, 2, 3, 4];
+  // const bloodTypes = [1, 2, 3, 4];
   if (!showModal) {
     document.body.style.overflow = 'initial';
   }
