@@ -11,6 +11,8 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import calcData from './calculator/calculator_reducer';
+import productReducer from './day/day_reducer';
 import { authReducer } from './auth';
 
 // імпортувати authReducer хто займається аутентифікацією та реєстрацією на фронтенді і розкоментувати все тут і в index.js
@@ -26,6 +28,8 @@ export const store = configureStore({
   reducer: {
     userData: userSlice.reducer,
     auth: persistReducer(authPersistConfig, authReducer),
+    kcal: calcData,
+    products: productReducer,
     // додати редьюсери кому які треба для роботи
   },
   middleware: getDefaultMiddleware =>

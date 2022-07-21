@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+// import { useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import { Button, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 
@@ -11,23 +11,30 @@ const typografyStyle = {
   lineHeight: '13px',
   letterSpacing: '0.04em',
   textTransform: 'uppercase',
+  '&:hover': {
+    color: '#212121',
+  },
 };
 export default function Navigation() {
-  const [active, setActiv] = useState('diary');
-  const onClickDiary = () => {
-    setActiv('diary');
-  };
+  // const [active, setActiv] = useState('diary');
+  const { pathname } = useLocation();
 
-  const onClickCalculator = () => {
-    setActiv('calculator');
-  };
+  // const onClickDiary = () => {
+  //   setActiv('diary');
+  // };
+  // const onClickCalculator = () => {
+  //   setActiv('calculator');
+  // };
   return (
-    <Box>
+    <Box sx={{ display: 'flex' }}>
       <Button component={NavLink} to="/diary" sx={{ padding: '0' }}>
         <Typography
-          sx={{ ...typografyStyle }}
-          color={active === 'diary' ? '#212121' : '#9B9FAA'}
-          onClick={onClickDiary}
+          sx={{
+            ...typografyStyle,
+            display: { xs: 'none', sm: 'none', md: 'none', lg: 'flex' },
+          }}
+          color={pathname === '/diary' ? '#212121' : '#9B9FAA'}
+          // onClick={onClickDiary}
         >
           щоденник
         </Typography>
@@ -35,12 +42,16 @@ export default function Navigation() {
       <Button
         component={NavLink}
         to="/calculator"
-        sx={{ padding: '0', marginLeft: '16px' }}
+        sx={{
+          padding: '0',
+          marginLeft: { xs: 'none', sm: 'none', md: 'none', lg: '16px' },
+          display: { xs: 'none', sm: 'none', md: 'none', lg: 'flex' },
+        }}
       >
         <Typography
           sx={{ ...typografyStyle }}
-          onClick={onClickCalculator}
-          color={active === 'calculator' ? '#212121' : '#9B9FAA'}
+          // onClick={onClickCalculator}
+          color={pathname === '/calculator' ? '#212121' : '#9B9FAA'}
         >
           калькулятор
         </Typography>

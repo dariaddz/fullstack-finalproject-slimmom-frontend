@@ -1,7 +1,6 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { postProduct } from '../../redux/userSlice';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import { Typography, TextField, Button } from '@mui/material';
 import Modal from '../modal';
@@ -15,20 +14,27 @@ import {
   MainContainer,
 } from '../../theme';
 import validationSchema from '../../middlewares';
-import { authSelectors } from '../../redux/auth';
-
 import { Spiner } from '../../components/spiner';
+import authSelectors from '../../redux/auth/authSelectors';
+import { calcDataPrivate } from '../../redux/calculator/calculator_operation';
+import { useWindowWidth } from '@react-hook/window-size';
 
 const DailyCaloriesForm = () => {
-  const userData = useSelector(state => {
-    return state.userData.user;
-  });
+  const isLogin = useSelector(authSelectors.getIsLoggedIn);
+  const token = useSelector(state => state.auth.token);
+  const currentLocation = window.location.pathname;
+
+  const userData = useSelector(state => state.userData.user);
+
+  const userLoginData = useSelector(state => state.kcal.calcData);
+
   const [showModal, setShowModal] = useState(false);
+
   const dispatch = useDispatch();
 
-  const isPending = useSelector(authSelectors.getIsPending);
-
-  console.log('isPending:', isPending);
+  const isPending = useSelector(state => {
+    return state.userData.isPending;
+  });
 
   const initialValues = {
     height: '',
@@ -43,15 +49,40 @@ const DailyCaloriesForm = () => {
 
     enableReinitialize: true,
     onSubmit: (value, actions) => {
-      dispatch(postProduct(formik.values));
+      if (!isLogin) {
+        dispatch(postProduct(formik.values));
+      } else {
+        dispatch(calcDataPrivate(formik.values, token));
+      }
+      setShowModal(true);
       actions.resetForm(initialValues);
     },
     validationSchema: validationSchema,
   });
+
+  const onClose = () => {
+    setShowModal(false);
+  };
+
+  const onlyWidth = useWindowWidth();
+  if (showModal) {
+    if (onlyWidth >= 768) {
+      document.body.style.overflow = 'hidden';
+    }
+  }
+  if (!showModal) {
+    document.body.style.overflow = 'initial';
+  }
+
   return (
     <>
       <MainContainer>
-        <form onSubmit={formik.handleSubmit}>
+        <form
+          onSubmit={formik.handleSubmit}
+          className={
+            currentLocation === '/calculator' ? s.formCalc : s.formHome
+          }
+        >
           <Typography
             conponent="h2"
             display={'block'}
@@ -206,7 +237,7 @@ const DailyCaloriesForm = () => {
                     onChange={formik.handleChange}
                     checked={formik.values.bloodType === '4'}
                   />
-                  <span className={s.radioButton}>4</span>
+                  <span className={s.radioButtonLast}>4</span>
                 </div>
               </FormLabel>
             </div>
@@ -227,9 +258,7 @@ const DailyCaloriesForm = () => {
             }}
             color="buttonLogin"
             type="submit"
-            onClick={() => {
-              setShowModal(true);
-            }}
+            disabled={!formik.dirty}
           >
             <Typography sx={{ ...labelFontStyle, color: '#FFFFFF' }}>
               Схуднути
@@ -237,23 +266,15 @@ const DailyCaloriesForm = () => {
           </Button>
         </form>
       </MainContainer>
-
-      {isPending ? (
-        <Spiner />
-      ) : (
-        showModal &&
-        userData && (
-          <Modal onClose={() => setShowModal(false)}>
-            {<DailyCalorieIntake />}
+      {isPending && <Spiner />}
+      {showModal &&
+        (userData ||
+          (userLoginData.kcal &&
+            userLoginData.productsNotRecommended.length !== 0)) && (
+          <Modal onClose={onClose}>
+            {<DailyCalorieIntake onClose={onClose} />}
           </Modal>
-        )
-      )}
-
-      {/* {showModal && userData && (
-        <Modal onClose={() => setShowModal(false)}>
-          {<DailyCalorieIntake />}
-        </Modal>
-      )} */}
+        )}
     </>
   );
 };

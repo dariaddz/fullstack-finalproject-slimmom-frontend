@@ -1,9 +1,10 @@
 import { useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom';
-
+import { NavLink } from 'react-router-dom';
 import s from './dailyCalorieIntake.module.css';
 import { Typography, Button, Box } from '@mui/material';
+import authSelectors from '../../redux/auth/authSelectors';
 
 const buttonLR = {
   height: '44px',
@@ -20,10 +21,11 @@ const labelFontStyle = {
   letterSpacing: '0.04em',
 };
 
-const DailyCalorieIntake = () => {
-  const userData = useSelector(state => {
-    return state.userData.user;
-  });
+const DailyCalorieIntake = ({ onClose }) => {
+  const isLogin = useSelector(authSelectors.getIsLoggedIn);
+  const userData = useSelector(state => state.userData.user);
+
+  const userLoginData = useSelector(state => state.kcal.calcData);
 
   const getMeRandomProducts = (sourceArray, neededElements) => {
     let result = [];
@@ -35,6 +37,16 @@ const DailyCalorieIntake = () => {
 
   return (
     <>
+      <Box>
+        <NavLink
+          to="/"
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+          }}
+          onClick={onClose}
+        ></NavLink>
+      </Box>
       <Typography
         sx={{
           fontFamily: 'Gotham Pro',
@@ -48,25 +60,44 @@ const DailyCalorieIntake = () => {
         Ваша рекомендована добова норма калорій становить
       </Typography>
 
-      {userData && (
-        <div className={s.dataResult}>
-          {userData.kcal} <span className={s.dataResultText}>калорій</span>
-        </div>
-      )}
+      {!isLogin
+        ? userData && (
+            <div className={s.dataResult}>
+              {userData.kcal} <span className={s.dataResultText}>калорій</span>
+            </div>
+          )
+        : userLoginData && (
+            <div className={s.dataResult}>
+              {userLoginData.kcal}{' '}
+              <span className={s.dataResultText}>калорій</span>
+            </div>
+          )}
 
       <hr />
       <div className={s.products}>
         <p className={s.description}>Продукти, які вам не варто вживати</p>
 
-        <ol className={s.productList}>
-          {getMeRandomProducts(userData.productsNotRecommended, 7).map(
-            product => (
-              <li key={uuidv4()} className={s.productItem}>
-                {product}
-              </li>
-            )
-          )}
-        </ol>
+        {!isLogin ? (
+          <ol className={s.productList}>
+            {getMeRandomProducts(userData.productsNotRecommended, 7).map(
+              product => (
+                <li key={uuidv4()} className={s.productItem}>
+                  {product}
+                </li>
+              )
+            )}
+          </ol>
+        ) : (
+          <ol className={s.productList}>
+            {getMeRandomProducts(userLoginData.productsNotRecommended, 7).map(
+              product => (
+                <li key={uuidv4()} className={s.productItem}>
+                  {product}
+                </li>
+              )
+            )}
+          </ol>
+        )}
       </div>
 
       <Link to={`/register`}>

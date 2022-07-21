@@ -11,7 +11,7 @@ import { store, persistor } from './redux/store';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
-// import { PersistGate } from 'redux-persist/integration/react';
+import { MobileMenuProvider } from './helpers/mobileMenuContext/mobileMenuContext';
 
 import './fonts/fonts.css';
 
@@ -21,8 +21,9 @@ ReactDOM.createRoot(document.querySelector('#root')).render(
       <React.StrictMode>
         <BrowserRouter>
           <ThemeProvider theme={theme}>
-            <App />
-
+            <MobileMenuProvider>
+              <App />
+            </MobileMenuProvider>
             <Toaster position="top-right" toastOptions={{ duration: 3000 }} />
           </ThemeProvider>
         </BrowserRouter>

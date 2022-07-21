@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { Button, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 
@@ -11,19 +10,15 @@ const typografyStyle = {
   lineHeight: '13px',
   letterSpacing: '0.04em',
   textTransform: 'uppercase',
+  '&:hover': {
+    color: '#212121',
+  },
 };
 
 const AuthNav = () => {
-  const [active, setActiv] = useState('signIn');
-  const onClickSignIn = () => {
-    setActiv('signIn');
-  };
-
-  const onClickRegister = () => {
-    setActiv('register');
-  };
+  const { pathname } = useLocation();
   return (
-    <Box>
+    <Box sx={{ display: 'flex' }}>
       <Button
         component={NavLink}
         to="/login"
@@ -31,8 +26,7 @@ const AuthNav = () => {
       >
         <Typography
           sx={{ ...typografyStyle }}
-          color={active === 'signIn' ? '#212121' : '#9B9FAA'}
-          onClick={onClickSignIn}
+          color={pathname === '/login' ? '#212121' : '#9B9FAA'}
         >
           Вхід
         </Typography>
@@ -44,8 +38,7 @@ const AuthNav = () => {
       >
         <Typography
           sx={{ ...typografyStyle }}
-          onClick={onClickRegister}
-          color={active === 'register' ? '#212121' : '#9B9FAA'}
+          color={pathname === '/register' ? '#212121' : '#9B9FAA'}
         >
           Реєстрація
         </Typography>

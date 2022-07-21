@@ -1,0 +1,117 @@
+.sideBar {
+  background-color: #e5e5e5;
+  padding: 40px 10px;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.span {
+  margin-left: 10px;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: max-content;
+}
+
+.sideBarTitle {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  color: #212121;
+  margin-bottom: 20px;
+}
+
+.sideBarText {
+  font-size: 14px;
+  line-height: 17px;
+  color: #9b9faa;
+}
+
+.sideBarItem {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sideBarProductList {
+  overflow-y: scroll;
+  max-height: 200px;
+  width: 300px;
+}
+
+.sideBarProductItem {
+  font-size: 14px;
+  line-height: 17px;
+  color: #9b9faa;
+}
+
+.sideBarList {
+  margin-bottom: 60px;
+}
+
+.sideBarItemText {
+  margin-bottom: 5px;
+  color: #9b9faa;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0;
+  }
+
+  .sideBar {
+    background-image: url('../../images/sideBar/leavesTablet.png');
+    padding: 80px 40px 20px 80px;
+    min-height: 35vh;
+    margin-top: 50px;
+  }
+
+  .sideBarTitle {
+    margin-bottom: 35px;
+  }
+
+  .wrapper {
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .sideBarList {
+    min-width: 270px;
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: fit-content;
+    margin: 0;
+  }
+
+  @media screen and (min-width: 1280px) {
+    .sideBar {
+      position: absolute;
+      z-index: 1;
+      height: 100%;
+      width: 35%;
+      margin: 0 auto;
+      top: 0px;
+      right: 0px;
+      padding: 282px 0px 0 100px;
+      background-image: url('../../images/sideBar/leaves.png');
+      background-position: right 40px;
+    }
+    .sideBarList {
+      margin-bottom: 60px;
+    }
+  }
+}

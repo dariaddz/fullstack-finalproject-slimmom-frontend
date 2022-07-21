@@ -1,9 +1,11 @@
 import React from 'react';
 import { Close } from '@mui/icons-material';
-import { ListItem, Typography, Box } from '@mui/material';
-// import { useDispatch, useSelector } from "react-redux";
-// import { date, dateId } from "../../redux/day/day_selector";
-// import { deleteProduct } from "../../redux/day/day_operation";
+import { ListItem, Typography, Box, IconButton } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { dateEatenProducts } from '../../redux/day/day_selector';
+import { deleteProduct } from '../../redux/day/day_operation';
+import { toast } from 'react-hot-toast';
+import today from '../../helpers/currentDateLocal';
 
 const typografyStyle = {
   paddingBottom: {
@@ -29,22 +31,16 @@ const typografyStyle = {
   whiteSpace: 'nowrap',
 };
 
-function DiaryProductsListItem({ product: { _id, title, weight, kcal } }) {
-  // const dispatch = useDispatch();
-  // const dayId = useSelector(dateId);
-  // const currentDate = useSelector(date); // Текущий день из базы
+function DiaryProductsListItem({ product: { id, title, weight, kcal } }) {
+  const dispatch = useDispatch();
+  const currentDate = useSelector(dateEatenProducts);
 
-  // const today = new Date(
-  //   new Date().getTime() - new Date().getTimezoneOffset() * 60000
-  // )
-  //   .toISOString()
-  //   .split("T")[0]; // Текущий день локально с учётом временных зон
+  const disabled = currentDate === today ? false : true;
 
-  // const handleClick = async () => {
-  //   if (currentDate === today) {
-  //     dispatch(deleteProduct(dayId, _id));
-  //   }
-  // };
+  const handleClick = async () => {
+    dispatch(deleteProduct(id));
+    return toast.success('Продукт успішно видалено');
+  };
 
   return (
     <>
@@ -110,32 +106,37 @@ function DiaryProductsListItem({ product: { _id, title, weight, kcal } }) {
             ккал
           </Box>
         </Typography>
-        <Close
-          sx={{
-            width: {
-              xs: '17px',
-              sm: '17px',
-              md: '22px',
-              lg: '22px',
-            },
-            height: {
-              xs: '17px',
-              sm: '17px',
-              md: '22px',
-              lg: '22xp',
-            },
-            mr: '8px',
-            color: 'primary.main',
-            cursor: 'pointer',
-            transition: 'all 250ms linear',
-            '&:hover': {
-              color: 'background.dark',
-              transform: 'scale(1.1)',
-              transition: ' all 250ms linear',
-            },
-          }}
-          // onClick={handleClick}
-        />
+        {!disabled && (
+          <IconButton
+            disabled={disabled}
+            onClick={handleClick}
+            sx={{
+              width: {
+                xs: '10px',
+                sm: '10px',
+                md: '22px',
+                lg: '22px',
+              },
+              height: {
+                xs: '10px',
+                sm: '10px',
+                md: '22px',
+                lg: '22xp',
+              },
+              mr: '8px',
+              color: 'primary.main',
+              cursor: 'pointer',
+              transition: 'all 250ms linear',
+              '&:hover': {
+                color: 'background.dark',
+                transform: 'scale(1.1)',
+                transition: ' all 250ms linear',
+              },
+            }}
+          >
+            <Close />
+          </IconButton>
+        )}
       </ListItem>
     </>
   );

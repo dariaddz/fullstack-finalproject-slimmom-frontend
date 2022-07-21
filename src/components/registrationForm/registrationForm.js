@@ -1,33 +1,35 @@
 import React from 'react';
 import { useFormik } from 'formik';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 //import Visibility from '@mui/icons-material/Visibility';
 //import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { Box, TextField, Typography, Button } from '@mui/material';
 import { buttonLR, labelFontStyle } from '../../theme';
+// import { useAuth } from '../../helpers/authContext/authContext';
 
 const validateRegister = values => {
   const errors = {};
   if (!values.email) {
     errors.email = "Обов'зкове поле";
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Не вірний формат адреси ';
+    errors.email = 'Адреса має бути виду name@xxx.xxx  ';
   }
   if (!values.name) {
     errors.name = "Обов'зкове поле";
   } else if (values.name.length < 2) {
-    errors.name = 'Не вірний формат імені ';
+    errors.name = `Ім'я повинне містити мінімум 2 символи`;
   }
   if (!values.password) {
     errors.password = "Обов'зкове поле";
   } else if (values.password.length < 8) {
-    errors.password = 'Не вірний формат паролю';
+    errors.password = 'Пароль повинен містити мінімум 8 символів';
   }
   return errors;
 };
 
 export const RegistrationForm = ({ onRegister }) => {
-  const navigate = useNavigate();
+  // const { onClickSignIn, onClickRegister } = useAuth();
+  // const navigate = useNavigate();
 
   const initialValues = {
     name: '',
@@ -88,7 +90,7 @@ export const RegistrationForm = ({ onRegister }) => {
               variant="standard"
               id="name"
               name="name"
-              label="І'мя *"
+              label="Ім'я *"
               value={formik.values.name}
               onChange={formik.handleChange}
               error={formik.touched.name && Boolean(formik.errors.name)}
@@ -122,6 +124,7 @@ export const RegistrationForm = ({ onRegister }) => {
               variant="standard"
               id="password"
               name="password"
+              type="password"
               label="Пароль *"
               value={formik.values.password}
               onChange={formik.handleChange}
@@ -136,19 +139,20 @@ export const RegistrationForm = ({ onRegister }) => {
             flexDirection: { xs: 'column', sm: 'column', md: 'row' },
           }}
         >
-          <Button
+          {/* <Button
             variant="contained"
             sx={{ ...buttonLR, margin: { xs: '0 0 20px 0', md: '0 32px 0 0' } }}
             color="buttonLogin"
             type="button"
             onClick={() => {
-              navigate('/calculatorPage');
+              navigate('/login');
+              onClickSignIn();
             }}
           >
             <Typography sx={{ ...labelFontStyle, color: '#ffffff' }}>
               Вхід
             </Typography>
-          </Button>
+          </Button> */}
           <Button
             variant="contained"
             sx={{
@@ -158,6 +162,10 @@ export const RegistrationForm = ({ onRegister }) => {
             }}
             color="buttonRegister"
             type="submit"
+          // onClick={() => {
+          //   console.log('onclickregister');
+          //   onRegister();
+          // }}
           >
             <Typography sx={{ ...labelFontStyle, color: '#fc842d' }}>
               Реєстрація

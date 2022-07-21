@@ -1,62 +1,67 @@
 .exampleBox {
-    padding: 40px 15px 60px;
+  margin: 0 auto;
+  width: 280px;
+  padding: 40px 15px 60px;
 }
 
 .isHidddenTablet {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .isHidddenMobile {
-    display: none;
+  display: none;
 }
 
 .backButton {
-    position: absolute;
-    z-index: 10;
-    top: 40px;
-    left: 15px;
+  position: absolute;
+  z-index: 1001;
+  top: 9px;
+  left: 20px;
+  color: #000000;
 }
 
 .notification {
-    margin-top: 20px;
-    min-width: 300px;
-    max-width: 500px;
-    color: #fc842d;
-    font-weight: 400;
+  margin-top: 20px;
+  min-width: 300px;
+  max-width: 500px;
+  color: #fc842d;
+  font-weight: 400;
 }
 
 @media screen and (min-width: 768px) {
-    .exampleBox {
-        height: auto;
-        min-height: 41vh;
-        padding: 70px 87px 61px 92px;
-        margin-bottom: 0;
-        margin-top: 30px;
-    }
+  .exampleBox {
+    width: auto;
+    height: auto;
+    margin: 0;
+    margin-bottom: 0;
+    margin-top: 30px;
+    padding: 70px 87px 61px 92px;
+    min-height: 41vh;
+  }
 
-    .notification {
-        margin-top: 0;
-    }
+  .notification {
+    margin-top: 0;
+  }
 
-    .isHidddenTablet {
-        display: none;
-    }
+  .isHidddenTablet {
+    display: none;
+  }
 
-    .isHidddenMobile {
-        display: block;
-    }
+  .isHidddenMobile {
+    display: block;
+  }
 }
 
 @media screen and (min-width: 1280px) {
-    .flexBox {
-        display: flex;
-    }
+  .flexBox {
+    display: flex;
+  }
 
-    .exampleBox {
-        padding: 80px 30px 60px 115px;
-        width: 58%;
-    }
+  .exampleBox {
+    padding: 80px 0 60px 16px;
+    width: 60%;
+  }
 }
 
 /* rename */

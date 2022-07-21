@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-hot-toast';
 
-axios.defaults.baseURL = 'http://localhost:3001/api/users';
+axios.defaults.baseURL = 'https://slim-mom-project.herokuapp.com/api/users';
 
 const token = {
   set(currentToken) {
@@ -18,12 +18,16 @@ const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post('/register', credentials);
-      token.set(data.token);
+      // token.set(data.token);
       toast.success('Ви успішно зареєструвались');
-      return data.data;
+
+      return data;
     } catch (error) {
       if (error.response.status === 400) {
         toast.error('Помилка реєстрації.\nПеревірте введені дані.');
+      }
+      if (error.response.status === 409) {
+        toast.error('Помилка реєстрації.\nМожливо користувач вже існує');
       }
       if (error.response.status === 500) {
         toast.error('Немає відповіді від сервера.');
@@ -41,7 +45,13 @@ const login = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
     return data.data;
   } catch (error) {
     if (error.response.status === 400) {
-      toast.error('Помилка реєстрації.\nПеревірте введені дані.');
+      toast.error('Помилка авторизації.\nПеревірте введені дані.');
+    }
+    if (error.response.status === 401) {
+      toast.error('Авторизацію не виконано.');
+    }
+    if (error.response.status === 404) {
+      toast.error('Користувача не знайдено.');
     }
     if (error.response.status === 500) {
       toast.error('Немає відповіді від сервера.');
@@ -65,10 +75,16 @@ const fetchCurrentUser = createAsyncThunk(
       toast.success('Ваша сессія відновлена');
       return data.data;
     } catch (error) {
-      if (error.response.status === 401) {
+      if (error.response.status === 400) {
         toast.error(
-          'Ви не залогінелись, або час сессії вичерпано.\nБудь-ласка залогінтесь.'
+          'Помилка авторизації або час сесії закінчився.\nАвторизуйтесь повторно.'
         );
+      }
+      if (error.response.status === 401) {
+        toast.error('Авторизацію не виконано.');
+      }
+      if (error.response.status === 404) {
+        toast.error('Користувача не знайдено.');
       }
       if (error.response.status === 500) {
         toast.error('Немає відповіді від сервера.');
@@ -78,7 +94,8 @@ const fetchCurrentUser = createAsyncThunk(
   }
 );
 
-const logout = createAsyncThunk('auth/logout', async () => {
+const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+  token.set(thunkAPI.getState().auth.token);
   try {
     await axios.get('/logout');
     token.unset();
@@ -86,6 +103,12 @@ const logout = createAsyncThunk('auth/logout', async () => {
   } catch (error) {
     if (error.response.status === 400) {
       toast.error('Помилка аутентифікації');
+    }
+    if (error.response.status === 401) {
+      toast.error('Авторизацію не виконано.');
+    }
+    if (error.response.status === 404) {
+      toast.error('Користувача не знайдено.');
     }
     if (error.response.status === 500) {
       toast.error('Немає відповіді від сервера.');

@@ -7,16 +7,16 @@ import './App.css';
 import MainPage from './components/mainPage';
 import { Spiner } from './components/spiner';
 
-
 import { authOperations /*authSelectors*/ } from './redux/auth';
-// import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from './components/privateRoute';
 import PublicRoute from './components/publicRoute';
 
 const HomePage = lazy(() => import('./pages/homePage'));
 const RegistrationPage = lazy(() => import('./pages/registrationPage'));
 const LoginPage = lazy(() => import('./pages/loginPage'));
-// const CalculatorPage = lazy(() => import('./pages/calculatorPage'));
+const CalculatorPage = lazy(() => import('./pages/calculatorPage'));
 const DiaryPage = lazy(() => import('./pages/diaryPage'));
+const NotFoundPage = lazy(() => import('./pages/notFoundPage'));
 
 function App() {
   //--Eugen
@@ -42,8 +42,10 @@ function App() {
                 element={
                   <PublicRoute
                     component={<HomePage />}
-                    redirectTo={!isCalculated ? "/" : "/diary"}
                     restricted
+                    // redirectTo={'/diary'}
+                    redirectTo={!isCalculated ? '/calculator' : '/diary'}
+                    // restricted
                   />
                 }
               />
@@ -52,7 +54,16 @@ function App() {
             path="/register"
             element={<PublicRoute restricted redirectTo="/" />}
           > */}
-              {<Route path="register" element={<RegistrationPage />} />}
+              <Route
+                path="register"
+                element={
+                  <PublicRoute
+                    component={<RegistrationPage />}
+                    redirectTo={'/diary'}
+                    restricted
+                  />
+                }
+              />
               {/* </Route> */}
               {/* <Route
             path="/login"
@@ -64,11 +75,31 @@ function App() {
                 element={
                   <PublicRoute
                     component={<LoginPage />}
-                    redirectTo={isCalculated ? "/diary" : "/"}
+                    redirectTo={isCalculated ? '/diary' : '/'}
                     restricted
                   />
                 }
               />
+              <Route
+                path="diary"
+                element={
+                  <PrivateRoute
+                    component={<DiaryPage />}
+                    redirectTo={'/login'}
+                    restricted
+                  />
+                }
+              />
+              <Route
+                path="calculator"
+                element={
+                  <PrivateRoute
+                    component={<CalculatorPage />}
+                    redirectTo={'/login'}
+                  />
+                }
+              />
+              <Route path="*" element={<NotFoundPage />} />
             </Route>
 
             {/* <Route
@@ -84,15 +115,11 @@ function App() {
           >
             <Route path="*" element={<NotFoundPage />} />
           </Route> */}
-
             {/* </Route>
           </Route> */}
-
-            <Route path="diary" element={<DiaryPage />} />
           </Routes>
         </Suspense>
-      )
-      }
+      )}
     </>
   );
 }

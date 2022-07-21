@@ -1,25 +1,27 @@
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { Box, TextField, Typography, Button } from '@mui/material';
 import { buttonLR, labelFontStyle } from '../../theme';
+// import { useAuth } from '../../helpers/authContext/authContext';
 
 const validateRegister = values => {
   const errors = {};
   if (!values.email) {
     errors.email = "Обов'зкове поле";
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Не вірний формат адреси ';
+    errors.email = 'Адреса має бути виду name@xxx.xxx  ';
   }
   if (!values.password) {
     errors.password = "Обов'зкове поле";
   } else if (values.password.length < 8) {
-    errors.password = 'Не вірний формат паролю';
+    errors.password = 'Пароль містить мінімум 8 символів';
   }
   return errors;
 };
 
 export const LoginForm = ({ onLogin }) => {
-  const navigate = useNavigate();
+  // const { onClickRegister } = useAuth();
+  // const navigate = useNavigate();
 
   const initialValues = {
     email: '',
@@ -96,6 +98,7 @@ export const LoginForm = ({ onLogin }) => {
               variant="standard"
               id="password"
               name="password"
+              type="password"
               label="Пароль *"
               value={formik.values.password}
               onChange={formik.handleChange}
@@ -120,7 +123,7 @@ export const LoginForm = ({ onLogin }) => {
               Вхід
             </Typography>
           </Button>
-          <Button
+          {/* <Button
             variant="contained"
             sx={{
               ...buttonLR,
@@ -131,12 +134,13 @@ export const LoginForm = ({ onLogin }) => {
             type="button"
             onClick={() => {
               navigate('/register');
+              onClickRegister();
             }}
           >
             <Typography sx={{ ...labelFontStyle, color: '#FC842D' }}>
               Реєстрація
             </Typography>
-          </Button>
+          </Button> */}
         </Box>
       </Box>
     </form>

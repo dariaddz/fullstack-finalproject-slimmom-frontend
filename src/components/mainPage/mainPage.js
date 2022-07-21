@@ -1,21 +1,18 @@
 import { Outlet } from 'react-router-dom';
-import Appbar from '../appBar';
-import Container from '@mui/material/Container';
 
-import s from './mainPage.module.css';
+import Appbar from '../appBar';
+
+import Container from '@mui/material/Container';
 
 function MainPage() {
   return (
-    <>
-      <div className={s.container}>
-        <div className={s.blur}>
-          <Container disableGutters={true}>
-            <Appbar />
-            <Outlet />
-          </Container>
-        </div>
-      </div>
-    </>
+    <div>
+      <Container disableGutters={true}>
+        <Appbar />
+
+        <Outlet />
+      </Container>
+    </div>
   );
 }
 export default MainPage;
