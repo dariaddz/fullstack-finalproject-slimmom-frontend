@@ -70,6 +70,9 @@ const DailyCaloriesForm = () => {
       document.body.style.overflow = 'hidden';
     }
   }
+  if (!showModal) {
+    document.body.style.overflow = 'initial';
+  }
 
   return (
     <>
