@@ -14,7 +14,6 @@ import {
   MainContainer,
 } from '../../theme';
 import validationSchema from '../../middlewares';
-import { useWindowWidth } from '@react-hook/window-size';
 import { Spiner } from '../../components/spiner';
 import authSelectors from '../../redux/auth/authSelectors';
 import { calcDataPrivate } from '../../redux/calculator/calculator_operation';
@@ -24,9 +23,9 @@ const DailyCaloriesForm = () => {
   const token = useSelector(state => state.auth.token);
   const currentLocation = window.location.pathname;
 
-  const userData = useSelector(state => {
-    return state.userData.user;
-  });
+  const userData = useSelector(state => state.userData.user);
+
+  const userLoginData = useSelector(state => state.kcal.calcData);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -52,7 +51,6 @@ const DailyCaloriesForm = () => {
       if (!isLogin) {
         dispatch(postProduct(formik.values));
       } else {
-        // dispatch(postProduct(formik.values));
         dispatch(calcDataPrivate(formik.values, token));
       }
       setShowModal(true);
@@ -65,11 +63,8 @@ const DailyCaloriesForm = () => {
     setShowModal(false);
   };
 
-  const onlyWidth = useWindowWidth();
   if (showModal) {
-    if (onlyWidth >= 768) {
-      document.body.style.overflow = 'hidden';
-    }
+    document.body.style.overflow = 'hidden';
   }
 
   return (
@@ -201,23 +196,6 @@ const DailyCaloriesForm = () => {
                   </Typography>
                   <hr className={s.hr} />
 
-                  {/* {bloodTypes.map(bloodType=>(
-<>
-  
-  <input
-  type="radio"
-  name={bloodType}
-  value={bloodType}
-  onChange={formik.handleChange}
-  checked={formik.values.bloodType === bloodType}
-/>
-
- <span className={s.radioButton}>{bloodType}</span>
-</>
-
-
-))} */}
-
                   <input
                     type="radio"
                     name="bloodType"
@@ -282,11 +260,14 @@ const DailyCaloriesForm = () => {
         </form>
       </MainContainer>
       {isPending && <Spiner />}
-      {showModal && userData && (
-        <Modal onClose={onClose}>
-          {<DailyCalorieIntake onClose={onClose} />}
-        </Modal>
-      )}
+      {showModal &&
+        (userData ||
+          (userLoginData.kcal &&
+            userLoginData.productsNotRecommended.length !== 0)) && (
+          <Modal onClose={onClose}>
+            {<DailyCalorieIntake onClose={onClose} />}
+          </Modal>
+        )}
     </>
   );
 };

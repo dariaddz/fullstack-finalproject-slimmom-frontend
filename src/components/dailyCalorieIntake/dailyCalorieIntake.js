@@ -37,19 +37,7 @@ const DailyCalorieIntake = ({ onClose }) => {
 
   return (
     <>
-      <Box
-      // sx={{
-      //   display: { xs: 'flex', sm: 'flex', md: 'none', lg: 'none' },
-      //   height: '14px',
-
-      //   backgroundColor: '#EFF1F3',
-      //   justifyContent: 'space-between',
-      //   alignItems: 'center',
-      //   padding: '14px 20px',
-      //   width: '240px',
-      //   marginBottom: '40px',
-      // }}
-      >
+      <Box>
         <NavLink
           to="/"
           sx={{
@@ -58,7 +46,6 @@ const DailyCalorieIntake = ({ onClose }) => {
           }}
           onClick={onClose}
         ></NavLink>
-        {/* <UserInfo /> */}
       </Box>
       <Typography
         sx={{
