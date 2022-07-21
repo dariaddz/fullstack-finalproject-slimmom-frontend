@@ -8,6 +8,9 @@ import { Spiner } from '../../components/spiner';
 import { Box } from '@mui/material';
 import { LoginForm } from '../../components/loginForm';
 import s from './loginPage.module.css';
+import { clearKcal } from '../../redux/calculator/calculator_operation';
+import { clearProducts } from '../../redux/day/day_operation';
+
 
 export function LoginPage() {
   const dispatch = useDispatch();
@@ -15,6 +18,8 @@ export function LoginPage() {
 
   const onLogin = async ({ email, password }) => {
     dispatch(authOperations.login({ email, password }));
+    dispatch(clearKcal());
+    dispatch(clearProducts());
   };
 
   return (
