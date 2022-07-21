@@ -1,8 +1,6 @@
-// import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { Box, TextField, Typography, Button } from '@mui/material';
 import { buttonLR, labelFontStyle } from '../../theme';
-// import { useAuth } from '../../helpers/authContext/authContext';
 
 const validateRegister = values => {
   const errors = {};
@@ -20,9 +18,6 @@ const validateRegister = values => {
 };
 
 export const LoginForm = ({ onLogin }) => {
-  // const { onClickRegister } = useAuth();
-  // const navigate = useNavigate();
-
   const initialValues = {
     email: '',
     password: '',
@@ -123,24 +118,6 @@ export const LoginForm = ({ onLogin }) => {
               Вхід
             </Typography>
           </Button>
-          {/* <Button
-            variant="contained"
-            sx={{
-              ...buttonLR,
-              backgroundColor: '#FFFFFF',
-              border: '2px solid #FC842D',
-            }}
-            color="buttonRegister"
-            type="button"
-            onClick={() => {
-              navigate('/register');
-              onClickRegister();
-            }}
-          >
-            <Typography sx={{ ...labelFontStyle, color: '#FC842D' }}>
-              Реєстрація
-            </Typography>
-          </Button> */}
         </Box>
       </Box>
     </form>

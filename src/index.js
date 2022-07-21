@@ -24,7 +24,7 @@ ReactDOM.createRoot(document.querySelector('#root')).render(
             <MobileMenuProvider>
               <App />
             </MobileMenuProvider>
-            <Toaster position="top-right" toastOptions={{ duration: 3000 }} />
+            <Toaster position="top-right" toastOptions={{ duration: 1000 }} />
           </ThemeProvider>
         </BrowserRouter>
       </React.StrictMode>

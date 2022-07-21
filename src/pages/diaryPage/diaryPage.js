@@ -11,7 +11,6 @@ import Box from '@mui/material/Box';
 import MobileMenuPage from '../mobileMenuPage';
 import { useMobileMenu } from '../../helpers/mobileMenuContext/mobileMenuContext';
 import { useSelector } from 'react-redux';
-// import { NavLink } from 'react-router-dom';
 import { authSelectors } from '../../redux/auth';
 import UserInfo from '../../components/userInfo';
 import styles from './diaryPage.module.css';
@@ -49,24 +48,12 @@ const DiaryPage = () => {
           sx={{
             display: { xs: 'flex', sm: 'flex', md: 'none', lg: 'none' },
             height: '14px',
-            // width: '100%',
             backgroundColor: '#EFF1F3',
             justifyContent: 'flex-end',
             alignItems: 'center',
             padding: '14px 20px',
           }}
         >
-          {/* <NavLink to="/calculator">
-            <KeyboardBackspaceIcon
-              sx={{
-                textDecoration: 'none',
-                color: '#000000',
-                display: { sx: 'block', sm: 'block', md: 'none' },
-              }}
-              // className={styles.backButton}
-              // onClick={handleClick}
-            />
-          </NavLink> */}
           <UserInfo />
         </Box>
       )}

@@ -20,13 +20,7 @@ const Logo = () => {
         component={NavLink}
         to={isLoggedIn ? '/diary' : '/'}
       >
-        <Box
-        // sx={{
-        //   width: { xs: '47px', md: '47px', lg: '70px' },
-        //   height: { xs: '44px', md: '44px', lg: '66px' },
-        //   marginBottom: '20px',
-        // }}
-        >
+        <Box>
           <img className={s.logo} src={logo} alt="Logo" />
         </Box>
         {isLoggedIn ? (
@@ -64,15 +58,6 @@ const Logo = () => {
           </Box>
         )}
       </Box>
-      {/* <Box //вертикальная палка
-        sx={{
-          display: { xs: 'none', lg: 'flex' },
-          width: '2px',
-          height: '30px',
-          backgroundColor: '#E0E0E0',
-          margin: '0',
-        }}
-      /> */}
     </>
   );
 };

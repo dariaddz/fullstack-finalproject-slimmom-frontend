@@ -14,6 +14,8 @@ const diaryInfoState = {
   productsNotRecommended: [],
 };
 
+
+
 const diaryInfo = createReducer(diaryInfoState, {
   [productActions.addProductSuccess]: (state, { payload }) => {
     return {

@@ -7,7 +7,7 @@ import './App.css';
 import MainPage from './components/mainPage';
 import { Spiner } from './components/spiner';
 
-import { authOperations /*authSelectors*/ } from './redux/auth';
+import { authOperations } from './redux/auth';
 import PrivateRoute from './components/privateRoute';
 import PublicRoute from './components/publicRoute';
 
@@ -35,25 +35,17 @@ function App() {
         <Suspense fallback={<Spiner />}>
           <Routes>
             <Route path="/" element={<MainPage />}>
-              {/* <Route path="/" element={<PublicRoute />}> */}
-              {/* <Route index element={<HomePage />} /> */}
               <Route
                 index
                 element={
                   <PublicRoute
                     component={<HomePage />}
                     restricted
-                    // redirectTo={'/diary'}
                     redirectTo={!isCalculated ? '/calculator' : '/diary'}
-                    // restricted
                   />
                 }
               />
 
-              {/* <Route
-            path="/register"
-            element={<PublicRoute restricted redirectTo="/" />}
-          > */}
               <Route
                 path="register"
                 element={
@@ -64,11 +56,6 @@ function App() {
                   />
                 }
               />
-              {/* </Route> */}
-              {/* <Route
-            path="/login"
-            element={<PublicRoute restricted redirectTo="/" />}
-          > */}
 
               <Route
                 path="login"
@@ -101,22 +88,6 @@ function App() {
               />
               <Route path="*" element={<NotFoundPage />} />
             </Route>
-
-            {/* <Route
-            path="/calculator"
-            element={<PrivateRoute redirectTo="/login" />}
-          > */}
-            {/* <Route path="/diary" element={<DiaryPage />} /> */}
-            {/* </Route> */}
-            {/* <Route
-
-            path="*"
-            element={<PublicRoute restricted redirectTo="/diary" />}
-          >
-            <Route path="*" element={<NotFoundPage />} />
-          </Route> */}
-            {/* </Route>
-          </Route> */}
           </Routes>
         </Suspense>
       )}
