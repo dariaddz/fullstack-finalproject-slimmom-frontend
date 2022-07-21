@@ -18,7 +18,7 @@ const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post('/register', credentials);
-      // token.set(data.token);
+   
       toast.success('Ви успішно зареєструвались');
 
       return data;

@@ -30,9 +30,6 @@ const authSlice = createSlice({
     refreshToken: (state, { payload }) => {
       state.token = payload;
     },
-    // refreshIsCalculated: (state, { payload }) => {
-    //   state.isCalculated = payload;
-    // }
   },
 
   extraReducers: {
@@ -43,7 +40,7 @@ const authSlice = createSlice({
     [authOperations.register.fulfilled]: (state, action) => {
       state.user = action.payload.user;
       state.token = action.payload.token;
-      // state.name = action.payload.name;
+
       state.avatarURL = null;
       state.isFetching = false;
       state.isLoggedIn = true;

@@ -11,6 +11,10 @@ axiosInstance.interceptors.request.use(config => {
   return config;
 });
 
+
+
+
+
 export const getProducts = query => {
   return axiosInstance
     .get(`api/products/search?product=${query}`)

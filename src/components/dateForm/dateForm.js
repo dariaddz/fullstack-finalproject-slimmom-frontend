@@ -5,7 +5,6 @@ import styles from './dateForm.module.css';
 import { ReactComponent as CalendarIcon } from '../../images/calendar.svg';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-// import today from '../../helpers/currentDateLocal';
 
 const DiaryDateCalendar = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -55,7 +54,7 @@ const DiaryDateCalendar = () => {
         maxDate={new Date()}
         onChange={date => onChange(date)}
         todayButton="Сьогодні"
-        // locale="ru-RU"
+       
       />
     </div>
   );

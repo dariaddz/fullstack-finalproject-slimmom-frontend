@@ -9,8 +9,7 @@
       url('../../images/mainPage/GreenLaptop.png'),
       url('../../images/mainPage/BananaLaptop.png'),
       url('../../images/mainPage/DecoreLaptop.png');
-    /* background-position: bottom 147px right -20px, right bottom, right bottom,
-          right bottom; */
+
     background-position: bottom 30% right -20px, right 30% bottom, right bottom,
       right bottom;
     background-repeat: no-repeat;
