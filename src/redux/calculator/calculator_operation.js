@@ -15,6 +15,11 @@ export const calcDataPrivate = (calcFormParams, token) => async dispatch => {
     dispatch(calcError(error.message));
   }
 };
+//--Eugen
+export const clearKcal = () => async dispatch => {
+  dispatch(clearKcal())
+};
+//--Eugen
 
 // export const getCalcData = date => async dispatch => {
 //   const token = useSelector(state => state.auth.token);

@@ -14,6 +14,7 @@ import { Spiner } from '../../components/spiner';
 
 //--Eugen
 import { clearProducts } from '../../redux/day/day_operation';
+import { clearKcal } from '../../redux/calculator/calculator_action';
 //--Eugen
 
 
@@ -88,11 +89,12 @@ export default function UserInfo() {
           onClick={async () => {
             //--Eugen
             const res = await dispatch(authOperations.logout());
-            console.log('res', res);
-            if (res.meta.requestStatus === 'fulfilled') { console.log('hire'); dispatch(clearProducts()); };
-            //--Eugen
-            // ResetProductState();
-            // logoutAndReset();
+            if (res.meta.requestStatus === 'fulfilled') {
+              dispatch(clearProducts()); dispatch(clearKcal());
+              //--Eugen
+              // ResetProductState();
+              // logoutAndReset();
+            }
           }}
           color={active === 'exit' ? '#212121' : '#9B9FAA'}
         >
