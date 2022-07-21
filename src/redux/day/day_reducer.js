@@ -21,6 +21,11 @@ const diaryInfo = createReducer(diaryInfoState, {
       products: [payload, ...state.products],
     };
   },
+  //--Eugen
+  [productActions.clearProductsSuccess]: (state, { payload }) => {
+    return { ...diaryInfoState }
+  },
+  //--Eugen
   [productActions.dateEatenProductsSuccess]: (_, { payload }) => payload,
   [productActions.deleteProductIdSuccess]: (state, { payload }) => {
     const oldProducts = state.products;
